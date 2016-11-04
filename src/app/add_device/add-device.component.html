@@ -1,0 +1,104 @@
+<!--<section class="addDevice">
+    <form action="">
+        <div class="form-group">
+            <h1>{{name}}</h1>
+            <hr>
+            <div>User Agent: {{browserData.ua}}</div>
+            <div>
+                <label>Device OS:</label>
+                <input [(ngModel)]="browserData.os.name" placeholder="name"/>
+            </div>
+            <div>
+                <label>OS Version:</label>
+                <input [(ngModel)]="browserData.os.version" placeholder="name"/>
+            </div>
+            <div>
+                <label>Device Model:</label>
+                <input [(ngModel)]="browserData.device.model" placeholder="name"/>
+            </div>
+            <div> {{browserData.device.type}}
+                <label>Device Type:</label>
+                <input [(ngModel)]="browserData.device.type" placeholder="name"/>
+            </div>
+            <div>
+                <label>Device Vendor:</label>
+                <input [(ngModel)]="browserData.device.vendor" placeholder="name"/>
+            </div>
+            <div>
+                <label>Current Resolution:</label>
+                <input [(ngModel)]="currentResolution" placeholder="name"/>
+            </div>
+        </div>
+    </form>
+</section>-->
+
+<div class="container">
+    <br>
+    <br>
+    <h1>Add Device Form</h1>
+    <form *ngIf="active" (ngSubmit)="onSubmit()" #deviceForm="ngForm" [hidden]="submitted">
+        <div class="form-group">
+            <label for="ua">User Agent</label>
+            <textarea type="text" class="form-control" id="ua" required [(ngModel)]="device.device_userAgent" name="ua" disabled></textarea>
+        </div>
+        <div class="form-group">
+            <label for="os">Device OS:</label>
+            <input type="text" class="form-control" id="os" required [(ngModel)]="device.device_os" name="name">
+        </div>
+        <div class="form-group">
+            <label for="version">OS Version:</label>
+            <input type="text" class="form-control" id="version" required [(ngModel)]="device.device_version" name="version">
+        </div>
+        <div class="form-group">
+            <label for="model">Device Model:</label>
+            <input type="text" class="form-control" id="model" required [(ngModel)]="device.device_model" name="model">
+        </div>
+        <div class="form-group">
+            <label for="type">Device Type:</label>
+            <input type="text" class="form-control" id="type" required [(ngModel)]="device.device_type"  name="type">
+        </div>
+        <div class="form-group">
+            <label for="vendor">Device Vendor:</label>
+            <input type="text" class="form-control" id="vendor" required [(ngModel)]="device.device_vendor" name="vendor">
+        </div>
+        <div class="form-group">
+            <label for="resolution">Device Resolution:</label>
+            <input type="text" class="form-control" id="resolution" [(ngModel)]="device.device_resolution" name="currentResolution">
+        </div>
+        <button type="submit" class="btn btn-default" [disabled]="!deviceForm.form.valid">Submit</button>
+    </form>
+
+   <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-xs-3">Device User Agent</div>
+            <div class="col-xs-9  pull-left">{{ device.device_userAgent }}</div>
+        </div>
+       <div class="row">
+            <div class="col-xs-3">Device OS</div>
+            <div class="col-xs-9  pull-left">{{ device.device_os }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Device Version</div>
+            <div class="col-xs-9 pull-left">{{device.device_version}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Device Model</div>
+            <div class="col-xs-9 pull-left">{{device.device_model }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Device Type</div>
+            <div class="col-xs-9 pull-left">{{device.device_type }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Device Vendor</div>
+            <div class="col-xs-9 pull-left">{{device.device_vendor }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Device Resolution</div>
+            <div class="col-xs-9 pull-left">{{device.device_resolution }}</div>
+        </div>
+        <br>
+        <button class="btn btn-default" (click)="submitted=false">Edit</button>
+    </div>
+</div>
