@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var device_service_1 = require('./device.service');
-require('../../public/css/styles.css');
-require('../../public/css/bootstrap.css');
+require('../../../public/css/styles.css');
+require('../../../public/css/bootstrap.css');
 var DevicesComponent = (function () {
     function DevicesComponent(deviceService) {
         this.deviceService = deviceService;
@@ -29,14 +29,13 @@ var DevicesComponent = (function () {
     DevicesComponent = __decorate([
         core_1.Component({
             selector: 'my-devices',
-            templateUrl: './app.component.html',
-            styleUrls: ['./app.component.css'],
+            templateUrl: '../app.component.html',
+            styleUrls: ['../app.component.css'],
             providers: [device_service_1.DeviceService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof device_service_1.DeviceService !== 'undefined' && device_service_1.DeviceService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [device_service_1.DeviceService])
     ], DevicesComponent);
     return DevicesComponent;
-    var _a;
 }());
 exports.DevicesComponent = DevicesComponent;
 //# sourceMappingURL=devices.component.js.map

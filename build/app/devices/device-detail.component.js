@@ -15,7 +15,7 @@ var DeviceDetailComponent = (function () {
     }
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', (typeof (_a = typeof device_1.Device !== 'undefined' && device_1.Device) === 'function' && _a) || Object)
+        __metadata('design:type', device_1.Device)
     ], DeviceDetailComponent.prototype, "device", void 0);
     DeviceDetailComponent = __decorate([
         core_1.Component({
@@ -25,7 +25,6 @@ var DeviceDetailComponent = (function () {
         __metadata('design:paramtypes', [])
     ], DeviceDetailComponent);
     return DeviceDetailComponent;
-    var _a;
 }());
 exports.DeviceDetailComponent = DeviceDetailComponent;
 //# sourceMappingURL=device-detail.component.js.map

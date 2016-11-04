@@ -4,8 +4,8 @@ import {Device} from '../device';
 import {DeviceModel} from './device_model';
 
 
-import '../../../public/css/styles.css';
-import '../../../public/css/bootstrap.css';
+import '../../../../public/css/styles.css';
+import '../../../../public/css/bootstrap.css';
 declare var ClientJS:any;
 @Component({
     selector: 'add-devices',

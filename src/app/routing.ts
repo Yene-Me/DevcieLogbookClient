@@ -1,7 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DevicesComponent }      from './devices.component';
-import { AddDevicesComponent }      from '../app/add_device/add_device';
+import { DevicesComponent }      from './devices/devices.component';
+import { AddDevicesComponent }      from '../app/devices/addDevice/add_device';
 
 const appRoutes: Routes = [
   {

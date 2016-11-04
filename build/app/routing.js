@@ -1,7 +1,7 @@
 "use strict";
 var router_1 = require('@angular/router');
-var devices_component_1 = require('./devices.component');
-var add_device_1 = require('../app/add_device/add_device');
+var devices_component_1 = require('./devices/devices.component');
+var add_device_1 = require('../app/devices/addDevice/add_device');
 var appRoutes = [
     {
         path: 'devices',
