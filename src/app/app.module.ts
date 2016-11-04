@@ -3,14 +3,22 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule }   from '@angular/forms';
 import { routing } from './routing';
-import { DeviceDetailComponent } from './device-detail.component';
-import { DevicesComponent } from './devices.component';
-import { AddDevicesComponent }      from '../app/add_device/add_device';
+import { DeviceDetailComponent } from './devices/device-detail.component';
+import { DevicesComponent } from './devices/devices.component';
+import { AddDevicesComponent }      from '../app/devices/addDevice/add_device';
 import { HttpModule }    from '@angular/http';
+import {AngularFireModule} from "angularfire2";
 
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+
+// Must export the config
+export const firebaseConfig = {
+    apiKey: "AIzaSyDzexd0WYSFaGeoJiolu3qNCSBLOjc3k9s",
+    authDomain: "devicecupboard.firebaseapp.com",
+    databaseURL: "https://devicecupboard.firebaseio.com",
+    storageBucket: "devicecupboard.appspot.com",
+    messagingSenderId: "76395876829"
+};
+
 
 @NgModule({
   imports: [
@@ -18,7 +26,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
     FormsModule,
     routing,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   declarations: [
     AppComponent,

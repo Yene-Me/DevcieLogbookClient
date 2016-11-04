@@ -1,6 +1,7 @@
 import { Component ,OnInit } from '@angular/core';
 import { DeviceService } from './device.service';
 import { Device } from './device';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 import '../../../public/css/styles.css';
 import '../../../public/css/bootstrap.css';
@@ -14,15 +15,14 @@ export class DevicesComponent implements OnInit {
     name:string = "Camden";
     selectDevice: Device;
     ngOnInit(): void {
-          this.getDevices();
     }
-    constructor(private deviceService: DeviceService) { }
 
-    devices:Device[];
+    devices: FirebaseListObservable<any[]>;
 
-    getDevices(): void {
-     this.devices = this.deviceService.getDevices();
-   }
+    constructor(af: AngularFire) {
+        this.devices = af.database.list('/devices');
+    }
+
 
    onSelect(device:Device):void{
      this.selectDevice = device;

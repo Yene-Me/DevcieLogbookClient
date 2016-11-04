@@ -10,18 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var device_service_1 = require('./device.service');
+var angularfire2_1 = require('angularfire2');
 require('../../../public/css/styles.css');
 require('../../../public/css/bootstrap.css');
 var DevicesComponent = (function () {
-    function DevicesComponent(deviceService) {
-        this.deviceService = deviceService;
+    function DevicesComponent(af) {
         this.name = "Camden";
+        this.devices = af.database.list('/devices');
     }
     DevicesComponent.prototype.ngOnInit = function () {
-        this.getDevices();
-    };
-    DevicesComponent.prototype.getDevices = function () {
-        this.devices = this.deviceService.getDevices();
     };
     DevicesComponent.prototype.onSelect = function (device) {
         this.selectDevice = device;
@@ -33,7 +30,7 @@ var DevicesComponent = (function () {
             styleUrls: ['../app.component.css'],
             providers: [device_service_1.DeviceService]
         }), 
-        __metadata('design:paramtypes', [device_service_1.DeviceService])
+        __metadata('design:paramtypes', [angularfire2_1.AngularFire])
     ], DevicesComponent);
     return DevicesComponent;
 }());

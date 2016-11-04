@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DeviceService} from '../device.service';
 import {Device} from '../device';
 import {DeviceModel} from './device_model';
-
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
@@ -23,19 +23,17 @@ export class AddDevicesComponent implements OnInit {
     active:boolean = true;
 
     ngOnInit():void {
-        this.getDevices();
         this.deviceInfo();
     }
 
-    constructor(private deviceService:DeviceService) {
+    deviceList: FirebaseListObservable<any[]>;
+
+    constructor(af: AngularFire) {
+        this.deviceList = af.database.list('/devices');
+        // devices.push({ name: 'Mr. Nice', version:"1" ,inuseby :"yene", out:new Date().toString()});
     }
 
     devices:Device[];
-
-    getDevices():void {
-        this.devices = this.deviceService.getDevices();
-
-    }
 
     onSelect(device:Device):void {
         this.selectDevice = device;
@@ -53,12 +51,8 @@ export class AddDevicesComponent implements OnInit {
     }
 
     onSubmit() {
-        this.submitted =true;
-        console.log(this.device)
+        this.deviceList.push(this.device);
     }
     
 
-    get diagnostic(){
-        return JSON.stringify(this.device);
-    }
 }

@@ -13,13 +13,19 @@ var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var forms_1 = require('@angular/forms');
 var routing_1 = require('./routing');
-var device_detail_component_1 = require('./device-detail.component');
-var devices_component_1 = require('./devices.component');
-var add_device_1 = require('../app/add_device/add_device');
+var device_detail_component_1 = require('./devices/device-detail.component');
+var devices_component_1 = require('./devices/devices.component');
+var add_device_1 = require('../app/devices/addDevice/add_device');
 var http_1 = require('@angular/http');
-// Imports for loading & configuring the in-memory web api
-var angular_in_memory_web_api_1 = require('angular-in-memory-web-api');
-var in_memory_data_service_1 = require('./in-memory-data.service');
+var angularfire2_1 = require("angularfire2");
+// Must export the config
+exports.firebaseConfig = {
+    apiKey: "AIzaSyDzexd0WYSFaGeoJiolu3qNCSBLOjc3k9s",
+    authDomain: "devicecupboard.firebaseapp.com",
+    databaseURL: "https://devicecupboard.firebaseio.com",
+    storageBucket: "devicecupboard.appspot.com",
+    messagingSenderId: "76395876829"
+};
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,7 +36,7 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 routing_1.routing,
                 http_1.HttpModule,
-                angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
+                angularfire2_1.AngularFireModule.initializeApp(exports.firebaseConfig)
             ],
             declarations: [
                 app_component_1.AppComponent,
