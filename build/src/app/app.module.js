@@ -13,8 +13,24 @@ var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var forms_1 = require('@angular/forms');
 var routing_1 = require('./routing');
-var device_detail_component_1 = require('./device-detail.component');
-var devices_component_1 = require('./devices.component');
+var device_detail_component_1 = require('./devices/device-detail.component');
+var devices_component_1 = require('./devices/listDevice/devices.component');
+var add_device_1 = require('../app/devices/addDevice/add_device');
+var http_1 = require('@angular/http');
+var angularfire2_1 = require("angularfire2");
+var material_1 = require('@angular/material');
+// Must export the config
+exports.firebaseConfig = {
+    apiKey: "AIzaSyDzexd0WYSFaGeoJiolu3qNCSBLOjc3k9s",
+    authDomain: "devicecupboard.firebaseapp.com",
+    databaseURL: "https://devicecupboard.firebaseio.com",
+    storageBucket: "devicecupboard.appspot.com",
+    messagingSenderId: "76395876829"
+};
+var myFirebaseAuthConfig = {
+    provider: angularfire2_1.AuthProviders.Google,
+    method: angularfire2_1.AuthMethods.Redirect
+};
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,12 +39,16 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                routing_1.routing
+                routing_1.routing,
+                http_1.HttpModule,
+                angularfire2_1.AngularFireModule.initializeApp(exports.firebaseConfig, myFirebaseAuthConfig),
+                material_1.MaterialModule.forRoot()
             ],
             declarations: [
                 app_component_1.AppComponent,
                 device_detail_component_1.DeviceDetailComponent,
-                devices_component_1.DevicesComponent
+                devices_component_1.DevicesComponent,
+                add_device_1.AddDevicesComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

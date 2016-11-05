@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var device_service_1 = require('./device.service');
 var device_log_component_1 = require('../deviceRecord/device-log.component');
 var angularfire2_1 = require('angularfire2');
 require('../../../public/css/styles.css');
@@ -21,9 +20,6 @@ var DevicesComponent = (function () {
     }
     DevicesComponent.prototype.ngOnInit = function () {
         this.deviceLog = new device_log_component_1.DeviceLog();
-    };
-    DevicesComponent.prototype.onSelect = function (device) {
-        this.selectDevice = device;
     };
     //update device log as return
     DevicesComponent.prototype.onReturn = function (device) {
@@ -41,8 +37,7 @@ var DevicesComponent = (function () {
         core_1.Component({
             selector: 'my-devices',
             templateUrl: '../app.component.html',
-            styleUrls: ['../app.component.css'],
-            providers: [device_service_1.DeviceService]
+            styleUrls: ['../app.component.css']
         }), 
         __metadata('design:paramtypes', [angularfire2_1.AngularFire])
     ], DevicesComponent);

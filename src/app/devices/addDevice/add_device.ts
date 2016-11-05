@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DeviceService} from '../device.service';
-import {Device} from '../device';
+import {DeviceService} from '../helpers/device.service';
+import {Device} from '../helpers/device';
 import {DeviceModel} from './device_model';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {Router} from '@angular/router'
@@ -59,6 +59,6 @@ export class AddDevicesComponent implements OnInit {
     cancel() {
         this.router.navigateByUrl('devices');
     }
-    
+
 
 }

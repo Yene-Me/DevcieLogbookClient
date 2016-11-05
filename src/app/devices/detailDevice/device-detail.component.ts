@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Device } from './device';
+import { Device } from '../helpers/device';
 @Component({
   selector: 'my-device-detail',
   template: `
