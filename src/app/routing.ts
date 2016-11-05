@@ -5,6 +5,11 @@ import { AddDevicesComponent }      from '../app/devices/addDevice/add_device';
 
 const appRoutes: Routes = [
   {
+    path: '',
+    redirectTo: '/devices',
+    pathMatch: 'full'
+  },
+  {
     path: 'devices',
     component: DevicesComponent
   },
