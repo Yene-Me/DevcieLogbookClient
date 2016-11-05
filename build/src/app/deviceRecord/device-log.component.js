@@ -9,23 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var material_1 = require('@angular/material');
-var core_2 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Device List';
+var device_log_model_ts_1 = require('./device-log.model.ts');
+var DeviceLog = (function () {
+    function DeviceLog() {
     }
-    AppComponent = __decorate([
-        core_2.NgModule({
-            imports: [material_1.MaterialModule.forRoot()]
-        }),
+    DeviceLog.prototype.onSave = function (device, user, status) {
+        this.deviceModel = new device_log_model_ts_1.default(device.$key, "1", status, new Date);
+        console.log("DeviceLog", device, this.deviceModel);
+    };
+    DeviceLog.prototype.getAllDeviceLogs = function () {
+        return [];
+    };
+    DeviceLog.prototype.getDeviceLogById = function (id) {
+        return "";
+    };
+    DeviceLog = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            templateUrl: './dashboard.html'
+            selector: 'my-device-log',
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], DeviceLog);
+    return DeviceLog;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.DeviceLog = DeviceLog;
+//# sourceMappingURL=device-log.component.js.map

@@ -7,13 +7,10 @@ import { NgModule } from '@angular/core';
   imports: [MaterialModule.forRoot()]
 })
 
-
 @Component({
   selector: 'my-app',
   templateUrl: './dashboard.html'
 })
-
-
 
 export class AppComponent {
   title = 'Device List'

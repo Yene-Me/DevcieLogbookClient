@@ -36,11 +36,12 @@
                     <tr *ngFor="let item of devices | async">
                         <td >{{item.device_model}}</td>
                         <td >{{item.device_os}}  {{item.device_os_version}}</td>
-                        <td ></td>
+                        <td >{{item.device}}</td>
                         <td ></td>
                         <td ></td>
                         <td>
-                            <button class="btn btn-primary" (click)="onSelect(item)" >Return</button>
+                            <button class="btn btn-primary" (click)="onReturn(item)" [hidden]="true" >Return</button>
+                            <button class="btn btn-primary" (click)="onBorrow(item)" [hidden]="false">Borrow</button>
                         </td>
                     </tr>
 
