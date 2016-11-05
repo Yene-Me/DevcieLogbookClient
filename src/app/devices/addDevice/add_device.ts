@@ -3,6 +3,7 @@ import {DeviceService} from '../device.service';
 import {Device} from '../device';
 import {DeviceModel} from './device_model';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {Router} from '@angular/router'
 
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
@@ -28,7 +29,7 @@ export class AddDevicesComponent implements OnInit {
 
     deviceList: FirebaseListObservable<any[]>;
 
-    constructor(af: AngularFire) {
+    constructor(af: AngularFire, private router: Router) {
         this.deviceList = af.database.list('/devices');
         // devices.push({ name: 'Mr. Nice', version:"1" ,inuseby :"yene", out:new Date().toString()});
     }
@@ -52,6 +53,11 @@ export class AddDevicesComponent implements OnInit {
 
     onSubmit() {
         this.deviceList.push(this.device);
+        this.router.navigateByUrl('devices');
+    }
+
+    cancel() {
+        this.router.navigateByUrl('devices');
     }
     
 

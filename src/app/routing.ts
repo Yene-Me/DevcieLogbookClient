@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     component: DevicesComponent
   },
   {
-    path: 'add_devices',
+    path: 'add',
     component: AddDevicesComponent
   }
 

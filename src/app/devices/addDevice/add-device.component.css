@@ -7,3 +7,27 @@ h1 {
 input {
     text-transform: uppercase;
 }
+
+md-toolbar {
+    margin-bottom: 1em;
+}
+
+md-input{
+    width: 100%;
+}
+
+.userAgent{
+    width: 100%;
+}
+
+.buttons{
+    text-align: right;
+}
+
+md-card{
+    padding: 0;
+}
+
+md-card-content{
+    padding: 24px;
+}

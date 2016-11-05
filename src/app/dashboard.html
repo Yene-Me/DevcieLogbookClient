@@ -1,19 +1,75 @@
 
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-<a class="navbar-brand" href="#">{{name}}</a>
-<ul class="nav navbar-nav">
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/devices']">Device List</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/']">Help</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/add_devices']">New Device</a>
-  </li>
-</ul>
-</nav>
-<router-outlet></router-outlet>
+<!--<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">-->
+<!--<a class="navbar-brand" href="#">{{name}}</a>-->
+<!--<ul class="nav navbar-nav">-->
+  <!--<li class="nav-item">-->
+    <!--<a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>-->
+  <!--</li>-->
+  <!--<li class="nav-item">-->
+    <!--<a class="nav-link" [routerLink]="['/devices']">Device List</a>-->
+  <!--</li>-->
+  <!--<li class="nav-item">-->
+    <!--<a class="nav-link" [routerLink]="['/']">Help</a>-->
+  <!--</li>-->
+  <!--<li class="nav-item">-->
+    <!--<a class="nav-link" [routerLink]="['/add_devices']">New Device</a>-->
+  <!--</li>-->
+  <!--<button md-mini-fab>-->
+    <!--<md-icon class="md-24">add</md-icon>-->
+  <!--</button>-->
+<!--</ul>-->
+<!--</nav>-->
+
+
+
+
+
+<!--<md-sidenav-layout>-->
+  <!--<md-sidenav #start (open)="closeStartButton.focus()">-->
+    <!--Start Sidenav.-->
+    <!--<br>-->
+    <!--<button md-button #closeStartButton (click)="start.close()">Close</button>-->
+  <!--</md-sidenav>-->
+
+  <!--<md-toolbar [color]="myColor">-->
+
+    <!--<button md-button (click)="start.open()">Open start sidenav</button>-->
+
+    <!--<span>First Row</span>-->
+
+  <!--</md-toolbar>-->
+
+  <!--<router-outlet></router-outlet>-->
+
+<!--</md-sidenav-layout>-->
+
+
+<md-sidenav-layout>
+
+  <!--SIDEMENU-->
+  <md-sidenav #sidenav class="app-sidenav">
+    <h1>TODO</h1>
+    <ul>This Sidebar</ul>
+    <ul>Min height to 100%</ul>
+    <ul>Login</ul>
+  </md-sidenav>
+
+  <!--TOOLBAR-->
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+      Device Cupboard
+    <span class="app-toolbar-filler"></span>
+  </md-toolbar>
+
+  <!--APP-->
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</md-sidenav-layout>
+
+<span class="app-action">
+  <a routerLink="/add" routerLinkActive="active" > <button md-fab><md-icon>add circle</md-icon></button></a>
+</span>
