@@ -5,10 +5,12 @@ import { FormsModule }   from '@angular/forms';
 import { routing } from './routing';
 import { DeviceDetailComponent } from './devices/detailDevice/device-detail.component';
 import { DevicesComponent } from './devices/listDevice/devices.component';
+import { LoginComponent } from './auth/login/login.component';
 import { AddDevicesComponent }      from '../app/devices/addDevice/add_device';
 import { HttpModule }    from '@angular/http';
 import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
 import { MaterialModule } from '@angular/material';
+import { AuthGuard } from './authGaurd';
 
 // Must export the config
 export const firebaseConfig = {
@@ -38,8 +40,10 @@ const myFirebaseAuthConfig = {
     AppComponent,
     DeviceDetailComponent,
     DevicesComponent,
+    LoginComponent,
     AddDevicesComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  providers: [AuthGuard]
 })
 export class AppModule { }

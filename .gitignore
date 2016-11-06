@@ -38,6 +38,7 @@ Thumbs.db
 /bin
 /node_modules
 /build
+/dist
 
 # User-specific stuff:
 .idea/workspace.xml

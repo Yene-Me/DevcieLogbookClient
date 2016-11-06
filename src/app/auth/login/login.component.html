@@ -1,0 +1,20 @@
+<!--TODO - Work out a way to not show the toolbar on the auth screens-->
+<md-card class="demo-card demo-basic">
+    <md-toolbar color="primary">Login</md-toolbar>
+    <md-card-content>
+        <form (ngSubmit)="login()" #loginForm="ngForm" >
+            <md-input placeholder="EMAIL" align="end" name="username" [(ngModel)]="username" required>
+                <span md-suffix>{{domain}}</span>
+            </md-input>
+
+            <md-input placeholder="PASSWORD" align="end" type="password" name="password" [(ngModel)]="password" required>
+            </md-input>
+
+
+
+            <div class="buttons">
+                <button md-raised-button type="button"  (click)="login()" color="primary" [disabled]="!loginForm.form.valid">Login</button>
+            </div>
+        </form>
+    </md-card-content>
+</md-card>
