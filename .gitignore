@@ -41,7 +41,6 @@ build
 /dist
 
 # User-specific stuff:
-.idea
 .idea/tasks.xml
 
 # Sensitive or high-churn files:
