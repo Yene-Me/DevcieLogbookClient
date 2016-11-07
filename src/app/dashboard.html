@@ -5,7 +5,6 @@
     <md-sidenav #sidenav class="app-sidenav"  [hidden]="!(af.auth | async)">
       <h1>TODO</h1>
       <ul>This Sidebar</ul>
-      <ul>Min height to 100%</ul>
 
       <button md-raised-button type="button" class="logout"  (click)="sidenav.toggle();logout()" color="primary">Logout</button>
     </md-sidenav>

@@ -3,6 +3,9 @@
     <md-toolbar color="primary">Register</md-toolbar>
     <md-card-content>
         <form (ngSubmit)="register()" #registerForm="ngForm" >
+            <md-input placeholder="Display Name" align="end" name="displayname" [(ngModel)]="displayname" required>
+            </md-input>
+
             <md-input placeholder="EMAIL" align="end" name="username" [(ngModel)]="username" required>
                 <span md-suffix>{{domain}}</span>
             </md-input>

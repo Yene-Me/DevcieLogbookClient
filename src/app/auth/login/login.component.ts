@@ -32,7 +32,7 @@ export class LoginComponent {
             .then(() => {
                 this.router.navigateByUrl('');
             })
-            .catch((error) => {
+            .catch((error:any) => {
                 this.openDialog(error.message);
             });
     }

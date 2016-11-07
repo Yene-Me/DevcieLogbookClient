@@ -6,6 +6,7 @@ import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
 import {MdDialogRef, MdDialog, MdDialogConfig} from "@angular/material";
 import {ErrorDialog} from "../../utils/dialog/dislog.component";
+import {User} from "../user/user";
 
 @Component({
     selector: 'register',
@@ -16,8 +17,10 @@ import {ErrorDialog} from "../../utils/dialog/dislog.component";
 export class RegisterComponent {
 
     domain:string = "@playtech.com";
+    displayname:string;
     username:string;
     password:string;
+    user:User;
     dialogRef: MdDialogRef<ErrorDialog>;
 
     constructor(public af: AngularFire,private router: Router, public dialog: MdDialog,
@@ -27,16 +30,33 @@ export class RegisterComponent {
      * Register the user to firebase
      */
     register() {
-        this.af.auth.createUser({
-            email: this.username + this.domain,
-            password: this.password
-        })
-        .then(() => {
-            this.login();
-        })
-        .catch((error) => {
-            this.openDialog(error.message)
-        });
+        if (this.validateParams() === true) {
+            this.user = new User(this.displayname);
+
+            this.af.auth.createUser({
+                email: this.username + this.domain,
+                password: this.password
+            })
+                .then((success:any) => {
+                    const itemObservable = this.af.database.object('/users/' + success.uid);
+                    itemObservable.set(this.user);
+                    this.login();
+                })
+                .catch((error:any) => {
+                    this.openDialog(error.message)
+                });
+        }
+    }
+
+    validateParams():boolean
+    {
+        if(this.displayname.length < 3)
+        {
+            this.openDialog("Display Name must be at least 3 Characters");
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -48,7 +68,7 @@ export class RegisterComponent {
             .then(() => {
                 this.router.navigateByUrl('');
             })
-            .catch((error) => {
+            .catch((error:any) => {
                 this.openDialog(error.message)
             });
     }

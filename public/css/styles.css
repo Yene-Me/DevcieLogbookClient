@@ -13,6 +13,14 @@ body {
     outline: none !important;
 }
 
+html, body{
+    height: 100%
+}
+
+md-sidenav-layout{
+    min-height: 100%;
+}
+
 
 button.logout{
     width: 100%;
