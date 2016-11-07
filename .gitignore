@@ -36,12 +36,12 @@
 ehthumbs.db
 Thumbs.db
 /bin
-/node_modules
-/build
+node_modules
+build
 /dist
 
 # User-specific stuff:
-.idea/workspace.xml
+.idea
 .idea/tasks.xml
 
 # Sensitive or high-churn files:
