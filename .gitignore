@@ -36,11 +36,15 @@
 ehthumbs.db
 Thumbs.db
 /bin
-node_modules
-build
+/node_modules
+/build
 /dist
 
 # User-specific stuff:
+<<<<<<< HEAD
+=======
+.idea/workspace.xml
+>>>>>>> parent of f9a4837... remove unwanted files
 .idea/tasks.xml
 
 # Sensitive or high-churn files:
