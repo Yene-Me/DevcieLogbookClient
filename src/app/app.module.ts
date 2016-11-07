@@ -11,6 +11,8 @@ import { HttpModule }    from '@angular/http';
 import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
 import { MaterialModule } from '@angular/material';
 import { AuthGuard } from './authGaurd';
+import {RegisterComponent} from "./auth/register/register.component";
+import {ErrorDialog} from "./utils/dialog/dislog.component";
 
 // Must export the config
 export const firebaseConfig = {
@@ -41,9 +43,14 @@ const myFirebaseAuthConfig = {
     DeviceDetailComponent,
     DevicesComponent,
     LoginComponent,
-    AddDevicesComponent
+      RegisterComponent,
+    AddDevicesComponent,
+      ErrorDialog
   ],
   bootstrap: [ AppComponent ],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
+    entryComponents: [
+    ErrorDialog
+]
 })
 export class AppModule { }

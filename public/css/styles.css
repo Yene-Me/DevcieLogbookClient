@@ -13,6 +13,11 @@ body {
     outline: none !important;
 }
 
+
+button.logout{
+    width: 100%;
+}
+
 md-sidenav-layout.m2app-dark {
     background: black;
 }

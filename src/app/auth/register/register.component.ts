@@ -4,27 +4,43 @@ import {Router} from '@angular/router'
 
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {MdDialogRef, MdDialog, MdDialogConfig} from "@angular/material";
 import {ErrorDialog} from "../../utils/dialog/dislog.component";
+
 @Component({
-    selector: 'login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    selector: 'register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
 
-export class LoginComponent {
+export class RegisterComponent {
 
     domain:string = "@playtech.com";
     username:string;
     password:string;
-    message:string;
     dialogRef: MdDialogRef<ErrorDialog>;
 
     constructor(public af: AngularFire,private router: Router, public dialog: MdDialog,
                 public viewContainerRef: ViewContainerRef) {}
 
     /**
-     * Log the user into the app
+     * Register the user to firebase
+     */
+    register() {
+        this.af.auth.createUser({
+            email: this.username + this.domain,
+            password: this.password
+        })
+        .then(() => {
+            this.login();
+        })
+        .catch((error) => {
+            this.openDialog(error.message)
+        });
+    }
+
+    /**
+     * Log the user in with email/password
      */
     login()
     {
@@ -33,12 +49,12 @@ export class LoginComponent {
                 this.router.navigateByUrl('');
             })
             .catch((error) => {
-                this.openDialog(error.message);
+                this.openDialog(error.message)
             });
     }
 
     /**
-     * Show the user a dialog
+     * Show a dialog to the user
      * @param errorText
      */
     openDialog(errorText:String) {
@@ -48,6 +64,5 @@ export class LoginComponent {
         this.dialogRef.componentInstance.error = errorText;
     }
 
+
 }
-
-
