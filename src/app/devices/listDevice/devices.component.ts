@@ -39,7 +39,6 @@ export class DevicesComponent implements OnInit {
                 else {
                     deviceData[item].inUseBy = "";
                 }
-                console.log("deviceData", deviceData);
                 this.deviceView.push(deviceData[item]);
             }
         });
