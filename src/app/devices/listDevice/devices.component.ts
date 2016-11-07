@@ -20,6 +20,11 @@ export class DevicesComponent implements OnInit {
     devices:FirebaseListObservable<any[]>;
     constructor(af:AngularFire) {
         this.devices = af.database.list('/devices');
+
+        this.devices.subscribe(data => {
+           console.log("data", data);
+        });
+
         this.deviceLog = new DeviceLog(af);
         af.auth.subscribe(auth => {
             this.userId = auth.uid;
