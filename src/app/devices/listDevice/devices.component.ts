@@ -33,8 +33,16 @@ export class DevicesComponent implements OnInit {
 
     //update device log as return
     onReturn(device:any):void {
-        this.deviceLog.onSave(device, this.userId, "in");
-        this.devices.update(device,{userId:""});
+        if(this.userId != device.userId)
+        {
+            alert("have really borrowed this device :)");
+        }
+        else
+        {
+            this.deviceLog.onSave(device, this.userId, "in");
+            this.devices.update(device,{userId:""});
+        }
+
 
     }
 
