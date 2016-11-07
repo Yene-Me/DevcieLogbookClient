@@ -37,7 +37,7 @@ ehthumbs.db
 Thumbs.db
 /bin
 /node_modules
-/build
+build
 /dist
 
 # User-specific stuff:
