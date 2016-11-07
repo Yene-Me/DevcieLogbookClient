@@ -15,6 +15,7 @@ export class DevicesComponent implements OnInit {
     deviceLog:DeviceLog;
     userId:string;
     deviceView:any;
+    yourDevicesView:any;
 
     ngOnInit():void {
     }
@@ -24,9 +25,11 @@ export class DevicesComponent implements OnInit {
     constructor(af:AngularFire) {
         this.devices = af.database.list('/devices');
         this.deviceView = [];
+        this.yourDevicesView = [];
 
         this.devices.subscribe((deviceData:any) => {
             this.deviceView = [];
+            this.yourDevicesView = [];
             for (let item in deviceData) {
                 var userId = deviceData[item].userId;
                 if (userId) {
@@ -40,8 +43,17 @@ export class DevicesComponent implements OnInit {
                     deviceData[item].inUseBy = "";
                 }
                 this.deviceView.push(deviceData[item]);
+
+                console.log('this.userId',this.userId);
+                console.log('deviceData[item].userId',deviceData[item].userId);
+                if( this.userId ===  deviceData[item].userId)
+                {
+                    this.yourDevicesView.push(deviceData[item]);
+                }
             }
         });
+
+
 
         this.deviceLog = new DeviceLog(af);
         af.auth.subscribe(auth => {

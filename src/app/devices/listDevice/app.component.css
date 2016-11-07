@@ -9,3 +9,11 @@ main {
   padding-top: 2em;
   text-align: center;
 }
+
+.yourDevices{
+  display: flex;
+}
+
+md-card.device{
+  max-width: 300px;
+}

@@ -1,5 +1,5 @@
 <main>
-  <md-card>
+
       <!--TODO: IF you have checked out devices, then set that tab to be active by default, else set the full device list-->
     <md-tab-group [selectedIndex]="1">
       <md-tab>
@@ -7,7 +7,15 @@
           Your Devices
         </template>
         <template md-tab-content>
-          <div class="noDevices">
+
+            <div class="yourDevices">
+                <md-card class="device" *ngFor="let item of yourDevicesView" >
+                    <h3>{{item.device_model}} {{item.device_version}}</h3>
+                    <button md-raised-button type="button" (click)="onReturn(item)" color="primary">Return</button>
+                </md-card>
+            </div>
+
+          <div class="noDevices" [hidden]="yourDevicesView.length">
             <img src="../../../../public/images/devices.svg">
             <h2>No Devices</h2>
           </div>
@@ -52,5 +60,5 @@
         </template>
       </md-tab>
     </md-tab-group>
-  </md-card>
+
 </main>
