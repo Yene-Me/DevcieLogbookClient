@@ -33,10 +33,10 @@
                     </thead>
                     <tbody>
 
-                    <tr *ngFor="let item of devices | async">
+                    <tr *ngFor="let item of deviceView">
                         <td >{{item.device_model}}</td>
                         <td >{{item.device_os}} </td>
-                        <td >{{item.userId}}</td>
+                        <td >{{item.inUseBy}}</td>
                         <td ></td>
                         <td ></td>
                         <td>
