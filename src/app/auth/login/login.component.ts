@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {Router} from '@angular/router'
 
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
@@ -19,18 +20,19 @@ export class LoginComponent {
 
     deviceList: FirebaseListObservable<any[]>;
 
-    constructor(public af: AngularFire) {}
+    constructor(public af: AngularFire,private router: Router) {}
 
     login()
     {
         this.af.auth.login({ email: this.username + this.domain, password: this.password })
-            //TODO 
-            // .then((success) => {
-            //     console.log("Firebase success: " + JSON.stringify(success));
-            // })
-            // .catch((error) => {
-            //     console.log("Firebase failure: " + JSON.stringify(error));
-            // });
+            .then(() => {
+                this.router.navigateByUrl('');
+            })
+            .catch((error) => {
+                //TODO - Add toasts or such
+                alert('Incorrect Username OR Password');
+                console.log("Firebase failure: " + JSON.stringify(error));
+            });
 
         // var notification = new Notification("Hi, " + this.username);
     }

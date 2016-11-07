@@ -17,14 +17,13 @@ const appRoutes: Routes = [
   },
   {
     path: 'devices',
-    component: DevicesComponent
+    component: DevicesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add',
-    component: AddDevicesComponent
-    //TODO - Uncomment this for auth redirect
-    // component: AddDevicesComponent,
-    // canActivate: [AuthGuard]
+    component: AddDevicesComponent,
+    canActivate: [AuthGuard]
   }
 
 ];
