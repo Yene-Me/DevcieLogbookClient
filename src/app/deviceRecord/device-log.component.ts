@@ -1,32 +1,39 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import DeviceLogModel from './device-log.model.ts';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 @Component({
-  selector: 'my-device-log',
-  //templateUrl: ''
+    selector: 'my-device-log',
+    //templateUrl: ''
 })
 
 export class DeviceLog {
 
-  deviceModel : DeviceLogModel;
+    deviceModel:DeviceLogModel;
+    deviceLog:FirebaseListObservable<any[]>;
+    listObservable:FirebaseListObservable<any[]>;
+    af:AngularFire;
 
-  constructor() {
 
-  }
-  onSave(device:any, user:any, status:string):void
-  {
-      this.deviceModel = new DeviceLogModel(device.$key, "1", status, new Date)
-      console.log("DeviceLog", device, this.deviceModel)
-  }
+    constructor(af:AngularFire) {
+        this.af = af;
+        this.deviceLog = af.database.list('/devicesLogs');
+    }
 
-  getAllDeviceLogs():any
-  {
-    return [];
-  }
+    onSave(device:any, userId:any, status:string):void {
+        this.deviceModel = new DeviceLogModel(userId, status, new Date().toISOString());
 
-  getDeviceLogById(id:string):any
-  {
-    return "";
-  }
+        this.listObservable = this.af.database.list('/devicesLogs/' + device.$key);
+        this.listObservable.push(this.deviceModel);
+    }
+
+
+    getAllDeviceLogs():any {
+        return [];
+    }
+
+    getDeviceLogById(id:string):any {
+        return "";
+    }
 
 }

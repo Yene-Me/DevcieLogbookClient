@@ -47,7 +47,7 @@ export class AddDevicesComponent implements OnInit {
         this.currentResolution = client.getCurrentResolution();
 
         this.device = new DeviceModel(this.browserData.os.name, this.browserData.os.version, this.browserData.device.model ,
-                                        this.browserData.device.type, this.browserData.device.vendor,  this.currentResolution, this.browserData.ua);
+                                        this.browserData.device.type, this.browserData.device.vendor,  this.currentResolution, this.browserData.ua, "");
 
     }
 

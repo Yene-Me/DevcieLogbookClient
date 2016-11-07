@@ -6,6 +6,7 @@ export class DeviceModel {
         public device_type: string,
         public device_vendor:string,
         public device_resolution:string,
-        public device_userAgent:string
+        public device_userAgent:string,
+        public userId:string
     ) {  }
 }
