@@ -9,9 +9,16 @@
         <template md-tab-content>
 
             <div class="yourDevices">
-                <md-card class="device" *ngFor="let item of yourDevicesView" >
-                    <h3>{{item.device_model}} {{item.device_version}}</h3>
-                    <button md-raised-button type="button" (click)="onReturn(item)" color="primary">Return</button>
+
+                <md-card class="device" *ngFor="let item of yourDevicesView">
+                    <md-card-title-group>
+                        <img md-card-sm-image src="http://placehold.it/150x150">
+                        <md-card-title>{{item.device_model}}</md-card-title>
+                        <md-card-subtitle>
+                            {{item.device_os}} {{item.device_version}}
+                        </md-card-subtitle>
+
+                    </md-card-title-group>
                 </md-card>
             </div>
 
