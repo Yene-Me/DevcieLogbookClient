@@ -1,0 +1,18 @@
+<div>
+    <i>Device ID: {{ device_id | async }}</i>
+    <md-card>
+        <md-card-subtitle>{{deviceView.device_model}}</md-card-subtitle>
+        <md-card-title>{{deviceView.device_os}}</md-card-title>
+        <md-card-content>
+            <p>{{deviceView.device_type}}</p>
+            <p>{{deviceView.device_userAgent}}</p>
+        </md-card-content>
+        <md-card-actions>
+            <button md-button>Return</button>
+            <button md-button>Borrow</button>
+            <button md-button>Edit</button>
+            <button md-button>Update</button>
+            <button md-button>Deactivate</button>
+        </md-card-actions>
+    </md-card>
+</div>

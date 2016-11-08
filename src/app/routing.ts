@@ -5,6 +5,7 @@ import { LoginComponent }      from './auth/login/login.component';
 import { AddDevicesComponent }      from '../app/devices/addDevice/add_device';
 import { AuthGuard } from './authGaurd';
 import {RegisterComponent} from "./auth/register/register.component";
+import {DeviceDetailComponent} from "./devices/detailDevice/device-detail.component"
 
 const appRoutes: Routes = [
   {
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
     path: 'add',
     component: AddDevicesComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'details',
+    component: DeviceDetailComponent
   }
 
 ];

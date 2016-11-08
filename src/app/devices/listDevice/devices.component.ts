@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router, NavigationExtras} from '@angular/router'
 import {DeviceLog} from '../../deviceRecord/device-log.component'
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {User} from '../../auth/user/user'
@@ -17,13 +18,14 @@ export class DevicesComponent implements OnInit {
     userId:string;
     deviceView:any;
     yourDevicesView:any;
+    selectDevice:any;
 
     ngOnInit():void {
     }
 
     devices:FirebaseListObservable<any[]>;
 
-    constructor(af:AngularFire) {
+    constructor(af:AngularFire, private router:Router) {
         this.devices = af.database.list('/devices');
         this.deviceView = [];
         this.yourDevicesView = [];
@@ -45,10 +47,7 @@ export class DevicesComponent implements OnInit {
                 }
                 this.deviceView.push(deviceData[item]);
 
-                console.log('this.userId',this.userId);
-                console.log('deviceData[item].userId',deviceData[item].userId);
-                if( this.userId ===  deviceData[item].userId)
-                {
+                if (this.userId === deviceData[item].userId) {
                     this.yourDevicesView.push(deviceData[item]);
                 }
             }
@@ -78,5 +77,18 @@ export class DevicesComponent implements OnInit {
     onBorrow(device:any):void {
         this.deviceLog.onSave(device, this.userId, "out");
         this.devices.update(device, {userId: this.userId})
+    }
+
+    onDeviceInfo(device:any):void {
+        this.selectDevice = device;
+        // Set our navigation extras object
+        // that contains our global query params and fragment
+        let navigationExtras: NavigationExtras = {
+            queryParams: { 'device_id': device.$key }
+
+        };
+
+        // Navigate to the login page with extras
+        this.router.navigate(['/details'], navigationExtras);
     }
 }

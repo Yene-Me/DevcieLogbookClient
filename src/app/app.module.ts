@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { FormsModule }   from '@angular/forms';
-import { routing } from './routing';
-import { DeviceDetailComponent } from './devices/detailDevice/device-detail.component';
-import { DevicesComponent } from './devices/listDevice/devices.component';
-import { LoginComponent } from './auth/login/login.component';
-import { AddDevicesComponent }      from '../app/devices/addDevice/add_device';
-import { HttpModule }    from '@angular/http';
+import {NgModule} from '@angular/core';
+import {BrowserModule}  from '@angular/platform-browser';
+import {AppComponent} from './app.component';
+import {FormsModule}   from '@angular/forms';
+import {routing} from './routing';
+import {DeviceDetailComponent} from './devices/detailDevice/device-detail.component';
+import {DevicesComponent} from './devices/listDevice/devices.component';
+import {LoginComponent} from './auth/login/login.component';
+import {AddDevicesComponent}      from '../app/devices/addDevice/add_device';
+import {HttpModule}    from '@angular/http';
 import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
-import { MaterialModule } from '@angular/material';
-import { AuthGuard } from './authGaurd';
+import {MaterialModule} from '@angular/material';
+import {AuthGuard} from './authGaurd';
 import {RegisterComponent} from "./auth/register/register.component";
 import {ErrorDialog} from "./utils/dialog/dislog.component";
 import {DeviceFilterPipe} from "./devices/filter.pipe";
@@ -31,28 +31,29 @@ const myFirebaseAuthConfig = {
 
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    routing,
-    HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
-      MaterialModule.forRoot()
-  ],
-  declarations: [
-    AppComponent,
-    DeviceDetailComponent,
-    DevicesComponent,
-    LoginComponent,
-      RegisterComponent,
-    AddDevicesComponent,
-      ErrorDialog,
-      DeviceFilterPipe
-  ],
-  bootstrap: [ AppComponent ],
-  providers: [AuthGuard],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        routing,
+        HttpModule,
+        AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+        MaterialModule.forRoot()
+    ],
+    declarations: [
+        AppComponent,
+        DeviceDetailComponent,
+        DevicesComponent,
+        LoginComponent,
+        RegisterComponent,
+        AddDevicesComponent,
+        ErrorDialog,
+        DeviceFilterPipe
+    ],
+    bootstrap: [AppComponent],
+    providers: [AuthGuard],
     entryComponents: [
-    ErrorDialog
-]
+        ErrorDialog
+    ]
 })
-export class AppModule { }
+export class AppModule {
+}

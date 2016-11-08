@@ -1,6 +1,6 @@
 import {Component, ViewContainerRef} from '@angular/core';
 import {AngularFire} from 'angularfire2';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
 
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
