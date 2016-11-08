@@ -13,55 +13,48 @@ export class ImageGuessPipe implements PipeTransform {
     transform(device:any): string {
         console.log('device', device);
 
-        var image = 'http://placehold.it/150x150';
-
-//IDENTIFIERS
-        var MOBILE =
-        {
-            id: "mobile",
-            img: 'http://placehold.it/150x150'
-        };
-
-
-        var TABLET = "tablet";
-        var DESKTOP = "desktop";
-        var WATCH = "watch";
+        var image = 'mobile/iphone6.svg';
 
 
         // platform -> os -> model
-
         var deviceImageList =
         {
             tablet: {
-                img: "http://placehold.it/150x150",
+                img: "tablet/ipad.svg",
                 ios: {
-                    img: "http://placehold.it/10x10"
+                    img: "tablet/ipad.svg"
+                },
+                android: {
+                    img: "tablet/samsungTab.svg"
                 }
             },
             mobile: {
-                img: "http://placehold.it/100x100"
+                img: "mobile/iphone6.svg",
+                android: {
+                    img: "mobile/samsungPhone.svg"
+                }
             },
             desktop: {
-                img: "http://placehold.it/150x150"
+                img: "desktop/macbook.svg"
             }
         };
 
 
         //MATCHING
-        if (deviceImageList[device.device_type]) {
-            image = deviceImageList[device.device_type].img;
+        if (device.device_type && deviceImageList[device.device_type.toLocaleLowerCase()]) {
+            image = deviceImageList[device.device_type.toLocaleLowerCase()].img;
 
-            if (deviceImageList[device.device_type][device.device_os]) {
-                image = deviceImageList[device.device_type][device.device_os].img;
+            if (device.device_os && deviceImageList[device.device_type.toLocaleLowerCase()][device.device_os.toLocaleLowerCase()]) {
+                image = deviceImageList[device.device_type.toLocaleLowerCase()][device.device_os.toLocaleLowerCase()].img;
 
-                if (deviceImageList[device.device_type][device.device_os][device.device_device_model]) {
-                    image = deviceImageList[device.device_type][device.device_os][device.device_device_model].img;
+                if (device.device_device_model && deviceImageList[device.device_type.toLocaleLowerCase()][device.device_os.toLocaleLowerCase()][device.device_device_model.toLocaleLowerCase()]) {
+                    image = deviceImageList[device.device_type.toLocaleLowerCase()][device.device_os.toLocaleLowerCase()][device.device_device_model.toLocaleLowerCase()].img;
                 }
 
             }
         }
 
-        return image;
+        return "../../../../public/images/devices/" + image;
     }
 
 }
