@@ -5,6 +5,7 @@ import {User} from '../../auth/user/user'
 
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
+import {DeviceFilterPipe} from "../filter.pipe";
 @Component({
     selector: 'my-devices',
     templateUrl: './app.component.html',

@@ -13,6 +13,7 @@ import { MaterialModule } from '@angular/material';
 import { AuthGuard } from './authGaurd';
 import {RegisterComponent} from "./auth/register/register.component";
 import {ErrorDialog} from "./utils/dialog/dislog.component";
+import {DeviceFilterPipe} from "./devices/filter.pipe";
 
 // Must export the config
 export const firebaseConfig = {
@@ -45,7 +46,8 @@ const myFirebaseAuthConfig = {
     LoginComponent,
       RegisterComponent,
     AddDevicesComponent,
-      ErrorDialog
+      ErrorDialog,
+      DeviceFilterPipe
   ],
   bootstrap: [ AppComponent ],
   providers: [AuthGuard],

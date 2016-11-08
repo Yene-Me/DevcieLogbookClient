@@ -2,7 +2,7 @@
 
       <!--TODO: IF you have checked out devices, then set that tab to be active by default, else set the full device list-->
     <md-tab-group [selectedIndex]="1">
-      <md-tab>
+        <md-tab>
         <template md-tab-label>
           Your Devices
         </template>
@@ -22,41 +22,47 @@
 
         </template>
       </md-tab>
-      <md-tab >
-        <template md-tab-label>
+
+        <md-tab >
+          <template md-tab-label>
           All
         </template>
-        <template md-tab-content >
-            <div class="table-responsive">
+          <template md-tab-content >
+              <input class="search" placeholder="Search" id="filter" required [(ngModel)]="filterTxt" name="filter"/>
+            <div class="table-responsive" *ngIf="(deviceView | DeviceFilterPipe: filterTxt).length">
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>Model</th>
                         <th>OS</th>
                         <th>in use</th>
-                        <th>out</th>
-                        <th>in</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <tr *ngFor="let item of deviceView">
+                    <tr *ngFor="let item of deviceView | DeviceFilterPipe:filterTxt">
                         <td >{{item.device_model}}</td>
                         <td >{{item.device_os}} </td>
                         <td >{{item.inUseBy}}</td>
-                        <td ></td>
-                        <td ></td>
                         <td>
                             <button md-raised-button type="button" class="logout" (click)="onReturn(item)" [hidden]="!item.userId" color="primary">Return</button>
                             <button md-raised-button type="button" class="logout" (click)="onBorrow(item)"  [hidden]="item.userId" color="primary">Borrow</button>
                         </td>
                     </tr>
-
                     </tbody>
                 </table>
             </div>
-            <my-device-detail [device]="selectDevice"></my-device-detail>
+
+              <div class="noDevices" *ngIf="(deviceView | DeviceFilterPipe: filterTxt).length === 0">
+              <img src="../../../../public/images/devices.svg">
+              <h2>No Matches</h2>
+              </div>
+
+
+
+
+              <my-device-detail [device]="selectDevice"></my-device-detail>
         </template>
       </md-tab>
     </md-tab-group>

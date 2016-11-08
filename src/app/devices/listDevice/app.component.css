@@ -17,3 +17,9 @@ main {
 md-card.device{
   max-width: 300px;
 }
+
+input.search{
+  width: 96%;
+  margin: 2%;
+  padding: 0.5em;
+}
