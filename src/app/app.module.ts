@@ -14,6 +14,7 @@ import {AuthGuard} from './authGaurd';
 import {RegisterComponent} from "./auth/register/register.component";
 import {ErrorDialog} from "./utils/dialog/dislog.component";
 import {DeviceFilterPipe} from "./devices/filter.pipe";
+import {ImageGuessPipe} from "./devices/imageGuess.pipe";
 
 // Must export the config
 export const firebaseConfig = {
@@ -31,26 +32,27 @@ const myFirebaseAuthConfig = {
 
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        routing,
-        HttpModule,
-        AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
-        MaterialModule.forRoot()
-    ],
-    declarations: [
-        AppComponent,
-        DeviceDetailComponent,
-        DevicesComponent,
-        LoginComponent,
-        RegisterComponent,
-        AddDevicesComponent,
-        ErrorDialog,
-        DeviceFilterPipe
-    ],
-    bootstrap: [AppComponent],
-    providers: [AuthGuard],
+  imports: [
+      BrowserModule,
+      FormsModule,
+      routing,
+      HttpModule,
+      AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+      MaterialModule.forRoot()
+  ],
+  declarations: [
+      AppComponent,
+      DeviceDetailComponent,
+      DevicesComponent,
+      LoginComponent,
+      RegisterComponent,
+      AddDevicesComponent,
+      ErrorDialog,
+      DeviceFilterPipe,
+      ImageGuessPipe
+  ],
+  bootstrap: [ AppComponent ],
+  providers: [AuthGuard],
     entryComponents: [
         ErrorDialog
     ]

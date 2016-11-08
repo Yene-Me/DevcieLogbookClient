@@ -18,6 +18,7 @@ main {
 md-card.device{
   width: 280px;
   margin: 1em;
+  cursor: pointer;
 }
 
 input.search{

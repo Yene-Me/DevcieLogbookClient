@@ -42,4 +42,10 @@ export class AppComponent {
       window.location.reload()
   }
 
+
+  manage()
+  {
+  //      TODO
+  }
+
 }

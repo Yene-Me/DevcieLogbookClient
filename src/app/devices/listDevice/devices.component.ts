@@ -24,18 +24,31 @@ export class DevicesComponent implements OnInit {
 
     devices:FirebaseListObservable<any[]>;
 
-    constructor(af:AngularFire, private router:Router) {
+    constructor(private af:AngularFire, private router:Router) {
         this.devices = af.database.list('/devices');
         this.deviceView = [];
         this.yourDevicesView = [];
+        this.deviceLog = new DeviceLog(af);
 
+
+        af.auth.subscribe(auth => {
+            this.userId = auth.uid;
+            this.init();
+        });
+    }
+
+    /**
+     * Only get the initial data once we are authenticated
+     */
+    init():void
+    {
         this.devices.subscribe((deviceData:any) => {
             this.deviceView = [];
             this.yourDevicesView = [];
             for (let item in deviceData) {
                 var userId = deviceData[item].userId;
                 if (userId) {
-                    var user = af.database.object('/users/' + userId);
+                    var user = this.af.database.object('/users/' + userId);
                     user.subscribe((data:User) => {
 
                         deviceData[item].inUseBy = data.displayName;
@@ -50,13 +63,6 @@ export class DevicesComponent implements OnInit {
                     this.yourDevicesView.push(deviceData[item]);
                 }
             }
-        });
-
-
-
-        this.deviceLog = new DeviceLog(af);
-        af.auth.subscribe(auth => {
-            this.userId = auth.uid;
         });
     }
 

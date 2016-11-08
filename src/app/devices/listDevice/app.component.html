@@ -10,9 +10,9 @@
 
             <div class="yourDevices">
 
-                <md-card class="device" *ngFor="let item of yourDevicesView">
+                <md-card class="device" *ngFor="let item of yourDevicesView" (click)="onDeviceInfo(item)">
                     <md-card-title-group>
-                        <img md-card-sm-image src="http://placehold.it/150x150">
+                        <img md-card-sm-image [src]="item | ImageGuessPipe">
                         <md-card-title>{{item.device_model}}</md-card-title>
                         <md-card-subtitle>
                             {{item.device_os}} {{item.device_version}}
