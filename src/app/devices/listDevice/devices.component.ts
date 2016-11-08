@@ -86,6 +86,6 @@ export class DevicesComponent implements OnInit {
 
     onDeviceInfo(device:any):void {
         // Navigate to the login page with extras
-        this.router.navigate(['/devices', device.$key]);
+        this.router.navigate(['/details', device.$key]);
     }
 }

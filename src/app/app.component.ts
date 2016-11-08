@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MaterialModule} from '@angular/material';
 import {NgModule} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
@@ -14,9 +14,11 @@ import {Router} from "@angular/router";
     templateUrl: './dashboard.html'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Device List';
     isAdmin = false;
+    showEdit = false;
+    showAdd = false;
 
     constructor(public af: AngularFire, private router: Router) {
         af.auth.subscribe(auth => {
@@ -32,6 +34,26 @@ export class AppComponent {
                 this.router.navigateByUrl('');
             }
         });
+    }
+
+    ngOnInit() {
+        this.router.events.subscribe((val) => {
+            this.processURL();
+        });
+
+        this.processURL();
+    }
+
+    processURL() {
+        this.showEdit = false;
+        this.showAdd = false;
+
+        if (this.router.url.indexOf('/details') !== -1) {
+            this.showEdit = true;
+        }
+        else if (this.router.url !== '/add') {
+            this.showAdd = true;
+        }
     }
 
     logout() {
