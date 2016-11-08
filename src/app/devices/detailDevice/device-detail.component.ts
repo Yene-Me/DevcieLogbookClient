@@ -2,7 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable}     from 'rxjs/Observable';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {DomSanitizer} from '@angular/platform-browser';
 import 'rxjs/add/operator/map';
+
 @Component({
     selector: 'my-device-detail',
     styleUrls: ['./device-detail.component.css'],
@@ -16,17 +18,19 @@ export class DeviceDetailComponent implements OnInit {
     sessionId:Observable<string>;
     token:Observable<string>;
     deviceView:Array<any>;
+    deviceUser: {};
     deviceLogView:any;
     sortyQuery:Observable<any>;
     deviceID:string;
     limitToLast:number;
 
-    constructor(private route:ActivatedRoute, private af:AngularFire) {
+    constructor(private route: ActivatedRoute, private af: AngularFire, private sanitizer: DomSanitizer) {
 
     }
 
     ngOnInit() {
         this.deviceView = [];
+        this.deviceUser = {};
         this.deviceLogView = [];
         this.limitToLast = 0;
         this.sub = this.route.params.subscribe(params => {
@@ -41,6 +45,14 @@ export class DeviceDetailComponent implements OnInit {
         this.device = this.af.database.object('/devices/' + id);
         this.device.subscribe((deviceData:any) => {
             this.deviceView = deviceData;
+
+            var user = this.af.database.object('/users/' + this.deviceView.userId);
+
+            user.subscribe((data: {}) => {
+                this.deviceUser = data;
+                this.deviceUser.sip = this.sanitizer.bypassSecurityTrustUrl("sip:<" + this.deviceUser.email + ">");
+            });
+
         });
     }
 

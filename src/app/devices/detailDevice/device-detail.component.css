@@ -1,3 +1,34 @@
 .device {
-    margin-bottom: 1em;
+    margin-bottom: 0;
+    z-index: 2;
+}
+
+.user {
+    background: #8BC34A;
+
+    /*Make an overlap look*/
+    margin-top: -10px;
+    color: white;
+    padding: 23px 20px 8px 20px;
+    z-index: 1;
+}
+
+.user a {
+    color: white;
+
+}
+
+.table {
+    margin-top: 1em;
+}
+
+.user md-card-title, .user md-card-subtitle {
+    margin: 0;
+    padding: 0;
+}
+
+.skype {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
 }

@@ -12,6 +12,23 @@
             <md-card-subtitle>
                 {{deviceView.device_os}} {{deviceView.device_version}}
             </md-card-subtitle>
+        </md-card-title-group>
+    </md-card>
+
+    <md-card class="user" *ngIf="deviceUser.email">
+        <md-card-title-group>
+            <a [href]="deviceUser.sip">
+                <img class="skype" md-card-sm-image src="../../../../public/images/skype.svg">
+            </a>
+
+            <!--TODO Add tool tips-->
+            <!--<i class="material-icons">vibration</i>-->
+            <!--<md-card-title>{{deviceUser.displayName}}</md-card-title>-->
+            <md-card-subtitle>
+
+                <a [href]="deviceUser.sip">{{deviceUser.email}}</a>
+
+            </md-card-subtitle>
 
         </md-card-title-group>
     </md-card>
