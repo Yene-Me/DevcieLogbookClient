@@ -31,7 +31,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'devices/:id',
+    path: 'details/:id',
     component: DeviceDetailComponent,
     canActivate: [AuthGuard]
   }
