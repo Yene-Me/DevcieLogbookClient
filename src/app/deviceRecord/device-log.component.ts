@@ -21,7 +21,7 @@ export class DeviceLog {
     }
 
     onSave(device:any, userId:any, status:string):void {
-        this.deviceModel = new DeviceLogModel(userId, status, new Date().toISOString());
+        this.deviceModel = new DeviceLogModel(userId, status, new Date().getTime()+"");
 
         this.listObservable = this.af.database.list('/devicesLogs/' + device.$key);
         this.listObservable.push(this.deviceModel);

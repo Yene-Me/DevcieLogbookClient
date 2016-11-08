@@ -15,6 +15,8 @@ import {RegisterComponent} from "./auth/register/register.component";
 import {ErrorDialog} from "./utils/dialog/dislog.component";
 import {DeviceFilterPipe} from "./devices/filter.pipe";
 import {ImageGuessPipe} from "./devices/imageGuess.pipe";
+import {SortDevicesPipe} from "./devices/sortDevices.pipe";
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // Must export the config
 export const firebaseConfig = {
@@ -38,7 +40,8 @@ const myFirebaseAuthConfig = {
       routing,
       HttpModule,
       AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
-      MaterialModule.forRoot()
+      MaterialModule.forRoot(),
+      InfiniteScrollModule
   ],
   declarations: [
       AppComponent,
@@ -49,7 +52,8 @@ const myFirebaseAuthConfig = {
       AddDevicesComponent,
       ErrorDialog,
       DeviceFilterPipe,
-      ImageGuessPipe
+      ImageGuessPipe,
+      SortDevicesPipe
   ],
   bootstrap: [ AppComponent ],
   providers: [AuthGuard],

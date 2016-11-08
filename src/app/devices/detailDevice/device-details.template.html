@@ -1,4 +1,8 @@
-<div>
+<div  class="search-results"
+      infinite-scroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="500"
+      (scrolled)="onScroll()">
     <i>Device ID: {{ device_id | async }}</i>
     <md-card>
         <md-card-subtitle>{{deviceView.device_model}}</md-card-subtitle>
@@ -27,10 +31,10 @@
         </thead>
         <tbody>
 
-        <tr *ngFor="let item of deviceLog | async">
-            <td >{{item.user_id}}</td>
+        <tr *ngFor="let item of deviceLogView">
+            <td >{{item.name}}</td>
             <td >{{item.device_status}} </td>
-            <td >{{item.time |date:"MM/dd/yy HH:MM"}}</td>
+            <td >{{item.time |date:"MM/dd/yy HH:MM:ss"}}</td>
         </tr>
         </tbody>
     </table>

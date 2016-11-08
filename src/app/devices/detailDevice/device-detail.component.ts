@@ -14,8 +14,11 @@ export class DeviceDetailComponent implements OnInit {
     sub:any;
     sessionId:Observable<string>;
     token:Observable<string>;
-    deviceView:any;
+    deviceView:Array<any>;
     deviceLogView:any;
+    sortyQuery:Observable<any>;
+    deviceID:string;
+    limitToLast:number;
 
     constructor(private route:ActivatedRoute, private af:AngularFire) {
 
@@ -23,9 +26,12 @@ export class DeviceDetailComponent implements OnInit {
 
     ngOnInit() {
         this.deviceView = [];
+        this.deviceLogView = [];
+        this.limitToLast = 0;
         this.sub = this.route.params.subscribe(params => {
+            this.deviceID = params['id'];
             this.getDeviceById(params['id']);
-            this.getDeviceLogById(params['id']);
+            this.getDeviceLogById();
         });
 
     }
@@ -37,12 +43,30 @@ export class DeviceDetailComponent implements OnInit {
         });
     }
 
-    getDeviceLogById(id:string) {
-        this.deviceLog = this.af.database.list('/devicesLogs/' + id);
+    getDeviceLogById() {
+        this.limitToLast += 20;
+        this.deviceLog = this.af.database.list('/devicesLogs/' + this.deviceID, {
+            query: {
+                'limitToLast': this.limitToLast
+            }
+        });
+
 
         this.deviceLog.subscribe((deviceLogData:any) => {
+            this.deviceLogView = deviceLogData.reverse();
 
+
+            for (let i = 0; i < this.deviceLogView.length; i++) {
+                var user = this.af.database.object('/users/' + this.deviceLogView[i].user_id);
+
+                user.subscribe((data:any) => {
+                    this.deviceLogView[i].name = data.displayName;
+                });
+            }
         });
     }
-
+    onScroll ()
+    {
+       this.getDeviceLogById();
+    }
 }
