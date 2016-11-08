@@ -20,8 +20,17 @@ export class LoginComponent {
     message:string;
     dialogRef: MdDialogRef<ErrorDialog>;
 
-    constructor(public af: AngularFire,private router: Router, public dialog: MdDialog,
-                public viewContainerRef: ViewContainerRef) {}
+    constructor(public af: AngularFire,public router: Router, public dialog: MdDialog,
+                public viewContainerRef: ViewContainerRef)
+    {
+        af.auth.subscribe(auth => {
+            //If the user is already logged in, take them away from the login page
+            if(auth && auth.uid)
+            {
+                this.router.navigateByUrl('');
+            }
+        });
+    }
 
     /**
      * Log the user into the app

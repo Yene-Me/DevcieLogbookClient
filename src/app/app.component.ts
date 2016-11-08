@@ -22,7 +22,7 @@ export class AppComponent {
   logout()
   {
       this.af.auth.logout();
-      this.router.navigateByUrl('login');
+      window.location.reload()
   }
 
 }

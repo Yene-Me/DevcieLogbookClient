@@ -29,14 +29,14 @@
         </template>
           <template md-tab-content >
               <input class="search" placeholder="Search" id="filter" required [(ngModel)]="filterTxt" name="filter"/>
-            <div class="table-responsive" *ngIf="(deviceView | DeviceFilterPipe: filterTxt).length">
+            <div class="table-responsive deviceTable" *ngIf="(deviceView | DeviceFilterPipe: filterTxt).length">
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>Model</th>
                         <th>OS</th>
                         <th>in use</th>
-                        <th>&nbsp;</th>
+                        <th class="action">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,8 +58,6 @@
               <img src="../../../../public/images/devices.svg">
               <h2>No Matches</h2>
               </div>
-
-
 
 
               <my-device-detail [device]="selectDevice"></my-device-detail>

@@ -23,3 +23,7 @@ input.search{
   margin: 2%;
   padding: 0.5em;
 }
+
+.deviceTable .action{
+  width: 120px;
+}
