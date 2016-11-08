@@ -40,7 +40,6 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th ></th>
                         <th>Model</th>
                         <th>OS</th>
                         <th>in use</th>
@@ -49,12 +48,7 @@
                     </thead>
                     <tbody>
 
-                    <tr *ngFor="let item of deviceView | DeviceFilterPipe:filterTxt">
-                        <td>
-                            <button md-fab (click)="onDeviceInfo(item)">
-                                <md-icon class="md-mini">info</md-icon>
-                            </button>
-                        </td>
+                    <tr *ngFor="let item of deviceView | DeviceFilterPipe:filterTxt" (click)="onDeviceInfo(item)">
                         <td >{{item.device_model}}</td>
                         <td >{{item.device_os}} </td>
                         <td >{{item.inUseBy}}</td>

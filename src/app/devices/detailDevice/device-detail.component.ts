@@ -23,6 +23,7 @@ export class DeviceDetailComponent  implements OnInit {
 
   ngOnInit()
   {
+    this.deviceView = [];
     this.sub = this.route.queryParams.subscribe(params => {
       this.getDeviceById(params['device_id']);
       this.getDeviceLogById(params['device_id']);
@@ -34,14 +35,12 @@ export class DeviceDetailComponent  implements OnInit {
   {
     this.device = this.af.database.object('/devices/'+id);
     this.device.subscribe((deviceData:any) => {
-      console.log("deviceData", deviceData);
       this.deviceView = deviceData;
     });
   }
 
   getDeviceLogById(id:string)
   {
-    console.log("getDeviceLogById", id);
     this.deviceLog = this.af.database.list('/devicesLogs/'+id);
     this.deviceLog.subscribe((deviceLogData:any) => {
       console.log("deviceLogData", deviceLogData);
