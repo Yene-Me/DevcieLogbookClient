@@ -45,8 +45,6 @@ export class DevicesComponent implements OnInit {
                 }
                 this.deviceView.push(deviceData[item]);
 
-                console.log('this.userId',this.userId);
-                console.log('deviceData[item].userId',deviceData[item].userId);
                 if( this.userId ===  deviceData[item].userId)
                 {
                     this.yourDevicesView.push(deviceData[item]);
