@@ -85,14 +85,7 @@ export class DevicesComponent implements OnInit {
     }
 
     onDeviceInfo(device:any):void {
-        // Set our navigation extras object
-        // that contains our global query params and fragment
-        let navigationExtras: NavigationExtras = {
-            queryParams: { 'device_id': device.$key }
-
-        };
-
         // Navigate to the login page with extras
-        this.router.navigate(['/details'], navigationExtras);
+        this.router.navigate(['/devices', device.$key]);
     }
 }

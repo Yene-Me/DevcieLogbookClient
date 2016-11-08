@@ -23,9 +23,9 @@ export class DeviceDetailComponent implements OnInit {
 
     ngOnInit() {
         this.deviceView = [];
-        this.sub = this.route.queryParams.subscribe(params => {
-            this.getDeviceById(params['device_id']);
-            this.getDeviceLogById(params['device_id']);
+        this.sub = this.route.params.subscribe(params => {
+            this.getDeviceById(params['id']);
+            this.getDeviceLogById(params['id']);
         });
 
     }

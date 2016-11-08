@@ -28,25 +28,38 @@ export class ImageGuessPipe implements PipeTransform {
         var WATCH = "watch";
 
 
+        // platform -> os -> model
+
         var deviceImageList =
         {
             tablet: {
-                img: "http://placehold.it/150x150"
+                img: "http://placehold.it/150x150",
+                ios: {
+                    img: "http://placehold.it/10x10"
+                }
             },
             mobile: {
-                img: "http://placehold.it/150x150"
+                img: "http://placehold.it/100x100"
             },
             desktop: {
                 img: "http://placehold.it/150x150"
-            },
+            }
         };
 
+
         //MATCHING
-        if(device.device_type === MOBILE){
-            image = 'http://placehold.it/550x550';
+        if (deviceImageList[device.device_type]) {
+            image = deviceImageList[device.device_type].img;
+
+            if (deviceImageList[device.device_type][device.device_os]) {
+                image = deviceImageList[device.device_type][device.device_os].img;
+
+                if (deviceImageList[device.device_type][device.device_os][device.device_device_model]) {
+                    image = deviceImageList[device.device_type][device.device_os][device.device_device_model].img;
+                }
+
+            }
         }
-
-
 
         return image;
     }
