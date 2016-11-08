@@ -5,6 +5,7 @@ import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'ang
 import 'rxjs/add/operator/map';
 @Component({
     selector: 'my-device-detail',
+    styleUrls: ['./device-detail.component.css'],
     templateUrl: './device-details.template.html'
 })
 export class DeviceDetailComponent implements OnInit {

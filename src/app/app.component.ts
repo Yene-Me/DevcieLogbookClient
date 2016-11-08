@@ -3,6 +3,7 @@ import {MaterialModule} from '@angular/material';
 import {NgModule} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Router} from "@angular/router";
+import {Location} from '@angular/common';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
     showEdit = false;
     showAdd = false;
 
-    constructor(public af: AngularFire, private router: Router) {
+    constructor(public af: AngularFire, private router: Router, private location: Location) {
         af.auth.subscribe(auth => {
             //If the user is already logged in, take them away from the login page
             if (auth && auth.uid) {
@@ -59,6 +60,10 @@ export class AppComponent implements OnInit {
     logout() {
         this.af.auth.logout();
         window.location.reload()
+    }
+
+    back() {
+        this.location.back();
     }
 
 

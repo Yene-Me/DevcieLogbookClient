@@ -3,22 +3,19 @@
       [infiniteScrollDistance]="2"
       [infiniteScrollThrottle]="500"
       (scrolled)="onScroll()">
-    <i>Device ID: {{ device_id | async }}</i>
-    <md-card>
-        <md-card-subtitle>{{deviceView.device_model}}</md-card-subtitle>
-        <md-card-title>{{deviceView.device_os}}</md-card-title>
-        <md-card-content>
-            <p>{{deviceView.device_type}}</p>
-            <p>{{deviceView.device_userAgent}}</p>
-        </md-card-content>
-        <md-card-actions>
-            <button md-button>Return</button>
-            <button md-button>Borrow</button>
-            <button md-button>Edit</button>
-            <button md-button>Update</button>
-            <button md-button>Deactivate</button>
-        </md-card-actions>
+
+
+    <md-card class="device">
+        <md-card-title-group>
+            <img md-card-sm-image [src]=" deviceView | ImageGuessPipe">
+            <md-card-title>{{deviceView.device_model}}</md-card-title>
+            <md-card-subtitle>
+                {{deviceView.device_os}} {{deviceView.device_version}}
+            </md-card-subtitle>
+
+        </md-card-title-group>
     </md-card>
+
 
     <table class="table table-striped table-bordered">
         <thead>

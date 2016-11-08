@@ -5,6 +5,12 @@ main {
   display: block;
 }
 
+@media (max-width: 500px) {
+  .action {
+    display: none;
+  }
+}
+
 .noDevices{
   padding-top: 2em;
   text-align: center;
@@ -16,8 +22,10 @@ main {
 }
 
 md-card.device{
-  width: 280px;
-  margin: 1em;
+  flex-grow: 1;
+  min-width: 200px;
+  max-width: 400px;
+  margin: 1em 1em 1em 0.1em;
   cursor: pointer;
 }
 

@@ -52,7 +52,7 @@
                         <td >{{item.device_model}}</td>
                         <td >{{item.device_os}} </td>
                         <td >{{item.inUseBy}}</td>
-                        <td>
+                        <td class="action">
                             <button md-raised-button type="button" class="logout" (click)="onReturn(item)" [hidden]="!item.userId" color="primary">Return</button>
                             <button md-raised-button type="button" class="logout" (click)="onBorrow(item)"  [hidden]="item.userId" color="primary">Borrow</button>
                         </td>
