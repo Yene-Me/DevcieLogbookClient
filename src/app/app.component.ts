@@ -15,14 +15,31 @@ import {Router} from "@angular/router";
 })
 
 export class AppComponent {
-  title = 'Device List';
+    title = 'Device List';
+    isAdmin = false;
 
-  constructor(public af: AngularFire,private router: Router) {}
+  constructor(public af: AngularFire,private router: Router)
+  {
+      af.auth.subscribe(auth => {
+          //If the user is already logged in, take them away from the login page
+          if(auth && auth.uid)
+          {
+
+              var admin = af.database.object('/admins/' + auth.uid);
+              admin.subscribe((data:any) => {
+                  this.isAdmin = data.isAdmin;
+              });
+
+
+              this.router.navigateByUrl('');
+          }
+      });
+  }
 
   logout()
   {
       this.af.auth.logout();
-      this.router.navigateByUrl('login');
+      window.location.reload()
   }
 
 }

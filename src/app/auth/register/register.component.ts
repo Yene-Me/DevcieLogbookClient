@@ -31,10 +31,11 @@ export class RegisterComponent {
      */
     register() {
         if (this.validateParams() === true) {
-            this.user = new User(this.displayname);
+            var email =  this.username + this.domain;
+            this.user = new User(this.displayname, email);
 
             this.af.auth.createUser({
-                email: this.username + this.domain,
+                email: email,
                 password: this.password
             })
                 .then((success:any) => {

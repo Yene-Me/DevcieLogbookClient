@@ -27,6 +27,6 @@
 
 </md-sidenav-layout>
 
-<span class="app-action" [hidden]="!(af.auth | async)">
+<span class="app-action" [hidden]="!(isAdmin)">
   <a routerLink="/add" routerLinkActive="active" > <button md-fab><md-icon>add circle</md-icon></button></a>
 </span>

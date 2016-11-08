@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, NavigationExtras} from '@angular/router'
 import {DeviceLog} from '../../deviceRecord/device-log.component'
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {User} from '../../auth/user/user'
+import {Router, NavigationExtras} from '@angular/router';
 
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
@@ -18,7 +18,6 @@ export class DevicesComponent implements OnInit {
     userId:string;
     deviceView:any;
     yourDevicesView:any;
-    selectDevice:any;
 
     ngOnInit():void {
     }
@@ -80,7 +79,6 @@ export class DevicesComponent implements OnInit {
     }
 
     onDeviceInfo(device:any):void {
-        this.selectDevice = device;
         // Set our navigation extras object
         // that contains our global query params and fragment
         let navigationExtras: NavigationExtras = {
