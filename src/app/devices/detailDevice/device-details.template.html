@@ -15,4 +15,23 @@
             <button md-button>Deactivate</button>
         </md-card-actions>
     </md-card>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>In Use By</th>
+            <th>Status</th>
+            <th>Date/Time</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let item of deviceLog | async">
+            <td >{{item.user_id}}</td>
+            <td >{{item.device_status}} </td>
+            <td >{{item.time |date:"MM/dd/yy HH:MM"}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
