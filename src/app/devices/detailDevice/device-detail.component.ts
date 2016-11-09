@@ -23,14 +23,13 @@ export class DeviceDetailComponent implements OnInit {
     sortyQuery:Observable<any>;
     deviceID:string;
     limitToLast:number;
-    lewis:any;
+    userId: string;
 
     constructor(private route:ActivatedRoute, private af:AngularFire, private sanitizer:DomSanitizer) {
 
     }
 
     ngOnInit() {
-        this.lewis = 'lewis';
         this.deviceView = [];
         this.deviceUser = {};
         this.deviceLogView = [];
@@ -44,6 +43,11 @@ export class DeviceDetailComponent implements OnInit {
     }
 
     getDeviceById(id:string) {
+
+        this.af.auth.subscribe(auth => {
+            this.userId = auth.uid;
+        });
+
         this.device = this.af.database.object('/devices/' + id);
         this.device.subscribe((deviceData:any) => {
             this.deviceView = deviceData;
@@ -83,5 +87,13 @@ export class DeviceDetailComponent implements OnInit {
 
     onScroll() {
         this.getDeviceLogById();
+    }
+
+    return() {
+        //TODO Code to return device
+    }
+
+    borrow() {
+        //TODO
     }
 }
