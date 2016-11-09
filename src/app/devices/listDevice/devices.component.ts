@@ -94,7 +94,7 @@ export class DevicesComponent implements OnInit {
     }
 
     onNotify(device: any): void {
-
+/*
         Notification.requestPermission().then(function (result) {
             if (result === 'denied') {
                 this.openDialog('Permission wasn\'t granted.');
@@ -106,7 +106,7 @@ export class DevicesComponent implements OnInit {
             }
             this.openDialog('We will let you know when ' + device.model + 'is back in the device cupboard.');
             //TODO, Notifications
-        }.bind(this));
+        }.bind(this));*/
 
     }
 
