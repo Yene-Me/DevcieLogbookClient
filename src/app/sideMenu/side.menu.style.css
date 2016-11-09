@@ -1,0 +1,43 @@
+
+.userProfile {
+    height: 130px;
+    padding: 0.2em;
+}
+
+.icon {
+    height: 64px;
+    border: 2px dashed;
+    width: 64px;
+    border-radius: 100%;
+    position: absolute;
+    right: 38px;
+    background-color: ghostwhite;
+    font-size: 60px;
+}
+
+.userName {
+    width: 60%;
+    font-size: 24px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+li .material-icons
+{
+    font-size: 30px;
+}
+
+li i {
+    padding: 0.5em;
+}
+
+a {
+    text-decoration: none;
+}

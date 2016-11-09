@@ -17,7 +17,8 @@ import {DeviceFilterPipe} from "./devices/filter.pipe";
 import {LogFilterPipe} from "./devices/logFilter.pipe";
 import {ImageGuessPipe} from "./devices/imageGuess.pipe";
 import {SortDevicesPipe} from "./devices/sortDevices.pipe";
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import {InfiniteScrollModule} from 'angular2-infinite-scroll';
+import {SideMenuComponent} from'./sideMenu/side.menu.component'
 
 // Must export the config
 export const firebaseConfig = {
@@ -35,30 +36,32 @@ const myFirebaseAuthConfig = {
 
 
 @NgModule({
-  imports: [
-      BrowserModule,
-      FormsModule,
-      routing,
-      HttpModule,
-      AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
-      MaterialModule.forRoot(),
-      InfiniteScrollModule
-  ],
-  declarations: [
-      AppComponent,
-      DeviceDetailComponent,
-      DevicesComponent,
-      LoginComponent,
-      RegisterComponent,
-      AddDevicesComponent,
-      ErrorDialog,
-      DeviceFilterPipe,
-      ImageGuessPipe,
-      SortDevicesPipe,
-      LogFilterPipe
-  ],
-  bootstrap: [ AppComponent ],
-  providers: [AuthGuard],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        routing,
+        HttpModule,
+        AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+        MaterialModule.forRoot(),
+        InfiniteScrollModule,
+    ],
+    declarations: [
+        AppComponent,
+        DeviceDetailComponent,
+        DevicesComponent,
+        LoginComponent,
+        RegisterComponent,
+        AddDevicesComponent,
+        ErrorDialog,
+        DeviceFilterPipe,
+        ImageGuessPipe,
+        SortDevicesPipe,
+        LogFilterPipe,
+        SideMenuComponent
+
+    ],
+    bootstrap: [AppComponent],
+    providers: [AuthGuard],
     entryComponents: [
         ErrorDialog
     ]

@@ -58,13 +58,10 @@ export class AppComponent implements OnInit {
     }
 
     logout() {
-        this.af.auth.logout();
-        window.location.reload()
+       /* this.af.auth.logout();
+        window.location.reload()*/
     }
-
-    back() {
-        this.location.back();
-    }
+    
 
 
     manage() {

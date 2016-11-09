@@ -1,0 +1,40 @@
+<!--SIDEMENU-->
+<md-sidenav-layout>
+    <md-sidenav #sidenav class="app-sidenav" [hidden]="!(af.auth | async)" mode="push">
+        <h1>Camden Bingo!</h1>
+        <hr>
+        <div class="userProfile">
+            <div class="icon material-icons">account_circle</div>
+            <div  class="userName">Me!</div>
+        </div>
+        <hr>
+        <ul>
+            <li><i class="material-icons">perm_device_information</i>Device List</li>
+            <li><i class="material-icons">important_devices</i>Your List</li>
+            <hr>
+            <li (click)="sidenav.toggle();manage()" color="secondary"
+                [hidden]="!(isAdmin)">Admin</li>
+            <hr [hidden]="!(isAdmin)">
+            <li (click)="sidenav.toggle();logout()" color="primary"><i class="material-icons">exit_to_app</i>Logout</li>
+        </ul>
+
+    </md-sidenav>
+
+    <!--TOOLBAR-->
+    <md-toolbar color="primary" [hidden]="!(af.auth | async)">
+        <button class="app-icon-button" (click)="sidenav.toggle()">
+            <i class="material-icons app-toolbar-menu">menu</i>
+        </button>
+
+        <button class="app-icon-button" (click)="back()">
+            <i class="material-icons app-toolbar-menu">keyboard_backspace</i>
+        </button>
+        Device Cupboard
+        <span class="app-toolbar-filler"></span>
+    </md-toolbar>
+
+    <div class="app-content">
+        <router-outlet></router-outlet>
+    </div>
+</md-sidenav-layout>
+<!--APP-->
