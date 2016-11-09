@@ -5,6 +5,7 @@
       (scrolled)="onScroll()">
 
 
+    <!--THE CARD FOR THE DEVICE-->
     <md-card class="device">
         <md-card-title-group>
             <img md-card-sm-image [src]=" deviceView | ImageGuessPipe">
@@ -15,7 +16,9 @@
         </md-card-title-group>
     </md-card>
 
-    <md-card class="user" *ngIf="deviceUser.email">
+
+    <!-- SHOWN IF THE DEVICE IS OUT, BUT YOU ARE NOT THE USER-->
+    <md-card class="user" *ngIf="deviceView.userId !== userId && deviceView.userId.length">
         <md-card-title-group>
             <a [href]="deviceUser.sip">
                 <img class="skype" md-card-sm-image src="../../../../public/images/skype.svg">
@@ -27,6 +30,21 @@
 
         </md-card-title-group>
     </md-card>
+
+    <!-- SHOWN IF THE DEVICE IS OUT, AND YOU ARE THE USER-->
+    <md-card class="user" *ngIf="deviceView.userId == userId" (click)="return();">
+        <md-card-title-group>
+            <p class="return">Return</p>
+        </md-card-title-group>
+    </md-card>
+
+    <!-- SHOWN IF THE DEVICE IS AVAILABLE-->
+    <md-card class="user" *ngIf="!deviceView.userId.length" (click)="borrow();">
+        <md-card-title-group>
+            <p class="borrow">Borrow</p>
+        </md-card-title-group>
+    </md-card>
+
 
     <input class="search" placeholder="Search" id="filter" required [(ngModel)]="filterTxt" name="filter"/>
     <table class="table table-striped table-bordered">

@@ -21,7 +21,13 @@
     margin-top: 1em;
 }
 
-.user md-card-title, .user md-card-subtitle {
+.return, .borrow {
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.user md-card-title, .user md-card-subtitle, .return, .borrow {
     margin: 0;
     padding: 0;
 }
