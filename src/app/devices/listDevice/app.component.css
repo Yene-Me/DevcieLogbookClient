@@ -43,3 +43,11 @@ input.search{
   margin-right: 0.5em;
   margin-bottom: 0;
 }
+
+.loading {
+  overflow: hidden;
+}
+
+.loading md-progress-circle {
+  width: 100%;
+}
