@@ -1,12 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {DeviceLog} from '../../deviceRecord/device-log.component'
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {User} from '../../auth/user/user'
 import {Router, NavigationExtras} from '@angular/router';
-
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
 import {DeviceFilterPipe} from "../filter.pipe";
+import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
+import {ErrorDialog} from "../../utils/dialog/dislog.component";
+
 @Component({
     selector: 'my-devices',
     templateUrl: './app.component.html',
@@ -18,13 +20,15 @@ export class DevicesComponent implements OnInit {
     userId:string;
     deviceView:any;
     yourDevicesView:any;
+    dialogRef: MdDialogRef<ErrorDialog>;
 
     ngOnInit():void {
     }
 
     devices:FirebaseListObservable<any[]>;
 
-    constructor(private af:AngularFire, private router:Router) {
+    constructor(private af: AngularFire, private router: Router, public dialog: MdDialog,
+                public viewContainerRef: ViewContainerRef) {
         this.devices = af.database.list('/devices');
         this.deviceView = [];
         this.yourDevicesView = [];
@@ -87,5 +91,33 @@ export class DevicesComponent implements OnInit {
     onDeviceInfo(device:any):void {
         // Navigate to the login page with extras
         this.router.navigate(['/details', device.$key]);
+    }
+
+    onNotify(device: any): void {
+
+        Notification.requestPermission().then(function (result) {
+            if (result === 'denied') {
+                this.openDialog('Permission wasn\'t granted.');
+                return;
+            }
+            if (result === 'default') {
+                this.openDialog('The permission request was dismissed.');
+                return;
+            }
+            this.openDialog('We will let you know when ' + device.model + 'is back in the device cupboard.');
+            //TODO, Notifications
+        }.bind(this));
+
+    }
+
+    /**
+     * Show the user a dialog
+     * @param errorText
+     */
+    openDialog(errorText: String) {
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+        this.dialogRef = this.dialog.open(ErrorDialog, config);
+        this.dialogRef.componentInstance.error = errorText;
     }
 }

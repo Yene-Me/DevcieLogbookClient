@@ -8,14 +8,13 @@
 
     /*Make an overlap look*/
     margin-top: -10px;
-    color: white;
     padding: 23px 20px 8px 20px;
     z-index: 1;
+    color: white;
 }
 
-.user a {
+.user a, .user md-card-subtitle {
     color: white;
-
 }
 
 .table {
