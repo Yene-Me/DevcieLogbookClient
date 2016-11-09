@@ -18,17 +18,19 @@ export class DeviceDetailComponent implements OnInit {
     sessionId:Observable<string>;
     token:Observable<string>;
     deviceView:Array<any>;
-    deviceUser: {};
+    deviceUser:{};
     deviceLogView:any;
     sortyQuery:Observable<any>;
     deviceID:string;
     limitToLast:number;
+    lewis:any;
 
-    constructor(private route: ActivatedRoute, private af: AngularFire, private sanitizer: DomSanitizer) {
+    constructor(private route:ActivatedRoute, private af:AngularFire, private sanitizer:DomSanitizer) {
 
     }
 
     ngOnInit() {
+        this.lewis = 'lewis';
         this.deviceView = [];
         this.deviceUser = {};
         this.deviceLogView = [];
@@ -46,11 +48,11 @@ export class DeviceDetailComponent implements OnInit {
         this.device.subscribe((deviceData:any) => {
             this.deviceView = deviceData;
 
-            var user = this.af.database.object('/users/' + this.deviceView.userId);
+            var user = this.af.database.object('/users/' + this.deviceView['userId']);
 
             user.subscribe((data: {}) => {
                 this.deviceUser = data;
-                this.deviceUser.sip = this.sanitizer.bypassSecurityTrustUrl("sip:<" + this.deviceUser.email + ">");
+                this.deviceUser['sip'] = this.sanitizer.bypassSecurityTrustUrl("sip:<" + this.deviceUser['email'] + ">");
             });
 
         });
@@ -78,8 +80,8 @@ export class DeviceDetailComponent implements OnInit {
             }
         });
     }
-    onScroll ()
-    {
-       this.getDeviceLogById();
+
+    onScroll() {
+        this.getDeviceLogById();
     }
 }

@@ -30,7 +30,7 @@ export class DeviceFilterPipe implements PipeTransform {
                     var value = device[key];
 
                     //We don't want to search all the keys like user agent, as this will give some wired results
-                    let searchKeys = ['device_model', 'device_os', 'device_resolution', 'device_type', 'device_vendor', 'device_version', 'inUseBy'];
+                    let searchKeys = ['device_model', 'device_os', 'device_resolution', 'device_type', 'device_vendor', 'device_version', 'inUseBy', 'name', 'device_status'];
                     if(searchKeys.indexOf(key)!== -1)
                     {
 

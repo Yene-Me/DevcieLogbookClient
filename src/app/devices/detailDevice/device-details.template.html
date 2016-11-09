@@ -33,7 +33,7 @@
         </md-card-title-group>
     </md-card>
 
-
+    <input class="search" placeholder="Search" id="filter" required [(ngModel)]="filterTxt" name="filter"/>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -45,10 +45,10 @@
         </thead>
         <tbody>
 
-        <tr *ngFor="let item of deviceLogView">
-            <td >{{item.name}}</td>
-            <td >{{item.device_status}} </td>
-            <td >{{item.time |date:"MM/dd/yy HH:MM:ss"}}</td>
+        <tr *ngFor="let item of deviceLogView | DeviceFilterPipe:filterTxt">
+            <td>{{item.name}}</td>
+            <td>{{item.device_status}}</td>
+            <td>{{item.time |date:"dd/MM/yy HH:MM:s"}}</td>
         </tr>
         </tbody>
     </table>

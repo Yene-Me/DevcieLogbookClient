@@ -6,12 +6,12 @@
         <h1>TODO</h1>
         <ul>This Sidebar</ul>
 
-        <button md-raised-button type="button" class="logout" (click)="sidenav.toggle();manage()" color="secondary"
-                [hidden]="!(isAdmin)">Manage
-        </button>
-        <button md-raised-button type="button" class="logout" (click)="sidenav.toggle();logout()" color="primary">
-            Logout
-        </button>
+      <button md-raised-button type="button" class="logout"  (click)="sidenav.toggle();manage()" color="secondary" [hidden]="!(isAdmin)">Manage</button>
+      <button md-raised-button type="button" class="logout"  (click)="sidenav.toggle();logout()" color="primary">Logout</button>
+
+        <button md-raised-button type="button" class="logout" > <a href="/devices">Device List</a></button>
+        <button md-raised-button type="button" class="logout"> <a href="/devices">Your Device</a></button>
+
     </md-sidenav>
 
     <!--TOOLBAR-->

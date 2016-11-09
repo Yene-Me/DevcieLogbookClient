@@ -32,3 +32,8 @@
     height: 30px;
     margin-top: -15px;
 }
+input{
+    width: 96%;
+    margin: 2%;
+    padding: 0.5em;
+}
