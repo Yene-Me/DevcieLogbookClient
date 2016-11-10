@@ -18,10 +18,14 @@ import {User} from "../auth/user/user";
 })
 
 export class SideMenuComponent implements OnInit {
+    cupboardlocation: any;
     userId: string;
     user: any;
 
     constructor(public af: AngularFire, private router: Router, private location: Location) {
+        this.cupboardlocation = {};
+        this.cupboardlocation.name = "Camden";
+        this.cupboardlocation.image = "../../../../public/images/locations/camden.jpg";
         this.user = {};
 
         this.af.auth.subscribe(auth => {

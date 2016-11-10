@@ -18,7 +18,7 @@ import {LogFilterPipe} from "./devices/logFilter.pipe";
 import {ImageGuessPipe} from "./devices/imageGuess.pipe";
 import {SortDevicesPipe} from "./devices/sortDevices.pipe";
 import {InfiniteScrollModule} from 'angular2-infinite-scroll';
-import {SideMenuComponent} from'./sideMenu/side.menu.component'
+import {SideMenuComponent} from'./sideMenu/side.menu.component';
 import {Gravatar} from 'ng2-gravatar-directive';
 
 // Must export the config
@@ -60,7 +60,6 @@ const myFirebaseAuthConfig = {
         LogFilterPipe,
         SideMenuComponent,
         Gravatar
-
     ],
     bootstrap: [AppComponent],
     providers: [AuthGuard],

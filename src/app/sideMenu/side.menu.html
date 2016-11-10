@@ -1,23 +1,32 @@
 <!--SIDEMENU-->
 <md-sidenav-layout>
     <md-sidenav #sidenav class="app-sidenav" [hidden]="!(af.auth | async)">
-        <h1>Camden Bingo!</h1>
-        <hr>
-        <div class="userProfile">
-            <img *ngIf="user.email" gravatar [email]="user.email" [size]="128" class="icon">
-            <div class="userName">{{user.displayName}}</div>
-            <div class="userEmail">{{user.email}}</div>
+
+        <div class="location">
+            <div class="background"></div>
+            <h1>{{cupboardlocation.name}}</h1>
         </div>
-        <hr>
-        <ul>
-            <li><i class="material-icons">perm_device_information</i>Device List</li>
-            <li><i class="material-icons">important_devices</i>Your List</li>
+
+
+        <div class="draw">
+            <div class="userProfile">
+                <img gravatar *ngIf="user.email" [email]="user.email" [size]="128" class="icon">
+                <div class="userName">{{user.displayName}}</div>
+                <div class="userEmail">{{user.email}}</div>
+            </div>
             <hr>
-            <li (click)="sidenav.toggle();manage()" color="secondary"
-                [hidden]="!(isAdmin)">Admin</li>
-            <hr [hidden]="!(isAdmin)">
-            <li (click)="sidenav.toggle();logout()" color="primary"><i class="material-icons">exit_to_app</i>Logout</li>
-        </ul>
+            <ul>
+                <li><i class="material-icons">perm_device_information</i>Device List</li>
+                <li><i class="material-icons">important_devices</i>Your List</li>
+                <hr>
+                <li (click)="sidenav.toggle();manage()" color="secondary"
+                    [hidden]="!(isAdmin)">Admin
+                </li>
+                <hr [hidden]="!(isAdmin)">
+                <li (click)="sidenav.toggle();logout()" color="primary"><i class="material-icons">exit_to_app</i>Logout
+                </li>
+            </ul>
+        </div>
 
     </md-sidenav>
 
