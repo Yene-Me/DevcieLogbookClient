@@ -29,6 +29,7 @@ md-sidenav {
 .userName {
     width: 60%;
     font-size: 24px;
+    margin-top: 5px;
 }
 
 .location {
