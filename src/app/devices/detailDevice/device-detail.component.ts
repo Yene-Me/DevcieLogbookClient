@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable}     from 'rxjs/Observable';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {DomSanitizer} from '@angular/platform-browser';
+import {DeviceService} from '../../devices/device.service';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -25,7 +26,7 @@ export class DeviceDetailComponent implements OnInit {
     limitToLast:number;
     userId: string;
 
-    constructor(private route:ActivatedRoute, private af:AngularFire, private sanitizer:DomSanitizer) {
+    constructor(private route:ActivatedRoute, private af:AngularFire, private sanitizer:DomSanitizer, private deviceService :DeviceService) {
 
     }
 
@@ -48,7 +49,7 @@ export class DeviceDetailComponent implements OnInit {
             this.userId = auth.uid;
         });
 
-        this.device = this.af.database.object('/devices/' + id);
+        this.device = this.deviceService.getDeviceByID(id);
         this.device.subscribe((deviceData:any) => {
             this.deviceView = deviceData;
 
@@ -90,10 +91,10 @@ export class DeviceDetailComponent implements OnInit {
     }
 
     return() {
-        //TODO Code to return device
+        this.deviceService.updateDeviceStatus(this.device,"","in");
     }
 
     borrow() {
-        //TODO
+        this.deviceService.updateDeviceStatus(this.device,this.userId,"out");
     }
 }

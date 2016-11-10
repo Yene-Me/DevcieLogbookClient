@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Router} from "@angular/router";
 import {Location} from '@angular/common';
+import {DeviceService} from './devices/device.service';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {Location} from '@angular/common';
 
 @Component({
     selector: 'my-app',
-    templateUrl: './dashboard.html'
+    templateUrl: './dashboard.html',
+    providers:[DeviceService]
 })
 
 export class AppComponent implements OnInit {

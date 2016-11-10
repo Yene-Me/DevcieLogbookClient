@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {DeviceLog} from '../../deviceRecord/device-log.component'
+import {DeviceLog} from '../../deviceRecord/device-log.component';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {User} from '../../auth/user/user'
 import {Router, NavigationExtras} from '@angular/router';
@@ -8,6 +8,7 @@ import '../../../../public/css/bootstrap.css';
 import {DeviceFilterPipe} from "../filter.pipe";
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {ErrorDialog} from "../../utils/dialog/dislog.component";
+import {DeviceService} from '../../devices/device.service';
 
 @Component({
     selector: 'my-devices',
@@ -20,16 +21,13 @@ export class DevicesComponent implements OnInit {
     userId:string;
     deviceView:any;
     yourDevicesView:any;
-    dialogRef: MdDialogRef<ErrorDialog>;
-
-    ngOnInit():void {
-    }
-
+    dialogRef:MdDialogRef<ErrorDialog>;
     devices:FirebaseListObservable<any[]>;
 
-    constructor(private af: AngularFire, private router: Router, public dialog: MdDialog,
-                public viewContainerRef: ViewContainerRef) {
-        this.devices = af.database.list('/devices');
+    constructor(private af:AngularFire, private router:Router, public dialog:MdDialog,
+                public viewContainerRef:ViewContainerRef, public deviceService:DeviceService) {
+
+        this.devices = this.deviceService.getDevices();
         this.deviceView = [];
         this.yourDevicesView = [];
         this.deviceLog = new DeviceLog(af);
@@ -41,11 +39,15 @@ export class DevicesComponent implements OnInit {
         });
     }
 
+    ngOnInit():void {
+
+
+    }
+
     /**
      * Only get the initial data once we are authenticated
      */
-    init():void
-    {
+    init():void {
         this.devices.subscribe((deviceData:any) => {
             this.deviceView = [];
             this.yourDevicesView = [];
@@ -72,20 +74,13 @@ export class DevicesComponent implements OnInit {
 
     //update device log as return
     onReturn(device:any):void {
-        if (this.userId != device.userId) {
-            alert("have really borrowed this device :)");
-        }
-        else {
-            this.deviceLog.onSave(device, this.userId, "in");
-            this.devices.update(device, {userId: ""});
-        }
+        this.deviceService.updateDeviceStatus(device,"","in");
 
     }
 
     //update device log as borrowed
     onBorrow(device:any):void {
-        this.deviceLog.onSave(device, this.userId, "out");
-        this.devices.update(device, {userId: this.userId})
+        this.deviceService.updateDeviceStatus(device,this.userId,"out");
     }
 
     onDeviceInfo(device:any):void {
@@ -93,20 +88,20 @@ export class DevicesComponent implements OnInit {
         this.router.navigate(['/details', device.$key]);
     }
 
-    onNotify(device: any): void {
-/*
-        Notification.requestPermission().then(function (result) {
-            if (result === 'denied') {
-                this.openDialog('Permission wasn\'t granted.');
-                return;
-            }
-            if (result === 'default') {
-                this.openDialog('The permission request was dismissed.');
-                return;
-            }
-            this.openDialog('We will let you know when ' + device.model + 'is back in the device cupboard.');
-            //TODO, Notifications
-        }.bind(this));*/
+    onNotify(device:any):void {
+        /*
+         Notification.requestPermission().then(function (result) {
+         if (result === 'denied') {
+         this.openDialog('Permission wasn\'t granted.');
+         return;
+         }
+         if (result === 'default') {
+         this.openDialog('The permission request was dismissed.');
+         return;
+         }
+         this.openDialog('We will let you know when ' + device.model + 'is back in the device cupboard.');
+         //TODO, Notifications
+         }.bind(this));*/
 
     }
 
@@ -114,7 +109,7 @@ export class DevicesComponent implements OnInit {
      * Show the user a dialog
      * @param errorText
      */
-    openDialog(errorText: String) {
+    openDialog(errorText:String) {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.viewContainerRef;
         this.dialogRef = this.dialog.open(ErrorDialog, config);

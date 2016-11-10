@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 
 import { Device } from './device';
 import { Devices } from './mock-devices';
@@ -9,4 +9,4 @@ export class DeviceService {
   getDevices(): Device[] {
    return Devices;
  }
-}
+}*/
