@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Router} from "@angular/router";
 import {Location} from '@angular/common';
+import {User} from "../auth/user/user";
 
 
 @NgModule({
@@ -13,14 +14,25 @@ import {Location} from '@angular/common';
 @Component({
     selector: 'side-menu-layout',
     templateUrl: './side.menu.html',
-    styleUrls: ['./side.menu.style.css'],
+    styleUrls: ['./side.menu.style.css']
 })
 
 export class SideMenuComponent implements OnInit {
-
+    userId: string;
+    user: any;
 
     constructor(public af: AngularFire, private router: Router, private location: Location) {
+        this.user = {};
 
+        this.af.auth.subscribe(auth => {
+            this.userId = auth.uid;
+
+            var user = this.af.database.object('/users/' + auth.uid);
+            user.subscribe((data: User) => {
+                this.user = data;
+            })
+
+        });
     }
 
     ngOnInit() {

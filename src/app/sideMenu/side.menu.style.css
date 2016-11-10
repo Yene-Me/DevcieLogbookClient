@@ -1,6 +1,6 @@
 
 .userProfile {
-    height: 130px;
+    height: 80px;
     padding: 0.2em;
 }
 
@@ -18,6 +18,19 @@
 .userName {
     width: 60%;
     font-size: 24px;
+}
+
+.userEmail {
+    width: 60%;
+    font-size: 13px;
+}
+
+.userName, .userEmail {
+    text-overflow: ellipsis;
+
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 ul {

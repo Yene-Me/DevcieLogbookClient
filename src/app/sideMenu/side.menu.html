@@ -4,8 +4,9 @@
         <h1>Camden Bingo!</h1>
         <hr>
         <div class="userProfile">
-            <div class="icon material-icons">account_circle</div>
-            <div  class="userName">Me!</div>
+            <img *ngIf="user.email" gravatar [email]="user.email" [size]="128" class="icon">
+            <div class="userName">{{user.displayName}}</div>
+            <div class="userEmail">{{user.email}}</div>
         </div>
         <hr>
         <ul>
@@ -25,10 +26,6 @@
         <button class="app-icon-button" (click)="sidenav.toggle()">
             <i class="material-icons app-toolbar-menu">menu</i>
         </button>
-
-        <!--<button class="app-icon-button" (click)="back()">
-            <i class="material-icons app-toolbar-menu">keyboard_backspace</i>
-        </button>-->
         Device Cupboard
         <span class="app-toolbar-filler"></span>
     </md-toolbar>

@@ -19,6 +19,7 @@ import {ImageGuessPipe} from "./devices/imageGuess.pipe";
 import {SortDevicesPipe} from "./devices/sortDevices.pipe";
 import {InfiniteScrollModule} from 'angular2-infinite-scroll';
 import {SideMenuComponent} from'./sideMenu/side.menu.component'
+import {Gravatar} from 'ng2-gravatar-directive';
 
 // Must export the config
 export const firebaseConfig = {
@@ -57,7 +58,8 @@ const myFirebaseAuthConfig = {
         ImageGuessPipe,
         SortDevicesPipe,
         LogFilterPipe,
-        SideMenuComponent
+        SideMenuComponent,
+        Gravatar
 
     ],
     bootstrap: [AppComponent],
