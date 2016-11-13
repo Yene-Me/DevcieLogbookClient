@@ -29,6 +29,8 @@ export class SideMenuComponent implements OnInit {
         this.user = {};
 
         this.af.auth.subscribe(auth => {
+
+          if(auth == null) return;
             this.userId = auth.uid;
 
             var user = this.af.database.object('/users/' + auth.uid);
