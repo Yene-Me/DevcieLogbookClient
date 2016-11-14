@@ -1,12 +1,13 @@
 
 .userProfile {
-    height: 130px;
+    height: 80px;
     padding: 0.2em;
 }
 
 .icon {
     height: 64px;
-    border: 2px dashed;
+    border: 2px solid;
+    border-color: #673ab7;
     width: 64px;
     border-radius: 100%;
     position: absolute;
@@ -15,9 +16,68 @@
     font-size: 60px;
 }
 
+md-sidenav {
+    padding: 0;
+    margin: 0;
+    min-width: 310px;
+}
+
+.draw {
+    padding: 20px;
+}
+
 .userName {
     width: 60%;
     font-size: 24px;
+    margin-top: 5px;
+}
+
+.location {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+    text-align: right;
+}
+
+.location .background {
+    width: 110%;
+    height: 110%;
+    background-image: url("../../../../public/images/locations/camden.jpg");
+    background-size: cover;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+.location h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    opacity: 0.87;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    padding: 5px;
+    font-weight: 100;
+}
+
+.userEmail {
+    width: 60%;
+    font-size: 13px;
+}
+
+.userName, .userEmail {
+    text-overflow: ellipsis;
+
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 ul {
@@ -30,13 +90,13 @@ li {
     cursor: pointer;
 }
 
-li .material-icons
-{
-    font-size: 30px;
+li .material-icons {
+    font-size: 25px;
 }
 
 li i {
-    padding: 0.5em;
+    padding: 0.25em 0.25em 0.25em 0;
+    vertical-align: middle;
 }
 
 a {

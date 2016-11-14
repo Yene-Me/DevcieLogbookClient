@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Router} from "@angular/router";
 import {Location} from '@angular/common';
+import {User} from "../auth/user/user";
 import {UserService} from "../auth/user/user.service";
 
 
@@ -18,10 +19,17 @@ import {UserService} from "../auth/user/user.service";
 })
 
 export class SideMenuComponent implements OnInit {
-    userObservable:FirebaseListObservable<any>;
+    cupboardlocation:any;
+    userId:string;
+    user:any;
+    userObservable:FirebaseListObservable < any >;
     isAdmin:boolean;
 
     constructor(public af:AngularFire, private router:Router, private location:Location, private userService:UserService) {
+        this.cupboardlocation = {};
+        this.cupboardlocation.name = "Camden";
+        this.cupboardlocation.image = "../../../../public/images/locations/camden.jpg";
+        this.user = {};
 
     }
 
