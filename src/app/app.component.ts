@@ -5,6 +5,8 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Router} from "@angular/router";
 import {Location} from '@angular/common';
 import {DeviceService} from './devices/device.service';
+import {UserService} from './auth/user/user.service';
+
 
 
 @NgModule({
@@ -14,31 +16,25 @@ import {DeviceService} from './devices/device.service';
 @Component({
     selector: 'my-app',
     templateUrl: './dashboard.html',
-    providers:[DeviceService]
+    providers:[DeviceService,UserService]
 })
 
 export class AppComponent implements OnInit {
     title = 'Device List';
-    isAdmin = false;
     showEdit = false;
-    showAdd = false;
+    showAdd = true;
+    isAdmin = false;
 
-    constructor(public af: AngularFire, private router: Router, private location: Location) {
-        af.auth.subscribe(auth => {
-            //If the user is already logged in, take them away from the login page
-            if (auth && auth.uid) {
+    constructor(public af: AngularFire, private router: Router, private location: Location, userService:UserService) {
 
-                var admin = af.database.object('/admins/' + auth.uid);
-                admin.subscribe((data: any) => {
-                    this.isAdmin = data.isAdmin;
-                });
-
-
-                this.router.navigateByUrl('');
-            }
-        });
+        userService.authUser(this.callBack.bind(this));
     }
 
+    callBack(isUserAdmin:boolean){
+
+        this.isAdmin = isUserAdmin;
+
+    }
     ngOnInit() {
         this.router.events.subscribe((val) => {
             this.processURL();

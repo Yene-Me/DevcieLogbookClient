@@ -50,22 +50,26 @@
                         </thead>
                         <tbody>
 
-                        <tr *ngFor="let item of deviceView | DeviceFilterPipe:filterTxt">
-                            <td (click)="onDeviceInfo(item)">{{item.device_model}}</td>
-                            <td (click)="onDeviceInfo(item)">{{item.device_os}}</td>
-                            <td (click)="onDeviceInfo(item)">{{item.inUseBy}}</td>
-                            <td class="action">
-                                <button md-raised-button type="button" class="logout" (click)="onReturn(item)"
-                                        *ngIf="userId === item.userId" color="primary">Return
-                                </button>
-                                <button md-raised-button type="button" class="logout" (click)="onBorrow(item)"
-                                        *ngIf="!item.userId.length" color="secondary">Borrow
-                                </button>
-                                <button md-raised-button type="button" class="logout" (click)="onNotify(item)"
-                                        *ngIf="item.userId.length && userId !== item.userId" color="secondary">Notify
-                                </button>
-                            </td>
+                        <tr *ngFor="let item of deviceView | DeviceFilterPipe:filterTxt"    >
+                            <ng-container *ngIf="item.status !== 'deactivate' " >
+                                <td (click)="onDeviceInfo(item)">{{item.device_model}} {{item.status}}</td>
+                                <td (click)="onDeviceInfo(item)">{{item.device_os}}</td>
+                                <td (click)="onDeviceInfo(item)">{{item.inUseBy}}</td>
+                                <td class="action">
+                                    <button md-raised-button type="button" class="logout" (click)="onReturn(item)"
+                                            *ngIf="userId === item.userId" color="primary">Return
+                                    </button>
+                                    <button md-raised-button type="button" class="logout" (click)="onBorrow(item)"
+                                            *ngIf="!item.userId.length" color="secondary">Borrow
+                                    </button>
+                                    <button md-raised-button type="button" class="logout" (click)="onNotify(item)"
+                                            *ngIf="item.userId.length && userId !== item.userId" color="secondary">
+                                        Notify
+                                    </button>
+                                </td>
+                                </ng-container>
                         </tr>
+
                         </tbody>
                     </table>
                 </div>

@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Router} from "@angular/router";
 import {Location} from '@angular/common';
+import {UserService} from "../auth/user/user.service";
 
 
 @NgModule({
@@ -17,14 +18,20 @@ import {Location} from '@angular/common';
 })
 
 export class SideMenuComponent implements OnInit {
+    userObservable:FirebaseListObservable<any>;
+    isAdmin:boolean;
 
-
-    constructor(public af: AngularFire, private router: Router, private location: Location) {
+    constructor(public af:AngularFire, private router:Router, private location:Location, private userService:UserService) {
 
     }
 
     ngOnInit() {
+        this.userService.authUser(this.callBack.bind(this));
 
+    }
+
+    callBack(isUserAdmin:boolean) {
+        this.isAdmin = isUserAdmin;
     }
 
     processURL() {
@@ -43,6 +50,18 @@ export class SideMenuComponent implements OnInit {
 
     manage() {
 
+    }
+
+    onYourDevice() {
+
+    }
+
+    onAllDeviceList() {
+        this.router.navigateByUrl('/devices');
+    }
+
+    onAdmin() {
+        this.router.navigateByUrl('/admin');
     }
 
 }

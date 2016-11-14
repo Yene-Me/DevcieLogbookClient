@@ -9,11 +9,11 @@
         </div>
         <hr>
         <ul>
-            <li><i class="material-icons">perm_device_information</i>Device List</li>
+            <li (click)="onAllDeviceList();sidenav.toggle()"><i class="material-icons" >perm_device_information</i>Device List</li>
             <li><i class="material-icons">important_devices</i>Your List</li>
             <hr>
-            <li (click)="sidenav.toggle();manage()" color="secondary"
-                [hidden]="!(isAdmin)">Admin</li>
+            <li (click)="sidenav.toggle();manage(); onAdmin();" color="secondary"
+                [hidden]="!(isAdmin)"> <i class="material-icons">settings</i> Admin</li>
             <hr [hidden]="!(isAdmin)">
             <li (click)="sidenav.toggle();logout()" color="primary"><i class="material-icons">exit_to_app</i>Logout</li>
         </ul>

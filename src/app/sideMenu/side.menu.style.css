@@ -27,6 +27,7 @@ ul {
 
 li {
     list-style: none;
+    cursor: pointer;
 }
 
 li .material-icons
