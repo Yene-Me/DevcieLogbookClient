@@ -1,6 +1,6 @@
 <h1>Admin Panel</h1>
 <div>No Devices:  {{noOfDevices}}</div>
-<div>No Users:  {{noOfDevices}}</div>
+<div>No Users:  {{noOfUsers}}</div>
 
 <md-tab-group>
     <md-tab>
@@ -35,11 +35,11 @@
                         </button>
                     </td>
                     <td>
-                        <button md-raised-button type="button" class="logout" (click)="activate(item)"
+                        <button md-raised-button type="button" class="logout" (click)="activateDevice(item)"
                                 *ngIf="item.status === 'deactivate'" color="primary">Activate
                         </button>
 
-                        <button md-raised-button type="button" class="logout" (click)="deactivate(item)"
+                        <button md-raised-button type="button" class="logout" (click)="deactivateDevice(item)"
                                 *ngIf="item.status !== 'deactivate'" color="secondary">Deactivate
                         </button>
                     </td>
@@ -54,7 +54,33 @@
             All Users
         </template>
         <template md-tab-content>
-            <h1>All User Info</h1>
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>Id</th>
+                    <th class="action">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of allUsers">
+                    <td (click)="onUserInfo(item)">{{item.displayName}}</td>
+                    <td (click)="onUserInfo(item)">{{item.email}}</td>
+                    <td (click)="onUserInfo(item)">{{item.$key}}</td>
+
+                    <td>
+                        <button md-raised-button type="button" class="logout" (click)="activateUser(item)"
+                                *ngIf="item.status === 'deactivate'" color="primary">Activate
+                        </button>
+
+                        <button md-raised-button type="button" class="logout" (click)="deactivateUser(item)"
+                                *ngIf="item.status !== 'deactivate'" color="secondary">Deactivate
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </template>
     </md-tab>
 </md-tab-group>

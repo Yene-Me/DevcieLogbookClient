@@ -31,4 +31,9 @@ export class UserService {
     isUserAdmin():boolean {
         return this.isAdmin
     }
+
+    getUsers():FirebaseListObservable<any[]> {
+        this.users = this.af.database.list('/users');
+        return this.users;
+    }
 }
