@@ -69,6 +69,7 @@ export class DevicesComponent implements OnInit {
                     this.yourDevicesView.push(deviceData[item]);
                 }
             }
+            console.log("this.deviceView", this.deviceView);
         });
     }
 
