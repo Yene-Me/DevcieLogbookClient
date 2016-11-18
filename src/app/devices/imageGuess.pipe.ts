@@ -54,7 +54,7 @@ export class ImageGuessPipe implements PipeTransform {
             }
         }
 
-        return "../../../../public/images/devices/" + image;
+        return "img/devices/" + image;
     }
 
 }
