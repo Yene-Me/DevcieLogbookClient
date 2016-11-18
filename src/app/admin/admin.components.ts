@@ -48,7 +48,6 @@ export class AdminComponent implements OnInit {
         this.currentUsers.subscribe((data:any)=> {
           this.allUsers = data;
             this.noOfUsers = data.length;
-            console.log(this.allUsers);
             
         });
 
