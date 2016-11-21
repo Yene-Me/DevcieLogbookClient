@@ -46,6 +46,7 @@ input.search{
 
 .loading {
   overflow: hidden;
+  padding-top: 5em;
 }
 
 .loading md-progress-circle {
