@@ -47,4 +47,9 @@ export class UserDetailsComponent implements OnInit {
             this.userInfo = userData;
         })
     }
+
+    updateNFC()
+    {
+       console.log(this);
+    }
 }
