@@ -13,7 +13,6 @@ export class UserService {
     constructor(private af:AngularFire, private router:Router) {
 
     }
-
     authUser(isUserAdminCallBack:any):void {
         this.af.auth.subscribe(auth => {
             //If the user is already logged in, take them away from the login page
