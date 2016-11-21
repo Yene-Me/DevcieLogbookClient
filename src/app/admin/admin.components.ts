@@ -71,6 +71,5 @@ export class AdminComponent implements OnInit {
 
     onUserInfo (user:any)
     {
-        console.log("redirect to user details page", user)
     }
 }

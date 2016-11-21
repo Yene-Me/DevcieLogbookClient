@@ -12,7 +12,6 @@ export class SortDevicesPipe implements PipeTransform {
     transform(devices:any):any {
         if(devices)
         {
-            console.log("devices",devices);
             return devices.reverse();
         }
     }

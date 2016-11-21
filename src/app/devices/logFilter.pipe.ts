@@ -11,8 +11,6 @@ import {Injectable, Pipe, PipeTransform} from '@angular/core';
 export class LogFilterPipe implements PipeTransform {
     transform(logs: any[], args: string): any {
 
-        console.log('>>> logs', logs);
-
 
         if(!args)
         {
@@ -23,8 +21,6 @@ export class LogFilterPipe implements PipeTransform {
         {
             var output:any[];
             output = [];
-
-            console.log('>>> logs', logs);
 
             //Loop Though all of the logs
             for (let i = 0; i < logs.length; i++ ){

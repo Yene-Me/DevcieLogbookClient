@@ -11,8 +11,6 @@ import {Device} from "./helpers/device";
  */
 export class ImageGuessPipe implements PipeTransform {
     transform(device:any): string {
-        console.log('device', device);
-
         var image = 'mobile/iphone6.svg';
 
 
