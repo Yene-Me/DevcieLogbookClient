@@ -75,5 +75,5 @@ export class AdminComponent implements OnInit {
     onDeviceInfo(devices:any):void {
         console.log("devices");
     }
-
+    
 }
