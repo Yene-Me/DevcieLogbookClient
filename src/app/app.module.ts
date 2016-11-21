@@ -22,6 +22,7 @@ import {SideMenuComponent} from'./sideMenu/side.menu.component'
 import {AdminComponent} from'./admin/admin.components'
 import {Gravatar} from 'ng2-gravatar-directive';
 
+
 // Must export the config
 export const firebaseConfig = {
     apiKey: "AIzaSyB-5Ix5P6X2_QomeVJ6pXcv6y2kvNcQz8g",
