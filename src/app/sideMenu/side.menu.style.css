@@ -45,13 +45,13 @@ md-sidenav {
 .location .background {
     width: 110%;
     height: 110%;
-    background-image: url("../../../../public/images/locations/camden.jpg");
+    background-image: url("img/locations/camden.jpg");
     background-size: cover;
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
+    -webkit-filter: blur(0.5px);
+    -moz-filter: blur(0.5px);
+    -o-filter: blur(0.5px);
+    -ms-filter: blur(0.5px);
+    filter: blur(0.5px);
 }
 
 .location h1 {
@@ -88,6 +88,8 @@ ul {
 li {
     list-style: none;
     cursor: pointer;
+    font-weight: 600;
+    color: #666666;
 }
 
 li .material-icons {
@@ -95,7 +97,7 @@ li .material-icons {
 }
 
 li i {
-    padding: 0.25em 0.25em 0.25em 0;
+    padding: 0.25em 0.75em 0.25em 0;
     vertical-align: middle;
 }
 
