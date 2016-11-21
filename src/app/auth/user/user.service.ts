@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 export class UserService {
 
     users:FirebaseListObservable<any>;
+    user:FirebaseObjectObservable<any>;
     userObservable:FirebaseListObservable<any>;
     isAdmin:boolean;
 
@@ -35,5 +36,11 @@ export class UserService {
     getUsers():FirebaseListObservable<any[]> {
         this.users = this.af.database.list('/users');
         return this.users;
+    }
+    getUserById(id:string):FirebaseObjectObservable<any>
+    {
+        this.user = this.af.database.object('/users/'+id);
+        
+        return this.user;
     }
 }

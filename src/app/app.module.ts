@@ -21,6 +21,7 @@ import {InfiniteScrollModule} from 'angular2-infinite-scroll';
 import {SideMenuComponent} from'./sideMenu/side.menu.component'
 import {AdminComponent} from'./admin/admin.components'
 import {Gravatar} from 'ng2-gravatar-directive';
+import {UserDetailsComponent} from './users/user-details.component';
 
 
 // Must export the config
@@ -62,7 +63,8 @@ const myFirebaseAuthConfig = {
         LogFilterPipe,
         SideMenuComponent,
         AdminComponent,
-        Gravatar
+        Gravatar,
+        UserDetailsComponent
     ],
     bootstrap: [AppComponent],
     providers: [AuthGuard],

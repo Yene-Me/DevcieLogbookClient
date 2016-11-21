@@ -69,8 +69,11 @@ export class AdminComponent implements OnInit {
         this.currentUsers.update(user, {status: "deactivate"})
     }
 
-    onUserInfo (user:any)
-    {
-        console.log("redirect to user details page", user)
+    onUserInfo(user:any):void {
+        this.router.navigate(['user/details', user.$key]);
     }
+    onDeviceInfo(devices:any):void {
+        console.log("devices");
+    }
+
 }

@@ -7,6 +7,7 @@ import {AuthGuard} from './authGaurd';
 import {RegisterComponent} from "./auth/register/register.component";
 import {DeviceDetailComponent} from "./devices/detailDevice/device-detail.component";
 import {AdminComponent} from "./admin/admin.components";
+import {UserDetailsComponent} from "./users/user-details.component";
 
 const appRoutes:Routes = [
     {
@@ -40,7 +41,12 @@ const appRoutes:Routes = [
         path: 'admin',
         component: AdminComponent,
         canActivate: [AuthGuard]
-    }
+    },
+    {
+        path: 'user/details/:id',
+        component: UserDetailsComponent,
+        canActivate: [AuthGuard]
+    },
 
 ];
 
