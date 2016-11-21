@@ -2,7 +2,7 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {DeviceLog} from '../../deviceRecord/device-log.component';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {User} from '../../auth/user/user'
-import {Router, NavigationExtras} from '@angular/router';
+import {Router, NavigationExtras, ActivatedRoute} from '@angular/router';
 import '../../../../public/css/styles.css';
 import '../../../../public/css/bootstrap.css';
 import {DeviceFilterPipe} from "../filter.pipe";
@@ -23,20 +23,35 @@ export class DevicesComponent implements OnInit {
     yourDevicesView:any;
     dialogRef:MdDialogRef<ErrorDialog>;
     devices:FirebaseListObservable<any[]>;
+    sub: any;
+    selectedIndex: number;
 
     constructor(private af:AngularFire, private router:Router, public dialog:MdDialog,
-                public viewContainerRef:ViewContainerRef, public deviceService:DeviceService) {
+                public viewContainerRef: ViewContainerRef, public deviceService: DeviceService, private route: ActivatedRoute) {
 
         this.devices = this.deviceService.getDevices();
         this.deviceView = [];
         this.yourDevicesView = [];
         this.deviceLog = new DeviceLog(af);
+        this.selectedIndex = 1;
+
 
 
         af.auth.subscribe(auth => {
             this.userId = auth.uid;
             this.init();
         });
+
+        this.sub = this.route.params.subscribe(params => {
+            if (params['tabID'] === "yourDevices") {
+                this.selectedIndex = 0;
+            }
+            else {
+                this.selectedIndex = 1;
+            }
+
+        });
+
     }
 
     ngOnInit():void {

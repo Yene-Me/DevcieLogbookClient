@@ -53,11 +53,11 @@ export class AddDevicesComponent implements OnInit {
 
     onSubmit() {
         this.deviceList.push(this.device);
-        this.router.navigateByUrl('devices');
+        this.router.navigateByUrl('devices/all');
     }
 
     cancel() {
-        this.router.navigateByUrl('devices');
+        this.router.navigateByUrl('devices/all');
     }
 
 

@@ -16,8 +16,12 @@
             </div>
             <hr>
             <ul>
-                <li (click)="sidenav.toggle(); onAllDeviceList()"  ><i class="material-icons" >perm_device_information</i>Device List</li>
-                <li (click)="sidenav.toggle();" ><i class="material-icons">important_devices</i>Your List</li>
+                <li (click)="sidenav.toggle(); onAllDeviceList()"><i class="material-icons">perm_device_information</i>All
+                    Devices
+                </li>
+                <li (click)="sidenav.toggle(); onYourDeviceList()"><i class="material-icons">important_devices</i>Your
+                    Devices
+                </li>
                 <hr>
                 <li (click)="sidenav.toggle();onAdmin()" color="secondary"
                     [hidden]="!(isAdmin)">  <i class="material-icons">settings</i>  Admin

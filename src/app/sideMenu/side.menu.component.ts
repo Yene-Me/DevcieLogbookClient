@@ -65,7 +65,11 @@ export class SideMenuComponent implements OnInit {
     }
 
     onAllDeviceList() {
-        this.router.navigateByUrl('/devices');
+        this.router.navigateByUrl('/devices/all');
+    }
+
+    onYourDeviceList() {
+        this.router.navigateByUrl('/devices/yourDevices');
     }
 
     onAdmin() {

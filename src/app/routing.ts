@@ -12,7 +12,7 @@ import {UserDetailsComponent} from "./users/user-details.component";
 const appRoutes:Routes = [
     {
         path: '',
-        redirectTo: '/devices',
+        redirectTo: '/devices/all',
         pathMatch: 'full'
     },
     {
@@ -23,7 +23,7 @@ const appRoutes:Routes = [
         component: RegisterComponent
     },
     {
-        path: 'devices',
+        path: 'devices/:tabID',
         component: DevicesComponent,
         canActivate: [AuthGuard]
     },
