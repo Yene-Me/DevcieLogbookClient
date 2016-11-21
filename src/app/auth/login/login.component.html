@@ -14,7 +14,9 @@
 
             <div class="buttons">
                 <button md-raised-button type="button"  routerLink="/register" color="secondary" >Register</button>
-                <button md-raised-button type="button"  (click)="login()" color="primary" [disabled]="!loginForm.form.valid">Login</button>
+                <button md-raised-button type="submit" (click)="login()" color="primary"
+                        [disabled]="!loginForm.form.valid">Login
+                </button>
             </div>
         </form>
     </md-card-content>
