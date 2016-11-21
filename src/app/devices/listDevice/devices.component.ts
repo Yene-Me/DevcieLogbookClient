@@ -40,7 +40,7 @@ export class DevicesComponent implements OnInit {
     }
 
     ngOnInit():void {
-
+        this.deviceView = [];
 
     }
 

@@ -60,10 +60,10 @@
                                             *ngIf="userId === item.userId" color="primary">Return
                                     </button>
                                     <button md-raised-button type="button" class="logout" (click)="onBorrow(item)"
-                                            *ngIf="!item.userId.length" color="secondary">Borrow
+                                            *ngIf="!item.userId" color="secondary">Borrow
                                     </button>
                                     <button md-raised-button type="button" class="logout" (click)="onNotify(item)"
-                                            *ngIf="item.userId.length && userId !== item.userId" color="secondary">
+                                            *ngIf="item.userId && userId !== item.userId" color="secondary">
                                         Notify
                                     </button>
                                 </td>

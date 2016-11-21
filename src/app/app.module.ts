@@ -24,11 +24,11 @@ import {Gravatar} from 'ng2-gravatar-directive';
 
 // Must export the config
 export const firebaseConfig = {
-    apiKey: "AIzaSyDzexd0WYSFaGeoJiolu3qNCSBLOjc3k9s",
-    authDomain: "devicecupboard.firebaseapp.com",
-    databaseURL: "https://devicecupboard.firebaseio.com",
-    storageBucket: "devicecupboard.appspot.com",
-    messagingSenderId: "76395876829"
+    apiKey: "AIzaSyB-5Ix5P6X2_QomeVJ6pXcv6y2kvNcQz8g",
+    authDomain: "devicecupboard-886c1.firebaseapp.com",
+    databaseURL: "https://devicecupboard-886c1.firebaseio.com",
+    storageBucket: "devicecupboard-886c1.appspot.com",
+    messagingSenderId: "583616200696"
 };
 
 const myFirebaseAuthConfig = {
