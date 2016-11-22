@@ -1,0 +1,66 @@
+<div class="search-results">
+
+    <!--THE CARD FOR THE DEVICE-->
+    <md-card class="device">
+        <md-card-title-group>
+            <img md-card-sm-image [src]="(deviceView | ImageGuessPipe)">
+            <md-card-title>{{deviceView.device_model}}</md-card-title>
+            <md-card-subtitle>
+                {{deviceView.device_os}} {{deviceView.device_version}}
+            </md-card-subtitle>
+        </md-card-title-group>
+
+    </md-card>
+
+    <md-card class="edit device">
+
+        <form (ngSubmit)="onSubmit()" #deviceForm="ngForm" [hidden]="submitted">
+
+            <md-input class="demo-full-width userAgent" placeholder="User Agent" #ua
+                      [(ngModel)]="deviceView.device_userAgent" name="ua">
+            </md-input>
+
+            <table style="width: 100%" cellspacing="0">
+                <tr>
+                    <td>
+                        <md-input placeholder="Device OS" id="os" required [(ngModel)]="deviceView.device_os"
+                                  name="name"></md-input>
+                    </td>
+                    <td>
+                        <md-input placeholder="OS Version" id="version" required [(ngModel)]="deviceView.device_version"
+                                  name="version"></md-input>
+                    </td>
+                    <td>
+                        <md-input placeholder="Resolution" id="resolution" [(ngModel)]="deviceView.device_resolution"
+                                  name="currentResolution"></md-input>
+                    </td>
+                </tr>
+            </table>
+            <table style="width: 100%" cellspacing="0">
+                <tr>
+                    <td>
+                        <md-input class="demo-full-width" placeholder="Model" id="model" required
+                                  [(ngModel)]="deviceView.device_model" name="model"></md-input>
+                    </td>
+                    <td>
+                        <md-input class="demo-full-width" placeholder="Type" id="type" required
+                                  [(ngModel)]="deviceView.device_type" name="type"></md-input>
+                    </td>
+                    <td>
+                        <md-input class="demo-full-width" placeholder="Vendor" id="vendor" required
+                                  [(ngModel)]="deviceView.device_vendor" name="vendor"></md-input>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="buttons">
+                <button md-raised-button type="button" (click)="done()" color="primary"
+                        [disabled]="!deviceForm.form.valid">Done
+                </button>
+            </div>
+        </form>
+
+
+    </md-card>
+
+</div>

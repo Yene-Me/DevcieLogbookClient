@@ -1,0 +1,49 @@
+.device {
+    margin-bottom: 0;
+    z-index: 2;
+}
+
+.user {
+    background: #673ab7;
+
+    /*Make an overlap look*/
+    margin-top: -10px;
+    padding: 23px 20px 8px 20px;
+    z-index: 1;
+    color: white;
+}
+
+.user a, .user md-card-subtitle {
+    color: white;
+}
+
+.table {
+    margin-top: 1em;
+}
+
+.return, .borrow {
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.user md-card-title, .user md-card-subtitle, .return, .borrow {
+    margin: 0;
+    padding: 0;
+}
+
+.skype {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+}
+
+input {
+    width: 96%;
+    margin: 2%;
+    padding: 0.5em;
+}
+
+.device.edit {
+    margin-top: 30px;
+}
