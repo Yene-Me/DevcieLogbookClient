@@ -39,7 +39,7 @@ md-sidenav {
     height: 150px;
     width: 100%;
     overflow: hidden;
-    text-align: right;
+    text-align: center;
 }
 
 .location .background {
