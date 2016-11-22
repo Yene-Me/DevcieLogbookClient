@@ -39,7 +39,7 @@ export class UserService {
     getUserById(id:string):FirebaseObjectObservable<any>
     {
         this.user = this.af.database.object('/users/'+id);
-        
+
         return this.user;
     }
 }

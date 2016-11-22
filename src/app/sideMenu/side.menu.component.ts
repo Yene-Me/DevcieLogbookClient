@@ -19,13 +19,14 @@ import {UserService} from "../auth/user/user.service";
 })
 
 export class SideMenuComponent implements OnInit {
-    cupboardlocation:any;
-    userId:string;
-    user:any;
-    userObservable:FirebaseListObservable < any >;
-    isAdmin:boolean;
+    cupboardlocation: any;
+    userId: string;
+    user: any;
+    currentUser: any;
+    userObservable: FirebaseListObservable < any >;
+    isAdmin: boolean;
 
-    constructor(public af:AngularFire, private router:Router, private location:Location, private userService:UserService) {
+    constructor(public af: AngularFire, private router: Router, private location: Location, private userService: UserService) {
         this.cupboardlocation = {};
         this.cupboardlocation.name = "Camden";
         this.cupboardlocation.image = "../../../../public/images/locations/camden.jpg";
@@ -36,11 +37,21 @@ export class SideMenuComponent implements OnInit {
     ngOnInit() {
         this.userService.authUser(this.callBack.bind(this));
 
+        //TODO - This is bad, move into a user service
+        this.af.auth.subscribe(auth => {
+            if (auth && auth.uid) {
+                this.currentUser = this.userService.getUserById(auth.uid);
+                this.currentUser.subscribe((userData: any) => {
+                    this.user = userData;
+                })
+            }
+        });
+
+
     }
 
     callBack(isUserAdmin:boolean, userDate:any) {
         this.isAdmin = isUserAdmin;
-        this.user = userDate
     }
 
     processURL() {
@@ -81,8 +92,7 @@ export class SideMenuComponent implements OnInit {
         this.router.navigateByUrl('/add');
     }
 
-    userDetailsPage()
-    {
+    userDetailsPage() {
         console.log(this.user.$key);
         this.router.navigate(['user/details', this.user.$key]);
     }
