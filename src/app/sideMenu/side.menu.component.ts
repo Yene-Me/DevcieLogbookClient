@@ -97,6 +97,10 @@ export class SideMenuComponent implements OnInit {
         this.router.navigate(['user/details', this.user.$key]);
     }
 
+    onStats() {
+        //TODO Show the user a nice stats page
+    }
+
     about() {
         this.router.navigateByUrl('/about');
     }

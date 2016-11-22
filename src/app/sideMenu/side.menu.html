@@ -31,6 +31,9 @@
                 <li (click)="sidenav.toggle();onAdd()" color="secondary"
                     [hidden]="!(isAdmin)"><i class="material-icons">add</i> New Device
                 </li>
+                <li (click)="sidenav.toggle();onStats()" color="secondary"
+                    [hidden]="!(isAdmin)"><i class="material-icons">show_chart</i> Stats
+                </li>
                 <hr [hidden]="!(isAdmin)">
                 <li (click)="sidenav.toggle();about()" color="primary">
                     <i class="material-icons">help_outline</i>
