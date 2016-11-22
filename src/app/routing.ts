@@ -9,12 +9,17 @@ import {DeviceDetailComponent} from "./devices/detailDevice/device-detail.compon
 import {AdminComponent} from "./admin/admin.components";
 import {UserDetailsComponent} from "./users/user-details.component";
 import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
+import {AboutComponent} from "./about/about.components";
 
 const appRoutes:Routes = [
     {
         path: '',
         redirectTo: '/devices/all',
         pathMatch: 'full'
+    },
+    {
+        path: 'about',
+        component: AboutComponent
     },
     {
         path: 'login',

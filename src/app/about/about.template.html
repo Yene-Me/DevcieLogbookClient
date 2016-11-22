@@ -1,0 +1,32 @@
+<md-card>
+    <md-card-content>
+        <md-card-subtitle>
+            <!--TODO - Add some useful blurb about our project-->
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada blandit lorem, non posuere nisl.
+            Proin scelerisque tellus odio, ut sagittis neque rhoncus vel. Donec sit amet ex sed ligula venenatis
+            malesuada. Nulla malesuada tempor lorem in iaculis. Vestibulum ante ipsum primis in faucibus orci luctus et
+            ultrices posuere cubilia Curae; Maecenas eleifend ante eget facilisis dignissim. Nam nec gravida dui. Nunc
+            pretium massa quis lacus pharetra facilisis. Vivamus volutpat dui nisl, quis porttitor tellus condimentum
+            nec.
+        </md-card-subtitle>
+    </md-card-content>
+</md-card>
+
+<a href="https://github.com/Yene-Me/AngularDevice">
+    <md-card>
+        <md-card-header>
+            <md-card-title>VCS Repository</md-card-title>
+            <md-card-subtitle>Yene-Me/AngularDevice</md-card-subtitle>
+        </md-card-header>
+    </md-card>
+</a>
+
+<h4>Attributions</h4>
+<a *ngFor="let imageAttribute of imageAttributions" [href]="imageAttribute.url">
+    <md-card>
+        <md-card-header>
+            <md-card-title>{{imageAttribute.title}}</md-card-title>
+            <md-card-subtitle>{{imageAttribute.name}}</md-card-subtitle>
+        </md-card-header>
+    </md-card>
+</a>

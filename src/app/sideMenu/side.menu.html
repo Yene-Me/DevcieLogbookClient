@@ -24,10 +24,16 @@
                 </li>
                 <hr>
                 <li (click)="sidenav.toggle();onAdmin()" color="secondary"
-                    [hidden]="!(isAdmin)">  <i class="material-icons">settings</i>  Admin
+                    [hidden]="!(isAdmin)"><i class="material-icons">settings</i> Admin
                 </li>
                 <hr [hidden]="!(isAdmin)">
-                <li (click)="sidenav.toggle();logout()" color="primary"><i class="material-icons">exit_to_app</i>Logout
+                <li (click)="sidenav.toggle();about()" color="primary">
+                    <i class="material-icons">help_outline</i>
+                    About
+                </li>
+                <li (click)="sidenav.toggle();logout()" color="primary">
+                    <i class="material-icons">exit_to_app</i>
+                    Logout
                 </li>
             </ul>
         </div>

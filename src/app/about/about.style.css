@@ -1,0 +1,7 @@
+md-card {
+    margin-bottom: 1em;
+}
+
+md-card-header img {
+    border-radius: 0;
+}

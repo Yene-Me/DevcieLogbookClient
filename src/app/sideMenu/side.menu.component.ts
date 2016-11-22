@@ -76,4 +76,8 @@ export class SideMenuComponent implements OnInit {
         this.router.navigateByUrl('/admin');
     }
 
+    about() {
+        this.router.navigateByUrl('/about');
+    }
+
 }
