@@ -1,4 +1,4 @@
-import{Component, OnInit, NgModule, Input, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
+import{Component, OnInit, NgModule, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import {MaterialModule} from '@angular/material';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Router} from "@angular/router";
@@ -6,6 +6,8 @@ import {Location} from '@angular/common';
 import {DeviceService} from '../devices/device.service';
 import {UserService} from  '../auth/user/user.service';
 import {ActivatedRoute} from '@angular/router';
+import {NFCService} from "../utils/nfc/nfc.servcie"
+
 
 
 @NgModule({
@@ -15,8 +17,7 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
     selector: 'user-layout',
     templateUrl: './user.template.html',
-    styleUrls: ['./user.style.css'],
-    inputs: ['nfcId']
+    styleUrls: ['./user.style.css']
 
 })
 
@@ -34,7 +35,8 @@ export class UserDetailsComponent implements OnInit,AfterViewInit {
                 private location:Location,
                 private deviceService:DeviceService,
                 private usersService:UserService,
-                private route:ActivatedRoute) {
+                private route:ActivatedRoute,
+                private nfcService:NFCService) {
 
     }
 
@@ -65,11 +67,12 @@ export class UserDetailsComponent implements OnInit,AfterViewInit {
     onChange(event:any):void {
        
         this.userInfo.nfc = event.srcElement.value;
+        this.nfcService.registerTag(this.userInfo.nfc,  this.userID);
     }
 
-    updateNFC() {
-        this.currentUsers.update({nfc: this.userInfo.nfc});
-        console.log(this.userInfo);
+    unregisterTag() {
+               
+        this.nfcService.unregisterTag( this.userInfo.nfc)
     }
 
 }

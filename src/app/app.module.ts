@@ -25,6 +25,7 @@ import {UserDetailsComponent} from './users/user-details.component';
 import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 
 
+
 // Must export the config
 export const firebaseConfig = {
     apiKey: "AIzaSyB-5Ix5P6X2_QomeVJ6pXcv6y2kvNcQz8g",

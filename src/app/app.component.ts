@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {Location} from '@angular/common';
 import {DeviceService} from './devices/device.service';
 import {UserService} from './auth/user/user.service';
+import {NFCService} from "./utils/nfc/nfc.servcie"
 
 
 
@@ -16,7 +17,7 @@ import {UserService} from './auth/user/user.service';
 @Component({
     selector: 'my-app',
     templateUrl: './dashboard.html',
-    providers:[DeviceService,UserService]
+    providers:[DeviceService,UserService, NFCService]
 })
 
 export class AppComponent implements OnInit {
