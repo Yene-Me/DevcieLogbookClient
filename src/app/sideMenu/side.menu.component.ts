@@ -77,6 +77,10 @@ export class SideMenuComponent implements OnInit {
         this.router.navigateByUrl('/admin');
     }
 
+    onAdd() {
+        this.router.navigateByUrl('/add');
+    }
+
     userDetailsPage()
     {
         console.log(this.user.$key);

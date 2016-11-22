@@ -28,6 +28,9 @@
                 <li (click)="sidenav.toggle();onAdmin()" color="secondary"
                     [hidden]="!(isAdmin)"><i class="material-icons">settings</i> Admin
                 </li>
+                <li (click)="sidenav.toggle();onAdd()" color="secondary"
+                    [hidden]="!(isAdmin)"><i class="material-icons">add</i> New Device
+                </li>
                 <hr [hidden]="!(isAdmin)">
                 <li (click)="sidenav.toggle();about()" color="primary">
                     <i class="material-icons">help_outline</i>
