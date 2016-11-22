@@ -7,15 +7,14 @@
             {{userInfo.email}}
         </md-card-subtitle>
         <md-card-subtitle><span>NFC ID:</span>
-            <input id="nfcid" #hiddenInput1 [(ngModel)]="userInfo.nfc" />
-            <div>{{userInfo.nfc}}</div>
+            <input id="nfcid" #nfcInput [(ngModel)]="userInfo.nfc" />
         </md-card-subtitle>
-        <button  (click)="updateNFC()" md-raised-button type="button"  color="primary" >REG NFC ID</button>
-
+        <div class="buttons">
+            <button md-raised-button type="submit" (click)="updateNFC()" md-raised-button type="button"  color="primary">Add NFC ID </button>
+        </div>
     </md-card-title-group>
 </md-card>
 
-<button onclick="updateNfcInput('Hello Android!')">REG NFC</button>
 
 
 
