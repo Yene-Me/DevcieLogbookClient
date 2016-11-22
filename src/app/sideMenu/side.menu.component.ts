@@ -38,8 +38,9 @@ export class SideMenuComponent implements OnInit {
 
     }
 
-    callBack(isUserAdmin:boolean) {
+    callBack(isUserAdmin:boolean, userDate:any) {
         this.isAdmin = isUserAdmin;
+        this.user = userDate
     }
 
     processURL() {
@@ -74,6 +75,12 @@ export class SideMenuComponent implements OnInit {
 
     onAdmin() {
         this.router.navigateByUrl('/admin');
+    }
+
+    userDetailsPage()
+    {
+        console.log(this.user.$key);
+        this.router.navigate(['user/details', this.user.$key]);
     }
 
     about() {

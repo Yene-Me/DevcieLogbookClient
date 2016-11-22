@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <base href="/">
     <title>PlayTech Device List</title>
     <meta charset="UTF-8">
@@ -24,13 +24,19 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <script type="text/javascript">
-      function showAndroidToast(toast) {
-        Android.showToast(toast);
-      }
+        function showAndroidToast(toast) {
+            Android.showToast(toast);
+        }
+        function updateNfcInput(nfcid) {
+            var ele = document.getElementById("nfcid");
+            ele.value = nfcid;
+            ele.focus();
+            ele.blur();
+        }
     </script>
 
-  </head>
-  <body>
-    <my-app></my-app>
-  </body>
+</head>
+<body>
+<my-app></my-app>
+</body>
 </html>

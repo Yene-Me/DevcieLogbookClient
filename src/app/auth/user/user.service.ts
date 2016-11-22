@@ -21,7 +21,7 @@ export class UserService {
 
                 var admin = this.af.database.object('/admins/' + auth.uid);
                 admin.subscribe((data: any) => {
-                    isUserAdminCallBack(data.isAdmin);
+                    isUserAdminCallBack(data.isAdmin,data);
                 });
                 this.router.navigateByUrl('');
             }
