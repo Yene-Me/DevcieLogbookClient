@@ -1,54 +1,58 @@
 main {
-  padding: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  display: block;
+    padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: block;
 }
 
 @media (max-width: 500px) {
-  .action {
-    display: none;
-  }
+    .action {
+        display: none;
+    }
 }
 
-.noDevices{
-  padding-top: 2em;
-  text-align: center;
+.noDevices {
+    padding-top: 2em;
+    text-align: center;
 }
 
-.yourDevices{
-  display: flex;
-  flex-wrap: wrap;
+.yourDevices {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-md-card.device{
-  flex-grow: 1;
-  flex-basis: 0;
-  max-width: 600px;
-  margin: 1em 1em 1em 0.1em;
-  cursor: pointer;
+md-card.device {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 600px;
+    margin: 1em 1em 1em 0.1em;
+    cursor: pointer;
 }
 
-input.search{
-  width: 96%;
-  margin: 2%;
-  padding: 0.5em;
+input.search {
+    width: 96%;
+    margin: 2%;
+    padding: 0.5em;
 }
 
-.deviceTable .action{
-  width: 120px;
+.deviceTable .action {
+    width: 120px;
 }
 
-.device md-card-title{
-  margin-right: 0.5em;
-  margin-bottom: 0;
+.device md-card-title {
+    margin-right: 0.5em;
+    margin-bottom: 0;
 }
 
 .loading {
-  overflow: hidden;
-  padding-top: 5em;
+    overflow: hidden;
+    padding-top: 5em;
 }
 
 .loading md-progress-circle {
-  width: 100%;
+    width: 100%;
+}
+
+md-card-subtitle, md-card-title {
+    text-align: left;
 }

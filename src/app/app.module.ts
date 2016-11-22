@@ -23,6 +23,7 @@ import {AdminComponent} from'./admin/admin.components'
 import {Gravatar} from 'ng2-gravatar-directive';
 import {UserDetailsComponent} from './users/user-details.component';
 import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
+import {AboutComponent} from "./about/about.components";
 
 
 
@@ -53,6 +54,7 @@ const myFirebaseAuthConfig = {
     ],
     declarations: [
         AppComponent,
+        AboutComponent,
         DeviceDetailComponent,
         EditDeviceComponent,
         DevicesComponent,
