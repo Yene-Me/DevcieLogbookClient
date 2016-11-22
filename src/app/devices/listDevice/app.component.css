@@ -22,6 +22,7 @@ main {
 }
 
 md-card.device {
+    flex: 1 0 auto;
     flex-grow: 1;
     flex-basis: 0;
     max-width: 600px;
@@ -42,6 +43,15 @@ input.search {
 .device md-card-title {
     margin-right: 0.5em;
     margin-bottom: 0;
+
+}
+
+.device md-card-title, .device md-card-subtitle {
+    text-overflow: ellipsis;
+
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .loading {
