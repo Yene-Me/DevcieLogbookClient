@@ -9,7 +9,11 @@
         <md-card-subtitle><span>NFC ID:</span>
             {{userInfo.nfc}}
         </md-card-subtitle>
-        <button  md-raised-button type="button"  color="primary" >REG NFC ID</button>
+        <button  (click)="updateNFC()" md-raised-button type="button"  color="primary" >REG NFC ID</button>
     </md-card-title-group>
 </md-card>
+
+<button onclick="showAndroidToast('Hello Android!')">REG NFC</button>
+
+
 
