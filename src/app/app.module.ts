@@ -22,6 +22,7 @@ import {SideMenuComponent} from'./sideMenu/side.menu.component'
 import {AdminComponent} from'./admin/admin.components'
 import {Gravatar} from 'ng2-gravatar-directive';
 import {UserDetailsComponent} from './users/user-details.component';
+import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 
 
 // Must export the config
@@ -52,6 +53,7 @@ const myFirebaseAuthConfig = {
     declarations: [
         AppComponent,
         DeviceDetailComponent,
+        EditDeviceComponent,
         DevicesComponent,
         LoginComponent,
         RegisterComponent,

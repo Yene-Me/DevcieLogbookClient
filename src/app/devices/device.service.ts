@@ -29,4 +29,19 @@ export class DeviceService {
         this.listObservable = this.af.database.list('/devicesLogs/' + device.$key);
         this.listObservable.push(this.deviceModel);
     }
+
+    updateDevice(device: any, deviceData: any): void {
+        this.devices.update(device,
+            {
+                device_model: deviceData.device_model,
+                device_os: deviceData.device_os,
+                device_resolution: deviceData.device_resolution,
+                device_type: deviceData.device_type,
+                device_userAgent: deviceData.device_userAgent,
+                device_vendor: deviceData.device_vendor,
+                device_version: deviceData.device_version
+            }
+        );
+    }
+
 }

@@ -73,7 +73,7 @@ export class AdminComponent implements OnInit {
         this.router.navigate(['user/details', user.$key]);
     }
     onDeviceInfo(devices:any):void {
-        console.log("devices");
+        this.router.navigate(['devices/edit', devices.$key]);
     }
     
 }

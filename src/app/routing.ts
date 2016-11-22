@@ -8,6 +8,7 @@ import {RegisterComponent} from "./auth/register/register.component";
 import {DeviceDetailComponent} from "./devices/detailDevice/device-detail.component";
 import {AdminComponent} from "./admin/admin.components";
 import {UserDetailsComponent} from "./users/user-details.component";
+import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 
 const appRoutes:Routes = [
     {
@@ -35,6 +36,11 @@ const appRoutes:Routes = [
     {
         path: 'details/:id',
         component: DeviceDetailComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'devices/edit/:id',
+        component: EditDeviceComponent,
         canActivate: [AuthGuard]
     },
     {
