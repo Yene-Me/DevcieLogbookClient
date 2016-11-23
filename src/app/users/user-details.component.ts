@@ -46,19 +46,17 @@ export class UserDetailsComponent implements OnInit,AfterViewInit {
         this.sub = this.route.params.subscribe(params => {
             this.userID = params['id'];
             this.currentUsers = this.usersService.getUserById(this.userID);
-            this.nfcService.getAssociateId(this.userID, this.callBackTags.bind(this));
 
         });
 
         this.currentUsers.subscribe((userData:any) => {
             this.userInfo = userData;
-
+            this.nfcService.getAssociateId(this.userID, this.callBackTags.bind(this));
         })
     }
 
     callBackTags(tag:any) {
         this.userInfo.nfc = tag['$key'];
-
     }
 
     ngAfterViewInit() {
@@ -76,7 +74,7 @@ export class UserDetailsComponent implements OnInit,AfterViewInit {
     onChange(nfcId:any):void {
 
         this.userInfo.nfc = nfcId;
-        this.nfcService.registerTag(this.userInfo.nfc, this.userID);
+        this.nfcService.registerTag(this.userInfo.nfc, this.userID, "user");
     }
 
     unregisterTag() {

@@ -6,6 +6,9 @@
             <md-input class="demo-full-width userAgent" placeholder="User Agent" #ua disabled [(ngModel)]="device.device_userAgent" name="ua">
             </md-input>
 
+            <md-input class="demo-full-width userAgent" placeholder="NFC ID" #ua disabled name="nfc">
+            </md-input>
+
             <table style="width: 100%" cellspacing="0"><tr>
                 <td><md-input placeholder="Device OS" id="os" required [(ngModel)]="device.device_os" name="name"></md-input></td>
                 <td><md-input placeholder="OS Version" id="version" required [(ngModel)]="device.device_version" name="version"></md-input></td>

@@ -8,42 +8,17 @@
             Devices
         </template>
         <template md-tab-content>
-            <table class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Model</th>
-                    <th>OS</th>
-                    <th class="action">&nbsp;</th>
-                    <th class="action">&nbsp;</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of allDeviceList">
-                    <td (click)="onDeviceInfo(item)">{{item.device_model}}</td>
-                    <td (click)="onDeviceInfo(item)">{{item.device_os}}</td>
-                    <td class="action">
-                        <button md-raised-button type="button" class="logout" (click)="onReturn(item)"
-                                *ngIf="userId === item.userId" color="primary">Return
-                        </button>
-                        <button md-raised-button type="button" class="logout" (click)="onBorrow(item)"
-                                *ngIf="!item.userId.length" color="secondary">Borrow
-                        </button>
-                        <button md-raised-button type="button" class="logout" (click)="onNotify(item)"
-                                *ngIf="item.userId.length && userId !== item.userId" color="secondary">Notify
-                        </button>
-                    </td>
-                    <td>
-                        <button md-raised-button type="button" class="logout" (click)="activateDevice(item)"
-                                *ngIf="item.status === 'deactivate'" color="primary">Activate
-                        </button>
+            <md-card class="device" *ngFor="let item of allDeviceList | DeviceFilterPipe:filterTxt"
+                     (click)="onDeviceInfo(item)">
+                <md-card-title-group>
+                    <img md-card-sm-image [src]=" item | ImageGuessPipe">
+                    <md-card-title>{{item.device_model}}</md-card-title>
+                    <md-card-subtitle>
+                        {{item.device_os}} {{item.device_version}}
+                    </md-card-subtitle>
 
-                        <button md-raised-button type="button" class="logout" (click)="deactivateDevice(item)"
-                                *ngIf="item.status !== 'deactivate'" color="secondary">Deactivate
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                </md-card-title-group>
+            </md-card>
         </template>
 
     </md-tab>
@@ -52,31 +27,27 @@
             Users
         </template>
         <template md-tab-content>
-            <table class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th class="action">&nbsp;</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of allUsers">
-                    <td (click)="onUserInfo(item)">{{item.displayName}}</td>
-                    <td (click)="onUserInfo(item)">{{item.email}}</td>
+            <md-card class="device" *ngFor="let item of allUsers | DeviceFilterPipe:filterTxt"
+                     (click)="onUserInfo(item)">
+                <md-card-title-group>
+                   <!-- TODO: need to add user img-->
+                   <!-- <img md-card-sm-image [src]=" item | ImageGuessPipe">-->
+                    <md-card-title>{{item.displayName}}</md-card-title>
+                    <md-card-subtitle>
+                        {{item.email}}
+                    </md-card-subtitle>
+                </md-card-title-group>
+                <div class="buttons">
+                    <button md-raised-button type="button" class="logout" (click)="activateUser(item)"
+                            *ngIf="item.status === 'deactivate'" color="primary">Activate
+                    </button>
 
-                    <td>
-                        <button md-raised-button type="button" class="logout" (click)="activateUser(item)"
-                                *ngIf="item.status === 'deactivate'" color="primary">Activate
-                        </button>
+                    <button md-raised-button type="button" class="logout" (click)="deactivateUser(item)"
+                            *ngIf="item.status !== 'deactivate'" color="secondary">Deactivate
+                    </button>
+                </div>
+            </md-card>
 
-                        <button md-raised-button type="button" class="logout" (click)="deactivateUser(item)"
-                                *ngIf="item.status !== 'deactivate'" color="secondary">Deactivate
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
         </template>
     </md-tab>
 </md-tab-group>

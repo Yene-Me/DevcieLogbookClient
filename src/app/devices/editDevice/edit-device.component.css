@@ -47,3 +47,6 @@ input {
 .device.edit {
     margin-top: 30px;
 }
+#nfcid {
+    display: none;
+}

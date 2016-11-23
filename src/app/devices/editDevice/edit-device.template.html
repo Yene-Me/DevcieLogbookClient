@@ -8,6 +8,11 @@
             <md-card-subtitle>
                 {{deviceView.device_os}} {{deviceView.device_version}}
             </md-card-subtitle>
+            <md-card-subtitle>
+                <i>NFC ID: </i>
+                <div id="nfcid"  #nfcInput ></div>
+                {{deviceView.nfc}}
+            </md-card-subtitle>
         </md-card-title-group>
 
     </md-card>

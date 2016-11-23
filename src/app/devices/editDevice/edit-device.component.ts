@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, AfterViewInit,ElementRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable}     from 'rxjs/Observable';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DeviceService} from '../../devices/device.service';
+import {NFCService} from "../../utils/nfc/nfc.servcie"
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -11,7 +12,7 @@ import 'rxjs/add/operator/map';
     styleUrls: ['./edit-device.component.css'],
     templateUrl: './edit-device.template.html'
 })
-export class EditDeviceComponent implements OnInit {
+export class EditDeviceComponent implements OnInit,AfterViewInit {
     @Input()
     device: FirebaseObjectObservable<any>;
     deviceLog: FirebaseListObservable<any>;
@@ -25,8 +26,14 @@ export class EditDeviceComponent implements OnInit {
     deviceID: string;
     limitToLast: number;
     userId: string;
-
-    constructor(private route: ActivatedRoute, private af: AngularFire, private sanitizer: DomSanitizer, private deviceService: DeviceService, private router: Router) {
+    observer:any;
+    @ViewChild('nfcInput') nfcInput:ElementRef;
+    constructor(private route: ActivatedRoute,
+                private af: AngularFire, 
+                private sanitizer: DomSanitizer,
+                private deviceService: DeviceService, 
+                private router: Router,
+                private nfcService:NFCService) {
 
     }
 
@@ -42,17 +49,40 @@ export class EditDeviceComponent implements OnInit {
 
     }
 
-    getDeviceById(id: string) {
+    ngAfterViewInit() {
+
+        this.observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                this.onChange(mutation.target['innerText'])
+            });
+        });
+
+        let config = {attributes: true, childList: false, characterData: false};
+        this.observer.observe(this.nfcInput.nativeElement, config);
+    }
+
+    onChange(nfcId:any):void {
+
+        this.deviceView['nfc'] = nfcId;
+        this.nfcService.registerTag(nfcId, this.deviceID, "device");
+    }
+
+    getDeviceById(deviceID: string) {
 
         this.af.auth.subscribe(auth => {
             this.userId = auth.uid;
         });
 
-        this.device = this.deviceService.getDeviceByID(id);
+        this.device = this.deviceService.getDeviceByID(deviceID);
         this.device.subscribe((deviceData: any) => {
             this.deviceView = deviceData;
             var user = this.af.database.object('/users/' + this.deviceView['userId']);
         });
+        this.nfcService.getAssociateId(this.deviceID, this.callBackTags.bind(this));
+    }
+
+    callBackTags(tag:any) {
+        this.deviceView['nfc'] = tag['$key'];
     }
 
     done() {
