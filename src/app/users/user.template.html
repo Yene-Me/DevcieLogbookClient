@@ -7,12 +7,12 @@
             {{userInfo.email}}
         </md-card-subtitle>
         <md-card-subtitle><span>NFC ID : </span><b>{{userInfo.nfc}}</b>
-            <input id="nfcid" #nfcInput [(ngModel)]="userInfo.nfc" disabled />
+            <div id="nfcid"  #nfcInput ></div>
         </md-card-subtitle>
     </md-card-title-group>
     <div class="buttons">
         <button md-raised-button type="submit" (click)="registerTag()"  *ngIf="!userInfo.nfc" md-raised-button type="button"  color="primary" disabled>Scan NFC ID </button>
-        <button md-raised-button type="submit" (click)="unregisterTag()" *ngIf="userInfo.nfc" md-raised-button type="button"  color="primary">Remove NFC ID </button>
+
     </div>
 </md-card>
 

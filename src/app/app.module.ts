@@ -26,7 +26,6 @@ import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 import {AboutComponent} from "./about/about.components";
 
 
-
 // Must export the config
 export const firebaseConfig = {
     apiKey: "AIzaSyB-5Ix5P6X2_QomeVJ6pXcv6y2kvNcQz8g",
@@ -69,7 +68,7 @@ const myFirebaseAuthConfig = {
         SideMenuComponent,
         AdminComponent,
         Gravatar,
-        UserDetailsComponent
+        UserDetailsComponent,
     ],
     bootstrap: [AppComponent],
     providers: [AuthGuard],

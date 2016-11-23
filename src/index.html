@@ -29,11 +29,8 @@
         }
         function updateNfcInput(nfcid) {
             var ele = document.getElementById("nfcid");
-            ele.disabled = false;
-            ele.value = nfcid;
-            ele.focus();
-            ele.blur();
-            ele.disabled = true;
+                ele.textContent = nfcid;
+                ele.setAttribute("data-nfc", nfcid);
         }
     </script>
 
