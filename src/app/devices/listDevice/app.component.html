@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="noDevices" [hidden]="yourDevicesView.length">
-                    <img src="../../../../public/images/devices.svg">
+                    <img src="../../../../src/img/devices.svg">
                     <h2>No Devices</h2>
                 </div>
 
@@ -57,7 +57,7 @@
 
                 <div class="noDevices"
                      *ngIf="(deviceView | DeviceFilterPipe: filterTxt).length === 0  && deviceView.length">
-                    <img src="../../../../public/images/devices.svg">
+                    <img src="../../../../src/img/devices.svg">
                     <h2>No Matches</h2>
                 </div>
 

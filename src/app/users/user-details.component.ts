@@ -58,22 +58,19 @@ export class UserDetailsComponent implements OnInit,AfterViewInit {
 
     callBackTags(tag:any) {
         this.userInfo.nfc = tag['$key'];
-       
+
     }
 
     ngAfterViewInit() {
 
         this.observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
-                console.log(mutation.target['innerText']);
                 this.onChange(mutation.target['innerText'])
             });
         });
 
         let config = {attributes: true, childList: false, characterData: false};
-
         this.observer.observe(this.nfcInput.nativeElement, config);
-
     }
 
     onChange(nfcId:any):void {
