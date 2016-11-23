@@ -30,7 +30,10 @@ export class KioskComponent implements OnInit,AfterViewInit {
     userObject:FirebaseObjectObservable<any>;
     userView:any;
     deviceView:any;
-    isDone:boolean
+    isDone:boolean;
+    counter:number;
+    id:any;
+
 
     @ViewChild('nfcInput') nfcInput:ElementRef;
 
@@ -42,6 +45,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
                 private route:ActivatedRoute,
                 private nfcService:NFCService) {
         this.isDone = false;
+
 
     }
 
@@ -85,18 +89,13 @@ export class KioskComponent implements OnInit,AfterViewInit {
         this.deviceObject = this.deviceService.getDeviceByID(deviceId);
         this.deviceId = deviceId;
         this.deviceObject.subscribe((data)=> {
-
-            if (data['status']) {
-
-                this.deviceService.updateDeviceStatus(deviceId, "", "");
-                this.borrowDevice();
-            }
-            else {
-
-                this.borrowDevice();
-            }
+            this.borrowDevice();
             this.deviceView = data;
-        })
+        });
+
+        clearInterval(this.id);
+        this.counter = 10;
+        this.startCountDown();
     }
 
     getUserInfo(userId:string):void {
@@ -110,11 +109,12 @@ export class KioskComponent implements OnInit,AfterViewInit {
 
     borrowDevice() {
         if (this.deviceId && this.userID) {
-
             this.deviceService.updateDeviceStatus(this.deviceId, this.userID, "inUse");
-            this.deviceId = null;
-            this.userID = null;
             this.isDone = true;
+            clearInterval(this.id);
+            setTimeout(()=>{
+                this.resetView();
+            },2000);
         }
     }
 
@@ -126,6 +126,27 @@ export class KioskComponent implements OnInit,AfterViewInit {
 
     ngOnDestroy() {
         this.observer.disconnect()
+    }
+
+    startCountDown() {
+        this.id = setInterval(()=> {
+            this.counter -= 1;
+
+            if (this.counter == 0) {
+                this.deviceService.updateDeviceStatus(this.deviceId, "", "");
+                clearInterval(this.id);
+                this.resetView();
+            }
+        }, 1000)
+    }
+
+    resetView (){
+        this.isDone = false;
+        this.deviceView = null;
+        this.userView = null;
+        this.deviceId = null;
+        this.userID = null;
+        this.counter = 10;
     }
 
 }

@@ -13,6 +13,7 @@
 
 </md-card>-->
 <h1>SCAN NFC TAG:</h1>
+<div  *ngIf="counter < 10" ><i>Return Device in: </i>{{counter}}</div>
 <hr>
 <md-card  *ngIf="userView" class="item" >
     <md-card-title-group>
