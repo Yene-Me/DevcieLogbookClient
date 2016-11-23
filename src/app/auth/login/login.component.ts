@@ -19,6 +19,7 @@ export class LoginComponent {
     password:string;
     message:string;
     dialogRef: MdDialogRef<ErrorDialog>;
+    
 
     constructor(public af: AngularFire,public router: Router, public dialog: MdDialog,
                 public viewContainerRef: ViewContainerRef)

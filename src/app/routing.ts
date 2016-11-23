@@ -10,6 +10,7 @@ import {AdminComponent} from "./admin/admin.components";
 import {UserDetailsComponent} from "./users/user-details.component";
 import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 import {AboutComponent} from "./about/about.components";
+import {KioskComponent} from "./kiosk/kiosk.component";
 
 const appRoutes:Routes = [
     {
@@ -58,8 +59,14 @@ const appRoutes:Routes = [
         component: UserDetailsComponent,
         canActivate: [AuthGuard]
     },
+    {
+        path: 'kiosk',
+        component: KioskComponent,
+        canActivate: [AuthGuard]
+    },
 
 ];
+
 
 export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
 

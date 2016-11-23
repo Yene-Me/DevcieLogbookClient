@@ -1,0 +1,131 @@
+import{Component, OnInit, NgModule, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
+import {MaterialModule} from '@angular/material';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {Router} from "@angular/router";
+import {Location} from '@angular/common';
+import {DeviceService} from '../devices/device.service';
+import {UserService} from  '../auth/user/user.service';
+import {ActivatedRoute} from '@angular/router';
+import {NFCService} from "../utils/nfc/nfc.servcie"
+
+
+@NgModule({
+    imports: [MaterialModule.forRoot()]
+})
+
+@Component({
+    selector: 'kiosk-layout',
+    templateUrl: './kiosk.template.html',
+    styleUrls: ['./kiosk.style.css']
+
+})
+
+export class KioskComponent implements OnInit,AfterViewInit {
+    userID:any;
+    deviceId:any;
+    userInfo:any;
+    observer:any;
+    tagObject:FirebaseObjectObservable<any>;
+    deviceObject:FirebaseObjectObservable<any>;
+    userObject:FirebaseObjectObservable<any>;
+    userView:any;
+    deviceView:any;
+    isDone:boolean
+
+    @ViewChild('nfcInput') nfcInput:ElementRef;
+
+
+    constructor(public af:AngularFire, private router:Router,
+                private location:Location,
+                private deviceService:DeviceService,
+                private usersService:UserService,
+                private route:ActivatedRoute,
+                private nfcService:NFCService) {
+        this.isDone = false;
+
+    }
+
+    ngOnInit() {
+
+
+    }
+
+    callBackTags(tag:any) {
+
+    }
+
+    ngAfterViewInit() {
+
+        this.observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                this.onChange(mutation.target['innerText'])
+            });
+        });
+
+        let config = {attributes: true, childList: false, characterData: false};
+        this.observer.observe(this.nfcInput.nativeElement, config);
+    }
+
+    onChange(nfcId:any):void {
+
+
+        this.tagObject = this.nfcService.getTagByID(nfcId);
+
+        this.tagObject.subscribe((tagItem:any) => {
+            if (tagItem['associateType'] == "device") {
+                this.getDeviceInfo(tagItem['associateId'])
+            } else if (tagItem['associateType'] == "user") {
+                this.getUserInfo(tagItem['associateId'])
+            }
+
+        })
+    }
+
+    getDeviceInfo(deviceId:string):void {
+        this.deviceObject = this.deviceService.getDeviceByID(deviceId);
+        this.deviceId = deviceId;
+        this.deviceObject.subscribe((data)=> {
+
+            if (data['status']) {
+
+                this.deviceService.updateDeviceStatus(deviceId, "", "");
+                this.borrowDevice();
+            }
+            else {
+
+                this.borrowDevice();
+            }
+            this.deviceView = data;
+        })
+    }
+
+    getUserInfo(userId:string):void {
+        this.userObject = this.usersService.getUserById(userId);
+        this.userID = userId;
+        this.userObject.subscribe((data)=> {
+            this.userView = data;
+            this.borrowDevice();
+        })
+    }
+
+    borrowDevice() {
+        if (this.deviceId && this.userID) {
+
+            this.deviceService.updateDeviceStatus(this.deviceId, this.userID, "inUse");
+            this.deviceId = null;
+            this.userID = null;
+            this.isDone = true;
+        }
+    }
+
+    unregisterTag() {
+
+        this.nfcService.unregisterTag(this.userInfo.nfc);
+
+    }
+
+    ngOnDestroy() {
+        this.observer.disconnect()
+    }
+
+}
