@@ -16,17 +16,14 @@ export class DeviceDetailComponent implements OnInit {
     device:FirebaseObjectObservable<any>;
     deviceLog:FirebaseListObservable<any>;
     sub:any;
-    sessionId:Observable<string>;
-    token:Observable<string>;
     deviceView:Array<any>;
     deviceUser:{};
     deviceLogView:any;
-    sortyQuery:Observable<any>;
     deviceID:string;
     limitToLast:number;
-    userId: string;
+    userId:string;
 
-    constructor(private route:ActivatedRoute, private af:AngularFire, private sanitizer:DomSanitizer, private deviceService :DeviceService) {
+    constructor(private route:ActivatedRoute, private af:AngularFire, private sanitizer:DomSanitizer, private deviceService:DeviceService) {
 
     }
 
@@ -55,7 +52,7 @@ export class DeviceDetailComponent implements OnInit {
 
             var user = this.af.database.object('/users/' + this.deviceView['userId']);
 
-            user.subscribe((data: {}) => {
+            user.subscribe((data:{}) => {
                 this.deviceUser = data;
                 this.deviceUser['sip'] = this.sanitizer.bypassSecurityTrustUrl("sip:<" + this.deviceUser['email'] + ">");
             });
@@ -91,10 +88,12 @@ export class DeviceDetailComponent implements OnInit {
     }
 
     return() {
-        this.deviceService.updateDeviceStatus(this.device,"","in");
+
+        this.deviceService.updateDeviceStatus(this.deviceID, "", "Available");
     }
 
     borrow() {
-        this.deviceService.updateDeviceStatus(this.device,this.userId,"out");
+
+        this.deviceService.updateDeviceStatus(this.deviceID, this.userId, "inUse");
     }
 }

@@ -26,7 +26,7 @@ export class DeviceService {
         
         this.devices.update(device, {userId: userId, status:status});
         this.deviceModel = new DeviceLogModel(userId, status, new Date().getTime() + "");
-        this.listObservable = this.af.database.list('/devicesLogs/' + device.$key);
+        this.listObservable = this.af.database.list('/devicesLogs/' + device);
         this.listObservable.push(this.deviceModel);
     }
 
