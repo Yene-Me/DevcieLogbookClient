@@ -21,7 +21,7 @@
                 <li (click)="sidenav.toggle(); onAllDeviceList()"><i class="material-icons">perm_device_information</i>All
                     Devices
                 </li>
-                <li (click)="sidenav.toggle(); onYourDeviceList()"><i class="material-icons">important_devices</i>Your
+                <li (click)="sidenav.toggle(); onYourDeviceList()"><i class="material-icons">important_devices</i>My
                     Devices
                 </li>
                 <hr>
@@ -56,9 +56,10 @@
         <button class="app-icon-button" (click)="sidenav.toggle()">
             <i class="material-icons app-toolbar-menu">menu</i>
         </button>
-        Device Cupboard
+       {{title}}
         <span class="app-toolbar-filler"></span>
     </md-toolbar>
+
 
     <div class="app-content">
         <router-outlet></router-outlet>

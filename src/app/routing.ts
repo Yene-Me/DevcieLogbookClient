@@ -16,7 +16,7 @@ const appRoutes:Routes = [
     {
         path: '',
         redirectTo: '/devices/all',
-        pathMatch: 'full'
+        pathMatch: 'full',
     },
     {
         path: 'about',

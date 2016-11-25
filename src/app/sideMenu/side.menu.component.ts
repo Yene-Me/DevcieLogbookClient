@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {MaterialModule} from '@angular/material';
 import {NgModule} from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
-import {Router} from "@angular/router";
+import {Router, NavigationEnd} from "@angular/router";
 import {Location} from '@angular/common';
 import {User} from "../auth/user/user";
 import {UserService} from "../auth/user/user.service";
+import {ToolBarService} from "../utils/toolbar/toolBar.service";
 
 
 @NgModule({
@@ -19,14 +20,15 @@ import {UserService} from "../auth/user/user.service";
 })
 
 export class SideMenuComponent implements OnInit {
-    cupboardlocation: any;
-    userId: string;
-    user: any;
-    currentUser: any;
-    userObservable: FirebaseListObservable < any >;
-    isAdmin: boolean;
+    cupboardlocation:any;
+    userId:string;
+    user:any;
+    currentUser:any;
+    userObservable:FirebaseListObservable < any >;
+    isAdmin:boolean;
+    title:string
 
-    constructor(public af: AngularFire, private router: Router, private location: Location, private userService: UserService) {
+    constructor(public af:AngularFire, private router:Router, private location:Location, private userService:UserService, private toolBarService:ToolBarService) {
         this.cupboardlocation = {};
         this.cupboardlocation.name = "Camden";
         this.cupboardlocation.image = "../../../../public/images/locations/camden.jpg";
@@ -36,12 +38,17 @@ export class SideMenuComponent implements OnInit {
 
     ngOnInit() {
         this.userService.authUser(this.callBack.bind(this));
-
+        this.router.events.forEach((e)=> {
+            if (e instanceof NavigationEnd) {
+                this.title = this.toolBarService.getTitleByUrl(e.urlAfterRedirects);
+           
+            }
+        });
         //TODO - This is bad, move into a user service
         this.af.auth.subscribe(auth => {
             if (auth && auth.uid) {
                 this.currentUser = this.userService.getUserById(auth.uid);
-                this.currentUser.subscribe((userData: any) => {
+                this.currentUser.subscribe((userData:any) => {
                     this.user = userData;
                 })
             }
@@ -81,7 +88,7 @@ export class SideMenuComponent implements OnInit {
     }
 
     onYourDeviceList() {
-        this.router.navigateByUrl('/devices/yourDevices');
+        this.router.navigateByUrl('/devices/myDevices');
     }
 
     onAdmin() {
@@ -105,7 +112,7 @@ export class SideMenuComponent implements OnInit {
         this.router.navigateByUrl('/about');
     }
 
-    onKiosk(){
+    onKiosk() {
         this.router.navigateByUrl('/kiosk');
     }
 

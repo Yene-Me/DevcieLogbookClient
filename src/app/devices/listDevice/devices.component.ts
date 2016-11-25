@@ -35,8 +35,6 @@ export class DevicesComponent implements OnInit {
         this.deviceLog = new DeviceLog(af);
         this.selectedIndex = 1;
 
-
-
         af.auth.subscribe(auth => {
             this.userId = auth.uid;
             this.init();
