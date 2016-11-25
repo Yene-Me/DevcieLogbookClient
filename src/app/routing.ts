@@ -16,7 +16,7 @@ const appRoutes:Routes = [
     {
         path: '',
         redirectTo: '/devices/all',
-        pathMatch: 'full',
+        pathMatch: 'full'
     },
     {
         path: 'about',
@@ -64,6 +64,11 @@ const appRoutes:Routes = [
         component: KioskComponent,
         canActivate: [AuthGuard]
     },
+    {
+        path: '',
+        redirectTo: '/devices/all',
+        pathMatch: 'full'
+    }
 
 ];
 
