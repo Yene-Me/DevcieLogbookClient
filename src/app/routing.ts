@@ -14,11 +14,6 @@ import {KioskComponent} from "./kiosk/kiosk.component";
 
 const appRoutes:Routes = [
     {
-        path: '',
-        redirectTo: '/devices/all',
-        pathMatch: 'full'
-    },
-    {
         path: 'about',
         component: AboutComponent
     },
@@ -64,6 +59,11 @@ const appRoutes:Routes = [
         component: KioskComponent,
         canActivate: [AuthGuard]
     },
+    {
+        path: '',
+        redirectTo: '/devices/all',
+        pathMatch: 'full'
+    }
 
 ];
 
