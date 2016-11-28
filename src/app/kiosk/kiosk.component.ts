@@ -7,7 +7,7 @@ import {DeviceService} from '../devices/device.service';
 import {UserService} from  '../auth/user/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {NFCService} from "../utils/nfc/nfc.servcie"
-import {KioskWebService} from "../kioskweb/kioskWebService"
+import {KioskWebService} from "../kioskweb/kiosk.web.service"
 
 
 @NgModule({
