@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 
 
 @Injectable()
@@ -23,7 +23,7 @@ export class ToolBarService {
 
     }
 
-    getTitleByUrl(url:string):string {
+    getTitleByUrl(url: string): string {
         if (/^\/details/.test(url)) {
             return this.dict["device"];
         }
@@ -34,7 +34,7 @@ export class ToolBarService {
     }
 
     //TODO:hide and show ToolBar
-    toggleToolBar(url:string) {
+    toggleToolBar(url: string) {
 
     }
 

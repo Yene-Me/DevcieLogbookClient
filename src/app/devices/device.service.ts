@@ -1,33 +1,32 @@
-import {Injectable , OnInit} from '@angular/core';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
-import DeviceLogModel from '../deviceRecord/device-log.model.ts';
+import {Injectable} from "@angular/core";
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
+import DeviceLogModel from "../deviceRecord/device-log.model.ts";
 
 
 @Injectable()
-export class DeviceService{
-    deviceModel:DeviceLogModel;
-    devices:FirebaseListObservable<any>;
-    listObservable:FirebaseListObservable<any>;
+export class DeviceService {
+    deviceModel: DeviceLogModel;
+    devices: FirebaseListObservable<any>;
+    listObservable: FirebaseListObservable<any>;
 
-    constructor(private af:AngularFire) {
+    constructor(private af: AngularFire) {
     }
-    
-    getDevices():FirebaseListObservable<any[]> {
+
+    getDevices(): FirebaseListObservable<any[]> {
         this.devices = this.af.database.list('/devices');
         return this.devices;
     }
 
-    getDeviceByID(id:string):FirebaseObjectObservable<any> {
+    getDeviceByID(id: string): FirebaseObjectObservable<any> {
         return this.af.database.object('/devices/' + id);
     }
 
 
-    updateDeviceStatus(device:any, userId:any, status:string):void {
-        if(!this.devices)
-        {
+    updateDeviceStatus(device: any, userId: any, status: string): void {
+        if (!this.devices) {
             this.devices = this.af.database.list('/devices');
         }
-        this.devices.update(device, {userId: userId, status:status});
+        this.devices.update(device, {userId: userId, status: status});
         this.deviceModel = new DeviceLogModel(userId, status, new Date().getTime() + "");
         this.listObservable = this.af.database.list('/devicesLogs/' + device);
         this.listObservable.push(this.deviceModel);

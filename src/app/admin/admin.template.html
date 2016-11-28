@@ -1,6 +1,6 @@
 <h1>Admin Panel</h1>
-<div>No Devices:  {{noOfDevices}}</div>
-<div>No Users:  {{noOfUsers}}</div>
+<div>No Devices: {{noOfDevices}}</div>
+<div>No Users: {{noOfUsers}}</div>
 
 <md-tab-group>
     <md-tab>
@@ -30,8 +30,8 @@
             <md-card class="device" *ngFor="let item of allUsers | DeviceFilterPipe:filterTxt"
                      (click)="onUserInfo(item)">
                 <md-card-title-group>
-                   <!-- TODO: need to add user img-->
-                   <!-- <img md-card-sm-image [src]=" item | ImageGuessPipe">-->
+                    <!-- TODO: need to add user img-->
+                    <!-- <img md-card-sm-image [src]=" item | ImageGuessPipe">-->
                     <md-card-title>{{item.displayName}}</md-card-title>
                     <md-card-subtitle>
                         {{item.email}}

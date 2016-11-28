@@ -1,4 +1,4 @@
-import {Injectable, Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
     name: 'DeviceFilterPipe'
@@ -10,18 +10,16 @@ import {Injectable, Pipe, PipeTransform} from '@angular/core';
  */
 export class DeviceFilterPipe implements PipeTransform {
     transform(devices: any[], args: string): any {
-        if(!args)
-        {
+        if (!args) {
             //If the argument is empty, then match all the devices
             return devices;
         }
-        else
-        {
-            var output:any[];
+        else {
+            var output: any[];
             output = [];
 
             //Loop Though all of the devices
-            for (let i = 0; i < devices.length; i++ ){
+            for (let i = 0; i < devices.length; i++) {
 
                 let device = devices[i];
 
@@ -31,15 +29,12 @@ export class DeviceFilterPipe implements PipeTransform {
 
                     //We don't want to search all the keys like user agent, as this will give some wired results
                     let searchKeys = ['device_model', 'device_os', 'device_resolution', 'device_type', 'device_vendor', 'device_version', 'inUseBy', 'name', 'device_status'];
-                    if(searchKeys.indexOf(key)!== -1)
-                    {
+                    if (searchKeys.indexOf(key) !== -1) {
 
                         //Ensure we do not add the device to the output twice
-                        if(output.indexOf(device) === -1)
-                        {
+                        if (output.indexOf(device) === -1) {
                             //Check if the key value matches the user input
-                            if(device[key].toLowerCase().indexOf(args.toLowerCase()) !== -1)
-                            {
+                            if (device[key].toLowerCase().indexOf(args.toLowerCase()) !== -1) {
                                 output.push(device);
                             }
                         }

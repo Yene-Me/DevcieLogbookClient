@@ -1,10 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Observable}     from 'rxjs/Observable';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
-import {DomSanitizer} from '@angular/platform-browser';
-import {DeviceService} from '../../devices/device.service';
-import 'rxjs/add/operator/map';
+import {Component, Input, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
+import {DomSanitizer} from "@angular/platform-browser";
+import {DeviceService} from "../../devices/device.service";
+import "rxjs/add/operator/map";
 
 @Component({
     selector: 'my-device-detail',
@@ -13,17 +12,17 @@ import 'rxjs/add/operator/map';
 })
 export class DeviceDetailComponent implements OnInit {
     @Input()
-    device:FirebaseObjectObservable<any>;
-    deviceLog:FirebaseListObservable<any>;
-    sub:any;
-    deviceView:Array<any>;
-    deviceUser:{};
-    deviceLogView:any;
-    deviceID:string;
-    limitToLast:number;
-    userId:string;
+    device: FirebaseObjectObservable<any>;
+    deviceLog: FirebaseListObservable<any>;
+    sub: any;
+    deviceView: Array<any>;
+    deviceUser: {};
+    deviceLogView: any;
+    deviceID: string;
+    limitToLast: number;
+    userId: string;
 
-    constructor(private route:ActivatedRoute, private af:AngularFire, private sanitizer:DomSanitizer, private deviceService:DeviceService) {
+    constructor(private route: ActivatedRoute, private af: AngularFire, private sanitizer: DomSanitizer, private deviceService: DeviceService) {
 
     }
 
@@ -40,19 +39,19 @@ export class DeviceDetailComponent implements OnInit {
 
     }
 
-    getDeviceById(id:string) {
+    getDeviceById(id: string) {
 
         this.af.auth.subscribe(auth => {
             this.userId = auth.uid;
         });
 
         this.device = this.deviceService.getDeviceByID(id);
-        this.device.subscribe((deviceData:any) => {
+        this.device.subscribe((deviceData: any) => {
             this.deviceView = deviceData;
 
             var user = this.af.database.object('/users/' + this.deviceView['userId']);
 
-            user.subscribe((data:{}) => {
+            user.subscribe((data: {}) => {
                 this.deviceUser = data;
                 this.deviceUser['sip'] = this.sanitizer.bypassSecurityTrustUrl("sip:<" + this.deviceUser['email'] + ">");
             });
@@ -69,14 +68,14 @@ export class DeviceDetailComponent implements OnInit {
         });
 
 
-        this.deviceLog.subscribe((deviceLogData:any) => {
+        this.deviceLog.subscribe((deviceLogData: any) => {
             this.deviceLogView = deviceLogData.reverse();
 
 
             for (let i = 0; i < this.deviceLogView.length; i++) {
                 var user = this.af.database.object('/users/' + this.deviceLogView[i].user_id);
 
-                user.subscribe((data:any) => {
+                user.subscribe((data: any) => {
                     this.deviceLogView[i].name = data.displayName;
                 });
             }

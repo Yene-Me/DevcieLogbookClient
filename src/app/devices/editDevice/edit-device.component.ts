@@ -1,11 +1,11 @@
-import {Component, Input, OnInit, ViewChild, AfterViewInit,ElementRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Observable}     from 'rxjs/Observable';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
-import {DomSanitizer} from '@angular/platform-browser';
-import {DeviceService} from '../../devices/device.service';
-import {NFCService} from "../../utils/nfc/nfc.servcie"
-import 'rxjs/add/operator/map';
+import {Component, Input, OnInit, ViewChild, AfterViewInit, ElementRef} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Observable} from "rxjs/Observable";
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
+import {DomSanitizer} from "@angular/platform-browser";
+import {DeviceService} from "../../devices/device.service";
+import {NFCService} from "../../utils/nfc/nfc.servcie";
+import "rxjs/add/operator/map";
 
 @Component({
     selector: 'edit-device',
@@ -26,14 +26,15 @@ export class EditDeviceComponent implements OnInit,AfterViewInit {
     deviceID: string;
     limitToLast: number;
     userId: string;
-    observer:any;
-    @ViewChild('nfcInput') nfcInput:ElementRef;
+    observer: any;
+    @ViewChild('nfcInput') nfcInput: ElementRef;
+
     constructor(private route: ActivatedRoute,
-                private af: AngularFire, 
+                private af: AngularFire,
                 private sanitizer: DomSanitizer,
-                private deviceService: DeviceService, 
+                private deviceService: DeviceService,
                 private router: Router,
-                private nfcService:NFCService) {
+                private nfcService: NFCService) {
 
     }
 
@@ -61,7 +62,7 @@ export class EditDeviceComponent implements OnInit,AfterViewInit {
         this.observer.observe(this.nfcInput.nativeElement, config);
     }
 
-    onChange(nfcId:any):void {
+    onChange(nfcId: any): void {
 
         this.deviceView['nfc'] = nfcId;
         this.nfcService.registerTag(nfcId, this.deviceID, "device");
@@ -81,7 +82,7 @@ export class EditDeviceComponent implements OnInit,AfterViewInit {
         this.nfcService.getAssociateId(this.deviceID, this.callBackTags.bind(this));
     }
 
-    callBackTags(tag:any) {
+    callBackTags(tag: any) {
         this.deviceView['nfc'] = tag['$key'];
     }
 

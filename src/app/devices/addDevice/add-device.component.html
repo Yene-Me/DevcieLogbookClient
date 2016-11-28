@@ -3,23 +3,46 @@
     <md-card-content>
         <form (ngSubmit)="onSubmit()" #deviceForm="ngForm" [hidden]="submitted">
 
-            <md-input class="demo-full-width userAgent" placeholder="User Agent" #ua disabled [(ngModel)]="device.device_userAgent" name="ua">
+            <md-input class="demo-full-width userAgent" placeholder="User Agent" #ua disabled
+                      [(ngModel)]="device.device_userAgent" name="ua">
             </md-input>
 
             <md-input class="demo-full-width userAgent" placeholder="NFC ID" #ua disabled name="nfc">
             </md-input>
 
-            <table style="width: 100%" cellspacing="0"><tr>
-                <td><md-input placeholder="Device OS" id="os" required [(ngModel)]="device.device_os" name="name"></md-input></td>
-                <td><md-input placeholder="OS Version" id="version" required [(ngModel)]="device.device_version" name="version"></md-input></td>
-                <td><md-input placeholder="Resolution" id="resolution" [(ngModel)]="device.device_resolution" name="currentResolution"></md-input></td>
-            </tr></table>
-            <table style="width: 100%" cellspacing="0"><tr>
-                <td><md-input class="demo-full-width" placeholder="Model" id="model" required [(ngModel)]="device.device_model" name="model"></md-input></td>
-                <td><md-input class="demo-full-width" placeholder="Type" id="type" required [(ngModel)]="device.device_type"  name="type"></md-input></td>
-                <td><md-input class="demo-full-width" placeholder="Vendor" id="vendor" required [(ngModel)]="device.device_vendor" name="vendor"></md-input></td>
+            <table style="width: 100%" cellspacing="0">
+                <tr>
+                    <td>
+                        <md-input placeholder="Device OS" id="os" required [(ngModel)]="device.device_os"
+                                  name="name"></md-input>
+                    </td>
+                    <td>
+                        <md-input placeholder="OS Version" id="version" required [(ngModel)]="device.device_version"
+                                  name="version"></md-input>
+                    </td>
+                    <td>
+                        <md-input placeholder="Resolution" id="resolution" [(ngModel)]="device.device_resolution"
+                                  name="currentResolution"></md-input>
+                    </td>
+                </tr>
+            </table>
+            <table style="width: 100%" cellspacing="0">
+                <tr>
+                    <td>
+                        <md-input class="demo-full-width" placeholder="Model" id="model" required
+                                  [(ngModel)]="device.device_model" name="model"></md-input>
+                    </td>
+                    <td>
+                        <md-input class="demo-full-width" placeholder="Type" id="type" required
+                                  [(ngModel)]="device.device_type" name="type"></md-input>
+                    </td>
+                    <td>
+                        <md-input class="demo-full-width" placeholder="Vendor" id="vendor" required
+                                  [(ngModel)]="device.device_vendor" name="vendor"></md-input>
+                    </td>
 
-            </tr></table>
+                </tr>
+            </table>
 
             <div class="buttons">
                 <button md-raised-button type="reset" (click)="cancel()" color="secondary">Cancel</button>

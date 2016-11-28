@@ -1,9 +1,9 @@
-import {ModuleWithProviders}  from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {DevicesComponent}      from './devices/listDevice/devices.component';
-import {LoginComponent}      from './auth/login/login.component';
-import {AddDevicesComponent}      from '../app/devices/addDevice/add_device';
-import {AuthGuard} from './authGaurd';
+import {ModuleWithProviders} from "@angular/core";
+import {Routes, RouterModule} from "@angular/router";
+import {DevicesComponent} from "./devices/listDevice/devices.component";
+import {LoginComponent} from "./auth/login/login.component";
+import {AddDevicesComponent} from "../app/devices/addDevice/add_device";
+import {AuthGuard} from "./authGaurd";
 import {RegisterComponent} from "./auth/register/register.component";
 import {DeviceDetailComponent} from "./devices/detailDevice/device-detail.component";
 import {AdminComponent} from "./admin/admin.components";
@@ -13,7 +13,7 @@ import {AboutComponent} from "./about/about.components";
 import {KioskComponent} from "./kiosk/kiosk.component";
 import {KioskComponentWeb} from "./kioskweb/kiosk.component";
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
     {
         path: '',
         redirectTo: '/devices/all',
@@ -79,6 +79,6 @@ const appRoutes:Routes = [
 ];
 
 
-export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 
 

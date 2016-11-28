@@ -1,5 +1,5 @@
 import {MdDialogRef} from "@angular/material";
-import {Component, ViewContainerRef} from '@angular/core';
+import {Component} from "@angular/core";
 
 @Component({
     styleUrls: ['./dialog.component.less'],
@@ -10,7 +10,8 @@ import {Component, ViewContainerRef} from '@angular/core';
   `
 })
 export class ErrorDialog {
-    error:String;
+    error: String;
 
-    constructor(public dialogRef: MdDialogRef<ErrorDialog>) { }
+    constructor(public dialogRef: MdDialogRef<ErrorDialog>) {
+    }
 }

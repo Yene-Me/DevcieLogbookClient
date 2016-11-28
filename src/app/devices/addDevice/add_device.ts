@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
+import {Device} from "../helpers/device";
+import {DeviceModel} from "./device_model";
+import {FirebaseListObservable} from "angularfire2";
+import {Router} from "@angular/router";
+import {DeviceService} from "../../devices/device.service";
+import "../../../../public/css/styles.css";
+import "../../../../public/css/bootstrap.css";
 //import {DeviceService} from '../helpers/device.service';
-import {Device} from '../helpers/device';
-import {DeviceModel} from './device_model';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
-import {Router} from '@angular/router'
-import {DeviceService} from '../../devices/device.service';
-
-import '../../../../public/css/styles.css';
-import '../../../../public/css/bootstrap.css';
-declare var ClientJS:any;
+declare var ClientJS: any;
 @Component({
     selector: 'add-devices',
     templateUrl: './add-device.component.html',
@@ -16,31 +15,31 @@ declare var ClientJS:any;
     //providers: [DeviceService]
 })
 export class AddDevicesComponent implements OnInit {
-    name:string = "Add New Device";
-    selectDevice:Device;
-    browserData:any;
-    currentResolution:any;
-    device:DeviceModel;
-    submitted:boolean = false;
-    active:boolean = true;
+    name: string = "Add New Device";
+    selectDevice: Device;
+    browserData: any;
+    currentResolution: any;
+    device: DeviceModel;
+    submitted: boolean = false;
+    active: boolean = true;
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.deviceInfo();
     }
 
-    deviceList:FirebaseListObservable<any[]>;
+    deviceList: FirebaseListObservable<any[]>;
 
-    constructor(private router:Router, private deviceService:DeviceService) {
+    constructor(private router: Router, private deviceService: DeviceService) {
         this.deviceList = deviceService.getDevices();
     }
 
-    devices:Device[];
+    devices: Device[];
 
-    onSelect(device:Device):void {
+    onSelect(device: Device): void {
         this.selectDevice = device;
     }
 
-    deviceInfo():void {
+    deviceInfo(): void {
         var client = new ClientJS();
 
         this.browserData = client.getBrowserData();

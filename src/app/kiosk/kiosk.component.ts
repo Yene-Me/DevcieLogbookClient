@@ -1,13 +1,12 @@
-import{Component, OnInit, NgModule, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
-import {MaterialModule} from '@angular/material';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
-import {Router} from "@angular/router";
-import {Location} from '@angular/common';
-import {DeviceService} from '../devices/device.service';
-import {UserService} from  '../auth/user/user.service';
-import {ActivatedRoute} from '@angular/router';
-import {NFCService} from "../utils/nfc/nfc.servcie"
-import {KioskWebService} from "../kioskweb/kiosk.web.service"
+import {Component, OnInit, NgModule, ViewChild, ElementRef, AfterViewInit} from "@angular/core";
+import {MaterialModule} from "@angular/material";
+import {AngularFire, FirebaseObjectObservable} from "angularfire2";
+import {Router, ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
+import {DeviceService} from "../devices/device.service";
+import {UserService} from "../auth/user/user.service";
+import {NFCService} from "../utils/nfc/nfc.servcie";
+import {KioskWebService} from "../kioskweb/kiosk.web.service";
 
 
 @NgModule({
@@ -22,30 +21,30 @@ import {KioskWebService} from "../kioskweb/kiosk.web.service"
 })
 
 export class KioskComponent implements OnInit,AfterViewInit {
-    userID:any;
-    deviceId:any;
-    userInfo:any;
-    observer:any;
-    tagObject:FirebaseObjectObservable<any>;
-    deviceObject:FirebaseObjectObservable<any>;
-    userObject:FirebaseObjectObservable<any>;
-    userView:any;
-    deviceView:any;
-    isDone:boolean;
-    counter:number;
-    id:any;
+    userID: any;
+    deviceId: any;
+    userInfo: any;
+    observer: any;
+    tagObject: FirebaseObjectObservable<any>;
+    deviceObject: FirebaseObjectObservable<any>;
+    userObject: FirebaseObjectObservable<any>;
+    userView: any;
+    deviceView: any;
+    isDone: boolean;
+    counter: number;
+    id: any;
 
 
-    @ViewChild('nfcInput') nfcInput:ElementRef;
+    @ViewChild('nfcInput') nfcInput: ElementRef;
 
 
-    constructor(public af:AngularFire, private router:Router,
-                private location:Location,
-                private deviceService:DeviceService,
-                private usersService:UserService,
-                private route:ActivatedRoute,
-                private nfcService:NFCService,
-                private kioskWebService:KioskWebService) {
+    constructor(public af: AngularFire, private router: Router,
+                private location: Location,
+                private deviceService: DeviceService,
+                private usersService: UserService,
+                private route: ActivatedRoute,
+                private nfcService: NFCService,
+                private kioskWebService: KioskWebService) {
         this.isDone = false;
 
 
@@ -56,7 +55,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
 
     }
 
-    callBackTags(tag:any) {
+    callBackTags(tag: any) {
 
     }
 
@@ -72,12 +71,12 @@ export class KioskComponent implements OnInit,AfterViewInit {
         this.observer.observe(this.nfcInput.nativeElement, config);
     }
 
-    onChange(nfcId:any):void {
+    onChange(nfcId: any): void {
 
 
         this.tagObject = this.nfcService.getTagByID(nfcId);
 
-        this.tagObject.subscribe((tagItem:any) => {
+        this.tagObject.subscribe((tagItem: any) => {
             if (tagItem['associateType'] == "device") {
                 this.getDeviceInfo(tagItem['associateId'])
             } else if (tagItem['associateType'] == "user") {
@@ -87,7 +86,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
         })
     }
 
-    getDeviceInfo(deviceId:string):void {
+    getDeviceInfo(deviceId: string): void {
         this.deviceObject = this.deviceService.getDeviceByID(deviceId);
         this.deviceId = deviceId;
         this.deviceObject.subscribe((data)=> {
@@ -101,7 +100,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
         this.startCountDown();
     }
 
-    getUserInfo(userId:string):void {
+    getUserInfo(userId: string): void {
         this.userObject = this.usersService.getUserById(userId);
         this.userID = userId;
         this.userObject.subscribe((data)=> {
@@ -116,9 +115,9 @@ export class KioskComponent implements OnInit,AfterViewInit {
             this.deviceService.updateDeviceStatus(this.deviceId, this.userID, "inUse");
             this.isDone = true;
             clearInterval(this.id);
-            setTimeout(()=>{
+            setTimeout(()=> {
                 this.resetView();
-            },2000);
+            }, 2000);
         }
     }
 
@@ -144,7 +143,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
         }, 1000)
     }
 
-    resetView (){
+    resetView() {
         this.isDone = false;
         this.deviceView = null;
         this.userView = null;

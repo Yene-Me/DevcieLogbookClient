@@ -1,5 +1,4 @@
-import {Injectable, Pipe, PipeTransform} from '@angular/core';
-import {Device} from "./helpers/device";
+import {Injectable, Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
     name: 'ImageGuessPipe'
@@ -10,7 +9,7 @@ import {Device} from "./helpers/device";
  * Given a device, will return the most appropriate image
  */
 export class ImageGuessPipe implements PipeTransform {
-    transform(device:any): string {
+    transform(device: any): string {
         var image = 'mobile/iphone6.svg';
 
 

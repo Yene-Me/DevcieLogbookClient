@@ -2,16 +2,19 @@
     <md-card-title-group>
 
         <md-card-title><span>Name:</span>
-            {{userInfo.displayName}}</md-card-title>
+            {{userInfo.displayName}}
+        </md-card-title>
         <md-card-subtitle><span>Email:</span>
             {{userInfo.email}}
         </md-card-subtitle>
         <md-card-subtitle><span>NFC ID : </span><b>{{userInfo.nfc}}</b>
-            <div id="nfcid"  #nfcInput ></div>
+            <div id="nfcid" #nfcInput></div>
         </md-card-subtitle>
     </md-card-title-group>
     <div class="buttons">
-        <button md-raised-button type="submit" (click)="registerTag()"  *ngIf="!userInfo.nfc" md-raised-button type="button"  color="primary" disabled>Scan NFC ID </button>
+        <button md-raised-button type="submit" (click)="registerTag()" *ngIf="!userInfo.nfc" md-raised-button
+                type="button" color="primary" disabled>Scan NFC ID
+        </button>
 
     </div>
 </md-card>

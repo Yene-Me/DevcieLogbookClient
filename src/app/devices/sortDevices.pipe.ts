@@ -1,4 +1,4 @@
-import {Injectable, Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
     name: 'SortDevicesPipe'
@@ -9,9 +9,8 @@ import {Injectable, Pipe, PipeTransform} from '@angular/core';
  * Given a array of devices and a search string, will filter to the devices that match the string
  */
 export class SortDevicesPipe implements PipeTransform {
-    transform(devices:any):any {
-        if(devices)
-        {
+    transform(devices: any): any {
+        if (devices) {
             return devices.reverse();
         }
     }

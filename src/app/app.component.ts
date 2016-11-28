@@ -1,15 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {MaterialModule} from '@angular/material';
-import {NgModule} from '@angular/core';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {Component, OnInit, NgModule} from "@angular/core";
+import {MaterialModule} from "@angular/material";
+import {AngularFire} from "angularfire2";
 import {Router} from "@angular/router";
-import {Location} from '@angular/common';
-import {DeviceService} from './devices/device.service';
-import {UserService} from './auth/user/user.service';
-import {NFCService} from "./utils/nfc/nfc.servcie"
-import {ToolBarService} from "./utils/toolbar/toolBar.service"
+import {Location} from "@angular/common";
+import {DeviceService} from "./devices/device.service";
+import {UserService} from "./auth/user/user.service";
+import {NFCService} from "./utils/nfc/nfc.servcie";
+import {ToolBarService} from "./utils/toolbar/toolBar.service";
 import {KioskWebService} from "./kioskweb/kiosk.web.service";
-
 
 
 @NgModule({
@@ -19,7 +17,7 @@ import {KioskWebService} from "./kioskweb/kiosk.web.service";
 @Component({
     selector: 'my-app',
     templateUrl: './dashboard.html',
-    providers:[DeviceService,UserService, NFCService, ToolBarService, KioskWebService]
+    providers: [DeviceService, UserService, NFCService, ToolBarService, KioskWebService]
 })
 
 export class AppComponent implements OnInit {
@@ -28,16 +26,17 @@ export class AppComponent implements OnInit {
     showAdd = true;
     isAdmin = false;
 
-    constructor(public af: AngularFire, private router: Router, private location: Location, userService:UserService) {
+    constructor(public af: AngularFire, private router: Router, private location: Location, userService: UserService) {
 
         userService.authUser(this.callBack.bind(this));
     }
 
-    callBack(isUserAdmin:boolean){
+    callBack(isUserAdmin: boolean) {
 
         this.isAdmin = isUserAdmin;
 
     }
+
     ngOnInit() {
         this.router.events.subscribe((val) => {
             this.processURL();
@@ -59,10 +58,9 @@ export class AppComponent implements OnInit {
     }
 
     logout() {
-       /* this.af.auth.logout();
-        window.location.reload()*/
+        /* this.af.auth.logout();
+         window.location.reload()*/
     }
-    
 
 
     manage() {
