@@ -8,6 +8,7 @@ import {DeviceService} from './devices/device.service';
 import {UserService} from './auth/user/user.service';
 import {NFCService} from "./utils/nfc/nfc.servcie"
 import {ToolBarService} from "./utils/toolbar/toolBar.service"
+import {KioskWebService} from "./kioskweb/kioskWebService";
 
 
 
@@ -18,7 +19,7 @@ import {ToolBarService} from "./utils/toolbar/toolBar.service"
 @Component({
     selector: 'my-app',
     templateUrl: './dashboard.html',
-    providers:[DeviceService,UserService, NFCService, ToolBarService]
+    providers:[DeviceService,UserService, NFCService, ToolBarService, KioskWebService]
 })
 
 export class AppComponent implements OnInit {

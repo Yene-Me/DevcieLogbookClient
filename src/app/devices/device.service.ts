@@ -1,15 +1,18 @@
-import {Injectable} from '@angular/core';
+import {Injectable , OnInit} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import DeviceLogModel from '../deviceRecord/device-log.model.ts';
 
 
 @Injectable()
-export class DeviceService {
+export class DeviceService implements OnInit {
     deviceModel:DeviceLogModel;
     devices:FirebaseListObservable<any>;
     listObservable:FirebaseListObservable<any>;
 
     constructor(private af:AngularFire) {
+    }
+
+    ngOnInit() {
     }
 
     getDevices():FirebaseListObservable<any[]> {
@@ -23,7 +26,10 @@ export class DeviceService {
 
 
     updateDeviceStatus(device:any, userId:any, status:string):void {
-        
+        if(!this.devices)
+        {
+            this.devices = this.af.database.list('/devices');
+        }
         this.devices.update(device, {userId: userId, status:status});
         this.deviceModel = new DeviceLogModel(userId, status, new Date().getTime() + "");
         this.listObservable = this.af.database.list('/devicesLogs/' + device);

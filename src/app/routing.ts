@@ -11,6 +11,7 @@ import {UserDetailsComponent} from "./users/user-details.component";
 import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 import {AboutComponent} from "./about/about.components";
 import {KioskComponent} from "./kiosk/kiosk.component";
+import {KioskComponentWeb} from "./kioskweb/kiosk.component";
 
 const appRoutes:Routes = [
     {
@@ -62,6 +63,11 @@ const appRoutes:Routes = [
     {
         path: 'kiosk',
         component: KioskComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'kioskWeb',
+        component: KioskComponentWeb,
         canActivate: [AuthGuard]
     },
     {

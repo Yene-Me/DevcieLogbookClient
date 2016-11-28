@@ -7,6 +7,7 @@ import {DeviceService} from '../devices/device.service';
 import {UserService} from  '../auth/user/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {NFCService} from "../utils/nfc/nfc.servcie"
+import {KioskWebService} from "../kioskweb/kioskWebService"
 
 
 @NgModule({
@@ -43,7 +44,8 @@ export class KioskComponent implements OnInit,AfterViewInit {
                 private deviceService:DeviceService,
                 private usersService:UserService,
                 private route:ActivatedRoute,
-                private nfcService:NFCService) {
+                private nfcService:NFCService,
+                private kioskWebService:KioskWebService) {
         this.isDone = false;
 
 
@@ -91,6 +93,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
         this.deviceObject.subscribe((data)=> {
             this.borrowDevice();
             this.deviceView = data;
+            this.kioskWebService.currentDeviceUpdate(data.device_model);
         });
 
         clearInterval(this.id);
@@ -103,6 +106,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
         this.userID = userId;
         this.userObject.subscribe((data)=> {
             this.userView = data;
+            this.kioskWebService.currentBorrowerUpdate(data.displayName);
             this.borrowDevice();
         })
     }
@@ -147,6 +151,7 @@ export class KioskComponent implements OnInit,AfterViewInit {
         this.deviceId = null;
         this.userID = null;
         this.counter = 10;
+        this.kioskWebService.reset();
     }
 
 }

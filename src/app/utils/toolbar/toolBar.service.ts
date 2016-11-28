@@ -14,7 +14,8 @@ export class ToolBarService {
         "/kiosk": "Kiosk",
         "/admin": "Admin",
         "user": "My Account",
-        "/add": "Add New Device"
+        "/add": "Add New Device",
+        "/kioskWeb": "Web Kiosk"
 
     };
 

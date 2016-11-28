@@ -116,4 +116,8 @@ export class SideMenuComponent implements OnInit {
         this.router.navigateByUrl('/kiosk');
     }
 
+    onKioskWeb(){
+        this.router.navigateByUrl('/kioskWeb');
+    }
+
 }
