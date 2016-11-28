@@ -4,17 +4,14 @@ import DeviceLogModel from '../deviceRecord/device-log.model.ts';
 
 
 @Injectable()
-export class DeviceService implements OnInit {
+export class DeviceService{
     deviceModel:DeviceLogModel;
     devices:FirebaseListObservable<any>;
     listObservable:FirebaseListObservable<any>;
 
     constructor(private af:AngularFire) {
     }
-
-    ngOnInit() {
-    }
-
+    
     getDevices():FirebaseListObservable<any[]> {
         this.devices = this.af.database.list('/devices');
         return this.devices;
