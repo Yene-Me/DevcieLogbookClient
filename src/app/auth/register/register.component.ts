@@ -11,7 +11,7 @@ import {User} from "../user/user";
 @Component({
     selector: 'register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css']
+    styleUrls: ['./register.component.less']
 })
 
 export class RegisterComponent {

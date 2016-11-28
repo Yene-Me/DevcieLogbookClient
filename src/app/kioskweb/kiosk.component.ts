@@ -10,7 +10,7 @@ import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'ang
 @Component({
     selector: 'kiosk-layout',
     templateUrl: './kiosk.template.html',
-    styleUrls: ['./kiosk.style.css']
+    styleUrls: ['./kiosk.style.less']
 
 })
 

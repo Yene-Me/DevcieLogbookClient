@@ -16,7 +16,7 @@ import {NFCService} from "../utils/nfc/nfc.servcie"
 @Component({
     selector: 'user-layout',
     templateUrl: './user.template.html',
-    styleUrls: ['./user.style.css']
+    styleUrls: ['./user.style.less']
 
 })
 

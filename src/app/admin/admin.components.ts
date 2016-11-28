@@ -15,7 +15,7 @@ import {UserService} from  '../auth/user/user.service';
 @Component({
     selector: 'admin-layout',
     templateUrl: './admin.template.html',
-    styleUrls: ['./admin.style.css'],
+    styleUrls: ['./admin.style.less'],
 })
 
 export class AdminComponent implements OnInit {

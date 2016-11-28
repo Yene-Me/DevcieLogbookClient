@@ -15,7 +15,7 @@ import {UserService} from  '../auth/user/user.service';
 @Component({
     selector: 'about-layout',
     templateUrl: './about.template.html',
-    styleUrls: ['./about.style.css'],
+    styleUrls: ['./about.style.less'],
 })
 
 export class AboutComponent implements OnInit {

@@ -17,7 +17,7 @@ import {KioskWebService} from "../kioskweb/kiosk.web.service"
 @Component({
     selector: 'kiosk-layout',
     templateUrl: './kiosk.template.html',
-    styleUrls: ['./kiosk.style.css']
+    styleUrls: ['./kiosk.style.less']
 
 })
 

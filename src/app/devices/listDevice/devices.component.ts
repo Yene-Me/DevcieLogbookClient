@@ -13,7 +13,7 @@ import {DeviceService} from '../../devices/device.service';
 @Component({
     selector: 'my-devices',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.less']
 })
 export class DevicesComponent implements OnInit {
     name:string = "Camden";

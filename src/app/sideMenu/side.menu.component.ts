@@ -16,7 +16,7 @@ import {ToolBarService} from "../utils/toolbar/toolBar.service";
 @Component({
     selector: 'side-menu-layout',
     templateUrl: './side.menu.html',
-    styleUrls: ['./side.menu.style.css'],
+    styleUrls: ['./side.menu.style.less'],
 })
 
 export class SideMenuComponent implements OnInit {

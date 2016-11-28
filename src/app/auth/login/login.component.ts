@@ -9,7 +9,7 @@ import {ErrorDialog} from "../../utils/dialog/dislog.component";
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.less']
 })
 
 export class LoginComponent {

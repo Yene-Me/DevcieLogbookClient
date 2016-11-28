@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'my-device-detail',
-    styleUrls: ['./device-detail.component.css'],
+    styleUrls: ['./device-detail.component.less'],
     templateUrl: './device-details.template.html'
 })
 export class DeviceDetailComponent implements OnInit {

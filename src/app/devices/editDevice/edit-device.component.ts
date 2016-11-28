@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'edit-device',
-    styleUrls: ['./edit-device.component.css'],
+    styleUrls: ['./edit-device.component.less'],
     templateUrl: './edit-device.template.html'
 })
 export class EditDeviceComponent implements OnInit,AfterViewInit {

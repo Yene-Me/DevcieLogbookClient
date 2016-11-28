@@ -2,7 +2,7 @@ import {MdDialogRef} from "@angular/material";
 import {Component, ViewContainerRef} from '@angular/core';
 
 @Component({
-    styleUrls: ['./dialog.component.css'],
+    styleUrls: ['./dialog.component.less'],
     selector: 'errorDialog',
     template: `
 <p>{{error}}</p>

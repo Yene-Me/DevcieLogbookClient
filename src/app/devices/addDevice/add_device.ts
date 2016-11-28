@@ -12,7 +12,7 @@ declare var ClientJS:any;
 @Component({
     selector: 'add-devices',
     templateUrl: './add-device.component.html',
-    styleUrls: ['./add-device.component.css']
+    styleUrls: ['./add-device.component.less']
     //providers: [DeviceService]
 })
 export class AddDevicesComponent implements OnInit {
