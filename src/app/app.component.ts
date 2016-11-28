@@ -8,7 +8,7 @@ import {DeviceService} from './devices/device.service';
 import {UserService} from './auth/user/user.service';
 import {NFCService} from "./utils/nfc/nfc.servcie"
 import {ToolBarService} from "./utils/toolbar/toolBar.service"
-import {KioskWebService} from "./kioskweb/kioskWebService";
+import {KioskWebService} from "./kioskweb/kiosk.web.service";
 
 
 
