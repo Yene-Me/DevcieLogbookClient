@@ -22,9 +22,6 @@ md-sidenav {
     min-width: 310px;
 }
 
-.draw {
-    padding: 20px;
-}
 
 .userName {
     width: 60%;
@@ -90,6 +87,7 @@ li {
     cursor: pointer;
     font-weight: 600;
     color: #666666;
+    padding: 0 20px;
 }
 
 li .material-icons {
@@ -103,4 +101,8 @@ li i {
 
 a {
     text-decoration: none;
+}
+
+li.active {
+    background-color: #EEEEEE;
 }

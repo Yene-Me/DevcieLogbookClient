@@ -16,32 +16,34 @@
             </div>
             <hr>
             <ul>
-                <li (click)="sidenav.toggle(); userDetailsPage()"> <i class="material-icons">account_circle</i> My Account</li>
+                <li (click)="sidenav.toggle();"><i class="material-icons">account_circle</i> My Account</li>
                 <hr>
-                <li (click)="sidenav.toggle(); onAllDeviceList()"><i class="material-icons">perm_device_information</i>All
+                <li (click)="sidenav.toggle();" routerLink="/devices/all" routerLinkActive="active"><i
+                        class="material-icons">perm_device_information</i>All
                     Devices
                 </li>
-                <li (click)="sidenav.toggle(); onYourDeviceList()"><i class="material-icons">important_devices</i>My
+                <li (click)="sidenav.toggle();" routerLink="/devices/myDevices" routerLinkActive="active"><i
+                        class="material-icons">important_devices</i>My
                     Devices
                 </li>
                 <hr>
-                <li (click)="sidenav.toggle();onAdmin()" color="secondary"
+                <li (click)="sidenav.toggle();" color="secondary" routerLink="/admin" routerLinkActive="active"
                     [hidden]="!(isAdmin)"><i class="material-icons">settings</i> Admin
                 </li>
-                <li (click)="sidenav.toggle();onAdd()" color="secondary"
+                <li (click)="sidenav.toggle();" color="secondary" routerLink="/add" routerLinkActive="active"
                     [hidden]="!(isAdmin)"><i class="material-icons">add</i> New Device
                 </li>
-                <li (click)="sidenav.toggle();onKiosk()" color="secondary"
+                <li (click)="sidenav.toggle();" color="secondary" routerLink="kiosk" routerLinkActive="active"
                     [hidden]="!(isAdmin)"><i class="material-icons">shopping_cart</i>Kiosk
                 </li>
-                <li (click)="sidenav.toggle();onKioskWeb()" color="secondary"
+                <li (click)="sidenav.toggle();" color="secondary" routerLink="kioskWeb" routerLinkActive="active"
                     [hidden]="!(isAdmin)"><i class="material-icons">shopping_cart</i>Kiosk Web
                 </li>
                 <li (click)="sidenav.toggle();onStats()" color="secondary"
                     [hidden]="!(isAdmin)"><i class="material-icons">show_chart</i> Stats
                 </li>
                 <hr [hidden]="!(isAdmin)">
-                <li (click)="sidenav.toggle();about()" color="primary">
+                <li (click)="sidenav.toggle();" color="primary" routerLink="/about" routerLinkActive="active">
                     <i class="material-icons">help_outline</i>
                     About
                 </li>

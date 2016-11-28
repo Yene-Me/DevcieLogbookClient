@@ -74,50 +74,9 @@ export class SideMenuComponent implements OnInit {
         this.location.back();
     }
 
-
-    manage() {
-
-    }
-
-    onYourDevice() {
-
-    }
-
-    onAllDeviceList() {
-        this.router.navigateByUrl('/devices/all');
-    }
-
-    onYourDeviceList() {
-        this.router.navigateByUrl('/devices/myDevices');
-    }
-
-    onAdmin() {
-        this.router.navigateByUrl('/admin');
-    }
-
-    onAdd() {
-        this.router.navigateByUrl('/add');
-    }
-
+    //TODO - active styling on sidebar element
     userDetailsPage() {
         console.log(this.user.$key);
         this.router.navigate(['user/details', this.user.$key]);
     }
-
-    onStats() {
-        //TODO Show the user a nice stats page
-    }
-
-    about() {
-        this.router.navigateByUrl('/about');
-    }
-
-    onKiosk() {
-        this.router.navigateByUrl('/kiosk');
-    }
-
-    onKioskWeb(){
-        this.router.navigateByUrl('/kioskWeb');
-    }
-
 }
