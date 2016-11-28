@@ -1,17 +1,3 @@
-<!--<md-card  *ngIf="userView == null &&  deviceView == null" class="item" >
-    <md-card-title-group>
-
-        <md-card-title><span>Tab device or user ID</span>
-            {{userView.displayName}}</md-card-title>
-        <md-card-subtitle><span>Email:</span>
-            {{userView.email}}
-        </md-card-subtitle>
-        <md-card-subtitle><span></span><b></b>
-
-        </md-card-subtitle>
-    </md-card-title-group>
-
-</md-card>-->
 <h1>SCAN NFC TAG:</h1>
 <div *ngIf="counter < 10"><i>Return Device in: </i>{{counter}}</div>
 <hr>
@@ -28,7 +14,6 @@
 
         </md-card-subtitle>
     </md-card-title-group>
-
 </md-card>
 
 <md-card *ngIf="deviceView" class="item">
@@ -44,7 +29,6 @@
 
         </md-card-subtitle>
     </md-card-title-group>
-
 </md-card>
 
 <md-card *ngIf="isDone" class="item">
@@ -54,7 +38,6 @@
         <md-card-subtitle><span></span><b></b>
         </md-card-subtitle>
     </md-card-title-group>
-
 </md-card>
 
 <div id="nfcid" #nfcInput></div>

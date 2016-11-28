@@ -1,107 +1,104 @@
+md-sidenav-layout {
+  md-sidenav {
+    padding: 0;
+    margin: 0;
+    min-width: 310px;
+  }
 
-.userProfile {
-  height: 80px;
-  padding: 0.2em;
-}
+  .userProfile {
+    height: 80px;
+    padding: 0.2em;
 
-.icon {
-  height: 64px;
-  border: 2px solid;
-  border-color: #673ab7;
-  width: 64px;
-  border-radius: 100%;
-  position: absolute;
-  right: 38px;
-  background-color: ghostwhite;
-  font-size: 60px;
-}
+    .icon {
+      height: 64px;
+      border: 2px solid;
+      border-color: #673ab7;
+      width: 64px;
+      border-radius: 100%;
+      position: absolute;
+      right: 38px;
+      background-color: ghostwhite;
+      font-size: 60px;
+    }
+  }
 
-md-sidenav {
-  padding: 0;
-  margin: 0;
-  min-width: 310px;
-}
+  .userName {
+    width: 60%;
+    font-size: 24px;
+    margin-top: 5px;
+  }
 
-.userName {
-  width: 60%;
-  font-size: 24px;
-  margin-top: 5px;
-}
+  .userEmail {
+    width: 60%;
+    font-size: 13px;
+  }
 
-.location {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  height: 150px;
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-}
+  .userName, .userEmail {
+    text-overflow: ellipsis;
 
-.location .background {
-  width: 110%;
-  height: 110%;
-  background-image: url("img/locations/camden.jpg");
-  background-size: cover;
-  -webkit-filter: blur(0.5px);
-  -moz-filter: blur(0.5px);
-  -o-filter: blur(0.5px);
-  -ms-filter: blur(0.5px);
-  filter: blur(0.5px);
-}
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
-.location h1 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  color: #fff;
-  opacity: 0.87;
-  margin: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  padding: 5px;
-  font-weight: 100;
-}
+  .location {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
 
-.userEmail {
-  width: 60%;
-  font-size: 13px;
-}
+  .location .background {
+    width: 110%;
+    height: 110%;
+    background-image: url("img/locations/camden.jpg");
+    background-size: cover;
+    -webkit-filter: blur(0.5px);
+    -moz-filter: blur(0.5px);
+    -o-filter: blur(0.5px);
+    -ms-filter: blur(0.5px);
+    filter: blur(0.5px);
 
-.userName, .userEmail {
-  text-overflow: ellipsis;
+    h1 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: #fff;
+      opacity: 0.87;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      padding: 5px;
+      font-weight: 100;
+    }
+  }
 
-  /* Required for text-overflow to do anything */
-  white-space: nowrap;
-  overflow: hidden;
-}
+  ul {
+    margin: 0;
+    padding: 0;
 
-ul {
-  margin: 0;
-  padding: 0;
-}
+    li {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: #666666;
+      padding: 0 20px;
 
-li {
-  list-style: none;
-  cursor: pointer;
-  font-weight: 600;
-  color: #666666;
-  padding: 0 20px;
-}
+      .material-icons {
+        font-size: 25px;
+      }
 
-li .material-icons {
-  font-size: 25px;
-}
+      i {
+        padding: 0.25em 0.75em 0.25em 0;
+        vertical-align: middle;
+      }
 
-li i {
-  padding: 0.25em 0.75em 0.25em 0;
-  vertical-align: middle;
-}
-
-a {
-  text-decoration: none;
-}
-
-li.active {
-  background-color: #EEEEEE;
+      &.active {
+        background-color: #EEEEEE;
+      }
+    }
+  }
 }

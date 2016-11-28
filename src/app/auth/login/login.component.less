@@ -1,32 +1,22 @@
-input {
-  text-transform: uppercase;
-}
-
-md-toolbar {
-  margin-bottom: 1em;
-}
-
-md-input {
-  width: 100%;
-}
-
-.userAgent {
-  width: 100%;
-}
-
-.buttons {
-  text-align: right;
-}
-
-md-card {
-  padding: 0;
-}
-
 md-card.login {
+  padding: 0;
   margin: auto;
   max-width: 400px;
-}
 
-md-card-content {
-  padding: 24px;
+  md-toolbar {
+    margin-bottom: 1em;
+  }
+
+  md-card-content {
+    padding: 24px;
+
+    md-input {
+      width: 100%;
+      text-transform: uppercase;
+    }
+
+    .buttons {
+      text-align: right;
+    }
+  }
 }
