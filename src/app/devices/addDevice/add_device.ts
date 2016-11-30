@@ -5,6 +5,7 @@ import {FirebaseListObservable} from "angularfire2";
 import {DeviceService} from "../../devices/device.service";
 import "../../../../public/css/styles.css";
 import "../../../../public/css/bootstrap.css";
+import {Router} from "@angular/router";
 
 declare var ClientJS: any;
 @Component({
@@ -24,7 +25,7 @@ export class AddDevicesComponent implements OnInit {
         this.deviceInfo();
     }
 
-    constructor(private deviceService: DeviceService) {
+    constructor(private router: Router, private deviceService: DeviceService) {
         this.deviceList = deviceService.getDevices();
     }
 
