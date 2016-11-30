@@ -1,8 +1,6 @@
 import {Component, Input, OnInit, ViewChild, AfterViewInit, ElementRef} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Observable} from "rxjs/Observable";
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2";
-import {DomSanitizer} from "@angular/platform-browser";
+import {AngularFire, FirebaseObjectObservable} from "angularfire2";
 import {DeviceService} from "../../devices/device.service";
 import {NFCService} from "../../utils/nfc/nfc.servcie";
 import "rxjs/add/operator/map";
@@ -15,14 +13,10 @@ import "rxjs/add/operator/map";
 export class EditDeviceComponent implements OnInit,AfterViewInit {
     @Input()
     device: FirebaseObjectObservable<any>;
-    deviceLog: FirebaseListObservable<any>;
     sub: any;
-    sessionId: Observable<string>;
-    token: Observable<string>;
     deviceView: Array<any>;
     deviceUser: {};
     deviceLogView: any;
-    sortyQuery: Observable<any>;
     deviceID: string;
     limitToLast: number;
     userId: string;
@@ -31,11 +25,9 @@ export class EditDeviceComponent implements OnInit,AfterViewInit {
 
     constructor(private route: ActivatedRoute,
                 private af: AngularFire,
-                private sanitizer: DomSanitizer,
                 private deviceService: DeviceService,
                 private router: Router,
                 private nfcService: NFCService) {
-
     }
 
     ngOnInit() {

@@ -49,6 +49,10 @@ export class RegisterComponent {
         }
     }
 
+    /**
+     * Ensure that the displayname is of acquit length
+     * @returns {boolean}
+     */
     validateParams(): boolean {
         if (this.displayname.length < 3) {
             this.openDialog("Display Name must be at least 3 Characters");

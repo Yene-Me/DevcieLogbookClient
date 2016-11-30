@@ -6,7 +6,7 @@ import {Injectable, Pipe, PipeTransform} from "@angular/core";
 @Injectable()
 
 /**
- * Given a array of devices and a search string, will filter to the devices that match the string
+ *  Reverses the order of a array of devices
  */
 export class SortDevicesPipe implements PipeTransform {
     transform(devices: any): any {
@@ -14,5 +14,4 @@ export class SortDevicesPipe implements PipeTransform {
             return devices.reverse();
         }
     }
-
 }

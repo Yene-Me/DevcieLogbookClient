@@ -6,7 +6,10 @@ import {Injectable, Pipe, PipeTransform} from "@angular/core";
 @Injectable()
 
 /**
- * Given a device, will return the most appropriate image
+ * Given a device, will return the closest matching icon.
+ * Matches by type -> os -> model
+ * eg mobile -> iOS -> iPhone6
+ * Each stage has an image, that is used if the next stage does not match. EG if there was no image for the iPhone 6, then the image for iOS, mobile would be used.
  */
 export class ImageGuessPipe implements PipeTransform {
     transform(device: any): string {

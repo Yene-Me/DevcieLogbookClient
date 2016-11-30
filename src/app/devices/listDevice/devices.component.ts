@@ -83,47 +83,32 @@ export class DevicesComponent implements OnInit {
         });
     }
 
-    //update device log as return
-    onReturn(device: any): void {
-        this.deviceService.updateDeviceStatus(device, "", "in");
-
-    }
-
-    //update device log as borrowed
-    onBorrow(device: any): void {
-        this.deviceService.updateDeviceStatus(device, this.userId, "out");
-    }
-
+    /**
+     * Navigate to a device info page
+     * @param device
+     */
     onDeviceInfo(device: any): void {
         // Navigate to the login page with extras
         this.router.navigate(['/details', device.$key]);
     }
 
-    onNotify(device: any): void {
-        /*
-         Notification.requestPermission().then(function (result) {
-         if (result === 'denied') {
-         this.openDialog('Permission wasn\'t granted.');
-         return;
-         }
-         if (result === 'default') {
-         this.openDialog('The permission request was dismissed.');
-         return;
-         }
-         this.openDialog('We will let you know when ' + device.model + 'is back in the device cupboard.');
-         //TODO, Notifications
-         }.bind(this));*/
+
+    //TODO Implement functions below here into the view
+
+    /**
+     * Return a device
+     * @param device - The device to return
+     */
+    onReturn(device: any): void {
+        this.deviceService.updateDeviceStatus(device, "", "in");
 
     }
 
     /**
-     * Show the user a dialog
-     * @param errorText
+     * Take ou (Borrow) a device
+     * @param device - The device to borrow
      */
-    openDialog(errorText: String) {
-        let config = new MdDialogConfig();
-        config.viewContainerRef = this.viewContainerRef;
-        this.dialogRef = this.dialog.open(ErrorDialog, config);
-        this.dialogRef.componentInstance.error = errorText;
+    onBorrow(device: any): void {
+        this.deviceService.updateDeviceStatus(device, this.userId, "out");
     }
 }

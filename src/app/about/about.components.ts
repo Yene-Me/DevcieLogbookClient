@@ -1,10 +1,5 @@
-import {Component, OnInit, NgModule} from "@angular/core";
+import {Component, NgModule} from "@angular/core";
 import {MaterialModule} from "@angular/material";
-import {AngularFire} from "angularfire2";
-import {Router} from "@angular/router";
-import {Location} from "@angular/common";
-import {DeviceService} from "../devices/device.service";
-import {UserService} from "../auth/user/user.service";
 
 
 @NgModule({
@@ -17,13 +12,13 @@ import {UserService} from "../auth/user/user.service";
     styleUrls: ['./about.style.less'],
 })
 
-export class AboutComponent implements OnInit {
+/**
+ * WIP - Use to show useful information about our app, including a FAQ, Attributions, and links to the source
+ */
+export class AboutComponent {
     imageAttributions: any;
 
-    constructor(public af: AngularFire, private router: Router,
-                private location: Location,
-                private deviceService: DeviceService,
-                private usersService: UserService) {
+    constructor() {
 
         //TODO - Move this data into its own file
         this.imageAttributions =
@@ -36,11 +31,5 @@ export class AboutComponent implements OnInit {
             ]
 
     }
-
-    ngOnInit() {
-
-
-    }
-
 
 }

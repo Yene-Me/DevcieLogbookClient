@@ -7,6 +7,8 @@ import {Injectable, Pipe, PipeTransform} from "@angular/core";
 
 /**
  * Given a array of devices and a search string, will filter to the devices that match the string
+ * Matching parameter include: 'device_model', 'device_os', 'device_resolution', 'device_type', 'device_vendor', 'device_version', 'inUseBy', 'name', 'device_status'
+ * NOTE: UserAgent is not included as it would return unexpected results, eg a android device might match the string ios;
  */
 export class DeviceFilterPipe implements PipeTransform {
     transform(devices: any[], args: string): any {

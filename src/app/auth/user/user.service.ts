@@ -8,13 +8,16 @@ export class UserService {
 
     users: FirebaseListObservable<any>;
     user: FirebaseObjectObservable<any>;
-    userObservable: FirebaseListObservable<any>;
     isAdmin: boolean;
 
     constructor(private af: AngularFire, private router: Router) {
 
     }
 
+    /**
+     *
+     * @param isUserAdminCallBack
+     */
     authUser(isUserAdminCallBack: any): void {
         this.af.auth.subscribe(auth => {
             //If the user is already logged in, take them away from the login page
@@ -32,15 +35,28 @@ export class UserService {
         });
     }
 
+    /**
+     *
+     * @returns {boolean}
+     */
     isUserAdmin(): boolean {
         return this.isAdmin
     }
 
+    /**
+     *
+     * @returns {FirebaseListObservable<any>}
+     */
     getUsers(): FirebaseListObservable<any[]> {
         this.users = this.af.database.list('/users');
         return this.users;
     }
 
+    /**
+     *
+     * @param id - The ID of the user to get
+     * @returns {FirebaseObjectObservable<any>}
+     */
     getUserById(id: string): FirebaseObjectObservable<any> {
         this.user = this.af.database.object('/users/' + id);
 

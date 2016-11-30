@@ -2,43 +2,36 @@ import {Component, OnInit} from "@angular/core";
 import {Device} from "../helpers/device";
 import {DeviceModel} from "./device_model";
 import {FirebaseListObservable} from "angularfire2";
-import {Router} from "@angular/router";
 import {DeviceService} from "../../devices/device.service";
 import "../../../../public/css/styles.css";
 import "../../../../public/css/bootstrap.css";
-//import {DeviceService} from '../helpers/device.service';
+
 declare var ClientJS: any;
 @Component({
     selector: 'add-devices',
     templateUrl: './add-device.component.html',
     styleUrls: ['./add-device.component.less']
-    //providers: [DeviceService]
 })
 export class AddDevicesComponent implements OnInit {
     name: string = "Add New Device";
-    selectDevice: Device;
     browserData: any;
     currentResolution: any;
     device: DeviceModel;
-    submitted: boolean = false;
-    active: boolean = true;
+    deviceList: FirebaseListObservable<any[]>;
+    devices: Device[];
 
     ngOnInit(): void {
         this.deviceInfo();
     }
 
-    deviceList: FirebaseListObservable<any[]>;
-
-    constructor(private router: Router, private deviceService: DeviceService) {
+    constructor(private deviceService: DeviceService) {
         this.deviceList = deviceService.getDevices();
     }
 
-    devices: Device[];
 
-    onSelect(device: Device): void {
-        this.selectDevice = device;
-    }
-
+    /**
+     * Pre populate any fields we know using client js library. Magic :)
+     */
     deviceInfo(): void {
         var client = new ClientJS();
 
@@ -50,14 +43,20 @@ export class AddDevicesComponent implements OnInit {
 
     }
 
+    /**
+     * Adds the current device to the list
+     * TODO - Check that all teh params are valid, this will also happen server side
+     */
     onSubmit() {
         this.deviceList.push(this.device);
         this.router.navigateByUrl('devices/all');
     }
 
+    /**
+     * Navigates back to the home page
+     * TODO - Navigate to back one page instead
+     */
     cancel() {
         this.router.navigateByUrl('devices/all');
     }
-
-
 }

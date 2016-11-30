@@ -6,7 +6,8 @@ import {Injectable, Pipe, PipeTransform} from "@angular/core";
 @Injectable()
 
 /**
- * Given a array of devices and a search string, will filter to the devices that match the string
+ * Given a array of device logs and a search string, will filter to the logs that match the string
+ * Matching parameters include ['device_model', 'device_os', 'device_resolution', 'device_type', 'device_vendor', 'device_version', 'inUseBy']
  */
 export class LogFilterPipe implements PipeTransform {
     transform(logs: any[], args: string): any {

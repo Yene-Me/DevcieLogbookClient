@@ -2,7 +2,6 @@ import {Component, OnInit, NgModule} from "@angular/core";
 import {MaterialModule} from "@angular/material";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 import {Router} from "@angular/router";
-import {Location} from "@angular/common";
 import {DeviceService} from "../devices/device.service";
 import {UserService} from "../auth/user/user.service";
 
@@ -17,8 +16,10 @@ import {UserService} from "../auth/user/user.service";
     styleUrls: ['./admin.style.less'],
 })
 
+/**
+ * Allows for device and use management
+ */
 export class AdminComponent implements OnInit {
-    tiles: any[];
     supportedDevice: FirebaseListObservable<any>;
     currentUsers: FirebaseListObservable<any>;
     noOfDevices: number;
@@ -27,10 +28,8 @@ export class AdminComponent implements OnInit {
     noOfUsers: number;
 
     constructor(public af: AngularFire, private router: Router,
-                private location: Location,
                 private deviceService: DeviceService,
                 private usersService: UserService) {
-
     }
 
     ngOnInit() {
@@ -52,28 +51,52 @@ export class AdminComponent implements OnInit {
 
     }
 
+    /**
+     *
+     * @param device - The device to deactivate
+     */
     deactivateDevice(device: any) {
         this.supportedDevice.update(device, {status: "deactivate"})
     }
 
+    /**
+     *
+     * @param device - The device to activate
+     */
     activateDevice(device: any) {
         this.supportedDevice.update(device, {status: ""})
     }
 
+    /**
+     *
+     * @param user - The user to activate
+     */
     activateUser(user: any) {
         this.currentUsers.update(user, {status: ""})
     }
 
+    /**
+     *
+     * @param user - The user to deactivate
+     */
     deactivateUser(user: any) {
         this.currentUsers.update(user, {status: "deactivate"})
     }
 
+    /**
+     * Navigates to a user detail page
+     * @param user - The user to navigate to
+     */
     onUserInfo(user: any): void {
         this.router.navigate(['user/details', user.$key]);
     }
 
-    onDeviceInfo(devices: any): void {
-        this.router.navigate(['devices/edit', devices.$key]);
+    /**
+     *  Navigates to a device detail page
+     * @param device - The device to navigate to
+     */
+    onDeviceInfo(device: any): void {
+        this.router.navigate(['devices/edit', device.$key]);
     }
 
 }

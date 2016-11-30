@@ -26,6 +26,9 @@ export class DeviceDetailComponent implements OnInit {
 
     }
 
+    /**
+     * Setup
+     */
     ngOnInit() {
         this.deviceView = [];
         this.deviceUser = {};
@@ -39,6 +42,10 @@ export class DeviceDetailComponent implements OnInit {
 
     }
 
+    /**
+     * Gets the current device, and any the current user if there is one
+     * @param id
+     */
     getDeviceById(id: string) {
 
         this.af.auth.subscribe(auth => {
@@ -59,6 +66,11 @@ export class DeviceDetailComponent implements OnInit {
         });
     }
 
+    /**
+     * Get the logs for the current devices.
+     * Initially limited to 20 logs
+     * When the page is scrolled past a certain point, this is used to load another 20 device logs if we have them
+     */
     getDeviceLogById() {
         this.limitToLast += 20;
         this.deviceLog = this.af.database.list('/devicesLogs/' + this.deviceID, {
@@ -82,17 +94,17 @@ export class DeviceDetailComponent implements OnInit {
         });
     }
 
-    onScroll() {
-        this.getDeviceLogById();
-    }
-
+    /**
+     * Return the current device
+     */
     return() {
-
         this.deviceService.updateDeviceStatus(this.deviceID, "", "Available");
     }
 
+    /**
+     * Take out the current device
+     */
     borrow() {
-
         this.deviceService.updateDeviceStatus(this.deviceID, this.userId, "inUse");
     }
 }
