@@ -32,9 +32,15 @@
     </md-card>
 
     <!-- SHOWN IF THE DEVICE IS OUT, AND YOU ARE THE USER-->
-    <md-card class="user" *ngIf="deviceView.userId == userId" (click)="return();">
+    <md-card class="user" *ngIf="deviceView.userId == userId" (click)="return(deviceView);">
         <md-card-title-group>
             <p class="return">Return</p>
+        </md-card-title-group>
+    </md-card>
+    <br>
+    <md-card class="user" *ngIf="deviceView.userId !== userId && deviceView.userId.toString().length != 0" (click)="onNotify(deviceView);">
+        <md-card-title-group>
+            <p class="return">Get Notification</p>
         </md-card-title-group>
     </md-card>
 

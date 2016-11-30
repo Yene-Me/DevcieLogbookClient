@@ -49,6 +49,13 @@
                             <md-card-subtitle>
                                 {{item.device_os}} {{item.device_version}}
                             </md-card-subtitle>
+                            <md-card-subtitle *ngIf="item.inUseBy">
+                                @ <i>{{item.inUseBy}}</i>
+                            </md-card-subtitle>
+
+                            <md-card-subtitle *ngIf="!item.inUseBy">
+                               <b>Available</b>
+                            </md-card-subtitle>
 
                         </md-card-title-group>
                     </md-card>
