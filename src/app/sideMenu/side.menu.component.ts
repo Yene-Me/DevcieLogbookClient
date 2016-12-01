@@ -1,6 +1,6 @@
 import {Component, OnInit, NgModule} from "@angular/core";
 import {MaterialModule} from "@angular/material";
-import {AngularFire, FirebaseListObservable} from "angularfire2";
+import {AngularFire} from "angularfire2";
 import {Router, NavigationEnd} from "@angular/router";
 import {Location} from "@angular/common";
 import {UserService} from "../auth/user/user.service";
@@ -22,9 +22,8 @@ export class SideMenuComponent implements OnInit {
     userId: string;
     user: any;
     currentUser: any;
-    userObservable: FirebaseListObservable < any >;
     isAdmin: boolean;
-    title: string
+    title: string;
 
     constructor(public af: AngularFire, private router: Router, private location: Location, private userService: UserService, private toolBarService: ToolBarService) {
         this.cupboardlocation = {};
@@ -55,24 +54,35 @@ export class SideMenuComponent implements OnInit {
 
     }
 
+    /**
+     *
+     * @param isUserAdmin
+     * @param userDate
+     */
     callBack(isUserAdmin: boolean, userDate: any) {
         this.isAdmin = isUserAdmin;
     }
 
-    processURL() {
-
-    }
-
+    /**
+     * Logs the user out;
+     * TODO fix a bug where one android it will push you out of the native application
+     */
     logout() {
         this.af.auth.logout();
         window.location.reload()
     }
 
+
+    /**
+     * Got to the previous page
+     */
     back() {
         this.location.back();
     }
 
-    //TODO - active styling on sidebar element
+    /**
+     * GOTO the user details page
+     */
     userDetailsPage() {
         console.log(this.user.$key);
         this.router.navigate(['user/details', this.user.$key]);
