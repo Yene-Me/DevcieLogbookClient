@@ -1,9 +1,7 @@
 import {Component, OnInit, NgModule, ViewChild, ElementRef, AfterViewInit} from "@angular/core";
 import {MaterialModule} from "@angular/material";
-import {AngularFire, FirebaseObjectObservable} from "angularfire2";
-import {Router, ActivatedRoute} from "@angular/router";
-import {Location} from "@angular/common";
-import {DeviceService} from "../devices/device.service";
+import {AngularFire} from "angularfire2";
+import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../auth/user/user.service";
 import {NFCService} from "../utils/nfc/nfc.servcie";
 
@@ -26,14 +24,11 @@ export class UserDetailsComponent implements OnInit,AfterViewInit {
     currentUsers: any;
     userInfo: any;
     observer: any;
-    userTag: FirebaseObjectObservable<any>;
 
     @ViewChild('nfcInput') nfcInput: ElementRef;
 
 
-    constructor(public af: AngularFire, private router: Router,
-                private location: Location,
-                private deviceService: DeviceService,
+    constructor(public af: AngularFire,
                 private usersService: UserService,
                 private route: ActivatedRoute,
                 private nfcService: NFCService) {
