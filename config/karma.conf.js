@@ -4,14 +4,14 @@ module.exports = function (config) {
   var _config = {
     basePath: '',
 
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'browserify'],
 
     files: [
-      {pattern: './config/karma-test-shim.js', watched: false}
+      {pattern: './karma-test-shim.js', watched: false}
     ],
 
     preprocessors: {
-      './config/karma-test-shim.js': ['webpack', 'sourcemap']
+      '../config/karma-test-shim.js': [ 'webpack','sourcemap' ]
     },
 
     webpack: webpackConfig,
@@ -21,16 +21,29 @@ module.exports = function (config) {
     },
 
     webpackServer: {
-      noInfo: true
+      noInfo: false
     },
+
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
+      'karma-jasmine',
+      'karma-requirejs',
+      'karma-webpack',
+      'karma-browserify',
+      'karma-sourcemap-loader',
+      'karma-commonjs-require'
+     
+    ],
 
     reporters: ['progress'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: false,
-    browsers: ['PhantomJS'],
-    singleRun: true
+    logLevel: config.LOG_DEBUG,
+    autoWatch: true,
+    //browsers: ['Chrome'],
+    singleRun: false
   };
 
   config.set(_config);
