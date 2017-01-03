@@ -1,4 +1,4 @@
-import {DeviceLog} from "./device-log";
+//import {DeviceLog} from "./device-log";
 
 
 export class DeviceLogView {
