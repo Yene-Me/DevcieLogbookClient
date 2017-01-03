@@ -42,6 +42,9 @@
                 <li (click)="sidenav.toggle();onStats()" color="secondary"
                     [hidden]="!(isAdmin)"><i class="material-icons">show_chart</i> Stats
                 </li>
+                <li (click)="sidenav.toggle();onSupport()" color="secondary"
+                    [hidden]="!(isAdmin)"><i class="material-icons">thumb_up</i> Device Support
+                </li>
                 <hr [hidden]="!(isAdmin)">
                 <li (click)="sidenav.toggle();" color="primary" routerLink="/about" routerLinkActive="active">
                     <i class="material-icons">help_outline</i>
