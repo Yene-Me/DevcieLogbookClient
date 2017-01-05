@@ -9,13 +9,16 @@ export class AuthGuard implements CanActivate {
     constructor(private auth: FirebaseAuth, private router: Router) {
     }
 
-    canActivate(): Observable<boolean> {
-        return this.auth.take(1)
-            .map((authState: FirebaseAuthState) => !!authState)
-            .do(authenticated => {
-                if (!authenticated) {
-                    this.router.navigate(['/login']);
-                }
-            });
+    canActivate(): any {
+      
+        this.auth.subscribe((data:any) => {
+
+            if(!data)
+            {
+                this.router.navigate(['/login']);
+                return false;
+            }
+        });
+        return true;
     }
 }

@@ -75,9 +75,10 @@ export class DevicesComponent implements OnInit {
                     deviceData[item].inUseBy = "";
                 }
                 this.deviceView.push(deviceData[item]);
-
                 if (this.userId === deviceData[item].userId) {
                     this.yourDevicesView.push(deviceData[item]);
+
+
                 }
             }
         });

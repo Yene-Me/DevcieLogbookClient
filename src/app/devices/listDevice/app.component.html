@@ -1,15 +1,8 @@
 <main>
-
-    <!--TODO: IF you have checked out devices, then set that tab to be active by default, else set the full device list-->
-    <md-tab-group [selectedIndex]="selectedIndex">
-        <md-tab>
-            <template md-tab-label>
-                Your Devices
-            </template>
-            <template md-tab-content>
-
+    <md-tab-group>
+        <md-tab label="Overview">
+            <md-card>
                 <div class="yourDevices">
-
                     <md-card class="device" *ngFor="let item of yourDevicesView" (click)="onDeviceInfo(item)">
                         <md-card-title-group>
                             <img md-card-sm-image [src]=" item | ImageGuessPipe">
@@ -21,57 +14,31 @@
                         </md-card-title-group>
                     </md-card>
                 </div>
-
                 <div class="noDevices" [hidden]="yourDevicesView.length">
                     <img src="../../../../src/img/devices.svg">
                     <h2>No Devices</h2>
                 </div>
-
-            </template>
+            </md-card>
         </md-tab>
+        <md-tab label="All Devices">
+            <md-card class="device" *ngFor="let item of deviceView | DeviceFilterPipe:filterTxt"
+                     (click)="onDeviceInfo(item)">
+                <md-card-title-group>
+                    <img md-card-sm-image [src]=" item | ImageGuessPipe">
+                    <md-card-title>{{item.device_model}}</md-card-title>
+                    <md-card-subtitle>
+                        {{item.device_os}} {{item.device_version}}
+                    </md-card-subtitle>
+                    <md-card-subtitle *ngIf="item.inUseBy">
+                        @ <i>{{item.inUseBy}}</i>
+                    </md-card-subtitle>
 
-        <md-tab>
-            <template md-tab-label>
-                All ({{deviceView.length}})
-            </template>
-            <template md-tab-content>
+                    <md-card-subtitle *ngIf="!item.inUseBy">
+                        <b>Available</b>
+                    </md-card-subtitle>
 
-                <input class="search" *ngIf="deviceView.length" placeholder="Search" id="filter" required
-                       [(ngModel)]="filterTxt" name="filter"/>
-                <div class="yourDevices" *ngIf="(deviceView | DeviceFilterPipe: filterTxt).length">
-
-                    <!--TODo, Would be nice to have a  quick visual was of seeing if a device is in use-->
-                    <md-card class="device" *ngFor="let item of deviceView | DeviceFilterPipe:filterTxt"
-                             (click)="onDeviceInfo(item)">
-                        <md-card-title-group>
-                            <img md-card-sm-image [src]=" item | ImageGuessPipe">
-                            <md-card-title>{{item.device_model}}</md-card-title>
-                            <md-card-subtitle>
-                                {{item.device_os}} {{item.device_version}}
-                            </md-card-subtitle>
-                            <md-card-subtitle *ngIf="item.inUseBy">
-                                @ <i>{{item.inUseBy}}</i>
-                            </md-card-subtitle>
-
-                            <md-card-subtitle *ngIf="!item.inUseBy">
-                               <b>Available</b>
-                            </md-card-subtitle>
-
-                        </md-card-title-group>
-                    </md-card>
-
-                </div>
-
-                <div class="noDevices"
-                     *ngIf="(deviceView | DeviceFilterPipe: filterTxt).length === 0  && deviceView.length">
-                    <img src="../../../../src/img/devices.svg">
-                    <h2>No Matches</h2>
-                </div>
-
-                <div class="loading" *ngIf="!deviceView.length">
-                    <md-progress-circle mode="indeterminate" color="primary"></md-progress-circle>
-                </div>
-            </template>
+                </md-card-title-group>
+            </md-card>
         </md-tab>
     </md-tab-group>
 

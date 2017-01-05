@@ -3,51 +3,39 @@
 <div>No Users: {{noOfUsers}}</div>
 
 <md-tab-group>
-    <md-tab>
-        <template md-tab-label>
-            Devices
-        </template>
-        <template md-tab-content>
-            <md-card class="device" *ngFor="let item of allDeviceList | DeviceFilterPipe:filterTxt"
-                     (click)="onDeviceInfo(item)">
-                <md-card-title-group>
-                    <img md-card-sm-image [src]=" item | ImageGuessPipe">
-                    <md-card-title>{{item.device_model}}</md-card-title>
-                    <md-card-subtitle>
-                        {{item.device_os}} {{item.device_version}}
-                    </md-card-subtitle>
+    <md-tab label="Devices">
+        <md-card class="device" *ngFor="let item of allDeviceList | DeviceFilterPipe:filterTxt"
+                 (click)="onDeviceInfo(item)">
+            <md-card-title-group>
+                <img md-card-sm-image [src]=" item | ImageGuessPipe">
+                <md-card-title>{{item.device_model}}</md-card-title>
+                <md-card-subtitle>
+                    {{item.device_os}} {{item.device_version}}
+                </md-card-subtitle>
 
-                </md-card-title-group>
-            </md-card>
-        </template>
-
+            </md-card-title-group>
+        </md-card>
     </md-tab>
-    <md-tab>
-        <template md-tab-label>
-            Users
-        </template>
-        <template md-tab-content>
-            <md-card class="device" *ngFor="let item of allUsers | DeviceFilterPipe:filterTxt"
-                     (click)="onUserInfo(item)">
-                <md-card-title-group>
-                    <!-- TODO: need to add user img-->
-                    <!-- <img md-card-sm-image [src]=" item | ImageGuessPipe">-->
-                    <md-card-title>{{item.displayName}}</md-card-title>
-                    <md-card-subtitle>
-                        {{item.email}}
-                    </md-card-subtitle>
-                </md-card-title-group>
-                <div class="buttons">
-                    <button md-raised-button type="button" class="logout" (click)="activateUser(item)"
-                            *ngIf="item.status === 'deactivate'" color="primary">Activate
-                    </button>
+    <md-tab label ="Users">
+        <md-card class="device" *ngFor="let item of allUsers | DeviceFilterPipe:filterTxt"
+                 (click)="onUserInfo(item)">
+            <md-card-title-group>
+                <!-- TODO: need to add user img-->
+                <!-- <img md-card-sm-image [src]=" item | ImageGuessPipe">-->
+                <md-card-title>{{item.displayName}}</md-card-title>
+                <md-card-subtitle>
+                    {{item.email}}
+                </md-card-subtitle>
+            </md-card-title-group>
+            <div class="buttons">
+                <button md-raised-button type="button" class="logout" (click)="activateUser(item)"
+                        *ngIf="item.status === 'deactivate'" color="primary">Activate
+                </button>
 
-                    <button md-raised-button type="button" class="logout" (click)="deactivateUser(item)"
-                            *ngIf="item.status !== 'deactivate'" color="secondary">Deactivate
-                    </button>
-                </div>
-            </md-card>
-
-        </template>
+                <button md-raised-button type="button" class="logout" (click)="deactivateUser(item)"
+                        *ngIf="item.status !== 'deactivate'" color="secondary">Deactivate
+                </button>
+            </div>
+        </md-card>
     </md-tab>
 </md-tab-group>
