@@ -12,6 +12,8 @@ import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 import {AboutComponent} from "./about/about.components";
 import {KioskComponent} from "./kiosk/kiosk.component";
 import {KioskComponentWeb} from "./kioskweb/kiosk.component";
+import {TodosComponent} from "./todos/todos.component";
+
 
 const appRoutes: Routes = [
     {
@@ -20,8 +22,8 @@ const appRoutes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'about',
-        component: AboutComponent
+        path: 'todo',
+        component: TodosComponent
     },
     {
         path: 'login',

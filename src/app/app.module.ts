@@ -26,6 +26,7 @@ import {EditDeviceComponent} from "./devices/editDevice/edit-device.component";
 import {AboutComponent} from "./about/about.components";
 import {KioskComponent} from "./kiosk/kiosk.component";
 import {KioskComponentWeb} from "./kioskweb/kiosk.component";
+import {TodosComponent} from "./todos/todos.component";
 
 
 // Must export the config
@@ -72,7 +73,8 @@ const myFirebaseAuthConfig = {
         Gravatar,
         UserDetailsComponent,
         KioskComponent,
-        KioskComponentWeb
+        KioskComponentWeb,
+        TodosComponent
     ],
     bootstrap: [AppComponent],
     providers: [AuthGuard],
