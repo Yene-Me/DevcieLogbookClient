@@ -6,7 +6,9 @@
     "start": "webpack-dev-server --inline --progress --port 8181",
     "test": "karma start config/karma.conf.js",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "license": "MIT",
   "dependencies": {
@@ -30,7 +32,8 @@
     "ng2-gravatar-directive": "^1.4.1",
     "rxjs": "5.0.2",
     "socket.io-client": "^1.7.2",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.7.2",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@types/socket.io-client": "^1.4.29",
@@ -71,5 +74,6 @@
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.14.0"
-  }
+  },
+  "snyk": true
 }
